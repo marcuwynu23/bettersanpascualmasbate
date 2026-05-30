@@ -1,0 +1,33 @@
+import { useState } from 'react';
+import { Layout } from './components/Layout';
+import { Home } from './pages/Home';
+import { Services } from './pages/Services';
+import { Transparency } from './pages/Transparency';
+import { Explore } from './pages/Explore';
+
+function App() {
+  const [currentTab, setCurrentTab] = useState<string>('home');
+
+  const renderContent = () => {
+    switch (currentTab) {
+      case 'home':
+        return <Home setCurrentTab={setCurrentTab} />;
+      case 'services':
+        return <Services />;
+      case 'transparency':
+        return <Transparency />;
+      case 'explore':
+        return <Explore />;
+      default:
+        return <Home setCurrentTab={setCurrentTab} />;
+    }
+  };
+
+  return (
+    <Layout currentTab={currentTab} setCurrentTab={setCurrentTab}>
+      {renderContent()}
+    </Layout>
+  );
+}
+
+export default App;
