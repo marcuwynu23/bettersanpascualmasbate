@@ -1,19 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { 
-  ShieldAlert, 
-  Menu, 
-  X, 
-  Phone, 
-  Moon, 
-  Sun, 
-  Compass, 
-  FileText, 
-  Grid, 
-  Home as HomeIcon,
-  AlertTriangle,
-  Info
-} from 'lucide-react';
-import { EMERGENCY_CONTACTS } from '../data/mockData';
+import { AlertTriangle, Compass, FileText, Grid, Home as HomeIcon, Info, Menu, Moon, Phone, ShieldAlert, Sun, X } from "lucide-react";
+import React, { useEffect, useState } from "react";
+import { EMERGENCY_CONTACTS } from "../data/mockData";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -25,46 +12,47 @@ export const Layout: React.FC<LayoutProps> = ({ children, currentTab, setCurrent
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isEmergencyPanelOpen, setIsEmergencyPanelOpen] = useState(false);
-  
+
   // Environment Check
-  const envMode = import.meta.env.MODE || 'development';
-  const showEnvBanner = envMode === 'development' || envMode === 'staging';
+  const envMode = import.meta.env.MODE || "development";
+  const showEnvBanner = envMode === "development" || envMode === "staging";
 
   // Toggle Dark Mode
   useEffect(() => {
     if (isDarkMode) {
-      document.documentElement.classList.add('dark');
+      document.documentElement.classList.add("dark");
     } else {
-      document.documentElement.classList.remove('dark');
+      document.documentElement.classList.remove("dark");
     }
   }, [isDarkMode]);
 
   const navItems = [
-    { id: 'home', label: 'Home', icon: HomeIcon },
-    { id: 'services', label: 'Services', icon: Grid },
-    { id: 'transparency', label: 'Transparency', icon: FileText },
-    { id: 'explore', label: 'Explore & History', icon: Compass },
+    { id: "home", label: "Home", icon: HomeIcon },
+    { id: "services", label: "Services", icon: Grid },
+    { id: "transparency", label: "Transparency", icon: FileText },
+    { id: "explore", label: "Explore & History", icon: Compass },
   ];
 
   // Map tabs dynamically to our PH Flag monochromatic classes
   const getThemeClass = () => {
     switch (currentTab) {
-      case 'home':
-        return 'theme-blue';
-      case 'services':
-        return 'theme-red';
-      case 'transparency':
-        return 'theme-yellow';
-      case 'explore':
-        return 'theme-blue';
+      case "home":
+        return "theme-blue";
+      case "services":
+        return "theme-red";
+      case "transparency":
+        return "theme-yellow";
+      case "explore":
+        return "theme-blue";
       default:
-        return 'theme-blue';
+        return "theme-blue";
     }
   };
 
   return (
-    <div className={`min-h-screen flex flex-col font-sans bg-app-bg text-app-text transition-colors duration-500 theme-transition ${getThemeClass()}`}>
-      
+    <div
+      className={`min-h-screen flex flex-col font-sans bg-app-bg text-app-text transition-colors duration-500 theme-transition ${getThemeClass()}`}
+    >
       {/* 1. Environment Banner */}
       {showEnvBanner && (
         <div className="bg-app-primary/10 border-b border-app-border text-app-text-dim text-xs px-4 py-1.5 flex items-center justify-center gap-2 font-medium theme-transition">
@@ -76,19 +64,19 @@ export const Layout: React.FC<LayoutProps> = ({ children, currentTab, setCurrent
       {/* 2. Top Sticky Header */}
       <header className="sticky top-0 z-40 w-full bg-app-bg/95 border-b border-app-border backdrop-blur-md theme-transition">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          
           {/* Logo / Branding */}
-          <div 
-            className="flex items-center gap-2 cursor-pointer group"
-            onClick={() => setCurrentTab('home')}
-          >
-            <img src="/logo.png" alt="BetterSanPascualMasbate Logo" className="h-9 w-auto object-contain group-hover:scale-102 transition-transform" />
+          <div className="flex items-center gap-2 cursor-pointer group" onClick={() => setCurrentTab("home")}>
+            <img
+              src="/logo.png"
+              alt="BetterSanPascualMasbate Logo"
+              className="h-9 w-auto object-contain group-hover:scale-102 transition-transform"
+            />
             <div className="flex flex-col">
               <span className="font-sans font-bold text-base sm:text-lg tracking-tight text-app-text leading-none theme-transition">
                 BetterSanPascualMasbate
               </span>
               <span className="text-[9px] font-semibold text-app-text-dim/80 tracking-widest uppercase mt-0.5 theme-transition">
-                Transparency Portal (Masbate)
+                Transparency Portal
               </span>
             </div>
           </div>
@@ -103,12 +91,10 @@ export const Layout: React.FC<LayoutProps> = ({ children, currentTab, setCurrent
                   key={item.id}
                   onClick={() => setCurrentTab(item.id)}
                   className={`flex items-center gap-2 px-4 py-2 rounded-none text-sm font-semibold theme-transition ${
-                    isActive 
-                      ? 'bg-app-primary text-white shadow-sm font-semibold' 
-                      : 'text-app-text-muted hover:text-app-text hover:bg-app-card-hover'
+                    isActive ? "bg-app-primary text-white shadow-sm font-semibold" : "text-app-text-muted hover:text-app-text hover:bg-app-card-hover"
                   }`}
                 >
-                  <Icon className={`h-4 w-4 theme-transition ${isActive ? 'text-white' : 'text-app-primary'}`} />
+                  <Icon className={`h-4 w-4 theme-transition ${isActive ? "text-white" : "text-app-primary"}`} />
                   {item.label}
                 </button>
               );
@@ -117,7 +103,6 @@ export const Layout: React.FC<LayoutProps> = ({ children, currentTab, setCurrent
 
           {/* Action Buttons (Right) */}
           <div className="flex items-center gap-2">
-            
             {/* Hotlines Trigger */}
             <button
               onClick={() => setIsEmergencyPanelOpen(true)}
@@ -147,9 +132,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, currentTab, setCurrent
             >
               {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
-
           </div>
-
         </div>
       </header>
 
@@ -173,12 +156,10 @@ export const Layout: React.FC<LayoutProps> = ({ children, currentTab, setCurrent
                   setIsMobileMenuOpen(false);
                 }}
                 className={`flex items-center gap-3 w-full px-4 py-3 rounded-none text-base font-semibold theme-transition ${
-                  isActive 
-                    ? 'bg-app-primary text-white shadow-md font-semibold' 
-                    : 'text-app-text-muted hover:text-app-text hover:bg-app-card-hover'
+                  isActive ? "bg-app-primary text-white shadow-md font-semibold" : "text-app-text-muted hover:text-app-text hover:bg-app-card-hover"
                 }`}
               >
-                <Icon className={`h-5 w-5 theme-transition ${isActive ? 'text-white' : 'text-app-primary'}`} />
+                <Icon className={`h-5 w-5 theme-transition ${isActive ? "text-white" : "text-app-primary"}`} />
                 {item.label}
               </button>
             );
@@ -191,25 +172,23 @@ export const Layout: React.FC<LayoutProps> = ({ children, currentTab, setCurrent
         <div className="fixed inset-0 z-50 overflow-hidden" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
           <div className="absolute inset-0 overflow-hidden">
             {/* Backdrop overlay */}
-            <div 
-              className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity" 
-              onClick={() => setIsEmergencyPanelOpen(false)}
-            />
-            
+            <div className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity" onClick={() => setIsEmergencyPanelOpen(false)} />
+
             <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
               <div className="pointer-events-auto w-screen max-w-md animate-slide-in">
                 <div className="flex h-full flex-col overflow-y-scroll bg-app-card border-l border-app-border theme-transition">
-                  
                   {/* Header */}
                   <div className="bg-app-primary px-6 py-6 text-white border-b border-app-border flex items-center justify-between theme-transition">
                     <div className="flex items-center gap-3">
                       <ShieldAlert className="h-6 w-6 text-white animate-pulse" />
                       <div>
-                        <h2 className="text-lg font-bold font-display text-white" id="slide-over-title">Emergency Responder Hotlines</h2>
+                        <h2 className="text-lg font-bold font-display text-white" id="slide-over-title">
+                          Emergency Responder Hotlines
+                        </h2>
                         <p className="text-xs text-white/80 mt-0.5">Municipal Disaster Coordination, San Pascual, Masbate</p>
                       </div>
                     </div>
-                    <button 
+                    <button
                       onClick={() => setIsEmergencyPanelOpen(false)}
                       className="rounded-none p-1.5 hover:bg-app-primary-hover transition-colors"
                     >
@@ -219,7 +198,6 @@ export const Layout: React.FC<LayoutProps> = ({ children, currentTab, setCurrent
 
                   {/* Hotline list */}
                   <div className="relative flex-1 py-6 px-6 space-y-6">
-                    
                     <div className="bg-app-muted border border-app-border p-4 rounded-none text-sm text-app-text theme-transition">
                       <p className="font-semibold flex items-center gap-2">
                         <AlertTriangle className="h-4 w-4 text-app-primary shrink-0 theme-transition" />
@@ -232,8 +210,8 @@ export const Layout: React.FC<LayoutProps> = ({ children, currentTab, setCurrent
 
                     <div className="space-y-4">
                       {EMERGENCY_CONTACTS.map((contact) => (
-                        <div 
-                          key={contact.id} 
+                        <div
+                          key={contact.id}
                           className="bg-app-muted hover:bg-app-card-hover border border-app-border p-4 rounded-none flex items-start justify-between gap-4 group theme-transition"
                         >
                           <div className="space-y-1">
@@ -243,76 +221,70 @@ export const Layout: React.FC<LayoutProps> = ({ children, currentTab, setCurrent
                             <h3 className="font-bold text-app-text text-sm mt-1 theme-transition">{contact.agency}</h3>
                             <p className="text-xs text-app-text-muted leading-relaxed theme-transition">{contact.description}</p>
                           </div>
-                          
+
                           <div className="flex flex-col items-end shrink-0">
-                            <a 
+                            <a
                               href={`tel:${contact.number}`}
                               className="bg-app-primary hover:bg-app-primary-hover text-white p-2.5 rounded-none flex items-center justify-center transition-all group-hover:scale-105 theme-transition"
                             >
                               <Phone className="h-4 w-4 text-white" />
                             </a>
-                            <span className="font-mono text-xs font-bold text-app-text mt-2 block theme-transition">
-                              {contact.number}
-                            </span>
+                            <span className="font-mono text-xs font-bold text-app-text mt-2 block theme-transition">{contact.number}</span>
                           </div>
                         </div>
                       ))}
                     </div>
-
                   </div>
 
                   {/* Footer */}
                   <div className="border-t border-app-border p-6 bg-app-muted theme-transition">
                     <p className="text-[10px] text-app-text-muted text-center leading-normal theme-transition">
-                      Disclaimer: Contact numbers are sourced from local community guides. If any number is outdated, please contact volunteers to request an update.
+                      Disclaimer: Contact numbers are sourced from local community guides. If any number is outdated, please contact volunteers to
+                      request an update.
                     </p>
                   </div>
-
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       )}
 
       {/* Main Page Content */}
       <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8">
-        <div className="animate-fade-in">
-          {children}
-        </div>
+        <div className="animate-fade-in">{children}</div>
       </main>
 
       {/* 5. Footer and Global Non-Official Disclaimer */}
       <footer className="bg-app-card text-app-text-muted border-t border-app-border theme-transition">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
-            
             <div className="space-y-4">
               <div className="flex items-center gap-2.5">
                 <img src="/logo.png" alt="BetterSanPascualMasbate Logo" className="h-8 w-auto object-contain brightness-0 invert" />
                 <span className="font-sans font-bold text-lg text-app-text theme-transition">BetterSanPascualMasbate</span>
               </div>
               <p className="text-xs leading-relaxed text-app-text-muted theme-transition max-w-sm">
-                A volunteer-driven, non-official community directory and transparency registry dedicated to making public information accessible and exploring the beauty of San Pascual, Burias Island, Masbate (distinguishing from San Pascual, Batangas).
+                A volunteer-driven, non-official community directory and transparency registry dedicated to making public information accessible and
+                exploring the beauty of San Pascual, Burias Island, Masbate (distinguishing from San Pascual, Batangas).
               </p>
             </div>
 
             <div className="space-y-4">
               <h4 className="text-sm font-bold text-app-text uppercase tracking-wider font-display theme-transition">Transparency & Ethics</h4>
               <p className="text-xs leading-relaxed text-app-text-muted theme-transition">
-                Our database uses publicly available government directories, municipal resolutions, and verified tourist registers. All content is localized to help island residents and visitors navigate services easily.
+                Our database uses publicly available government directories, municipal resolutions, and verified tourist registers. All content is
+                localized to help island residents and visitors navigate services easily.
               </p>
             </div>
 
             <div className="space-y-4">
               <h4 className="text-sm font-bold text-app-text uppercase tracking-wider font-display theme-transition">About the Island</h4>
               <p className="text-xs leading-relaxed text-app-text-muted theme-transition">
-                San Pascual is a coastal paradise situated at the northern end of Burias Island, Masbate. It is famous for cattle ranching, copra production, and pristine islands like Sombrero and Tinalisayan.
+                San Pascual is a coastal paradise situated at the northern end of Burias Island, Masbate. It is famous for cattle ranching, copra
+                production, and pristine islands like Sombrero and Tinalisayan.
               </p>
             </div>
-
           </div>
 
           {/* Global Footer Disclaimer Banner */}
@@ -330,17 +302,17 @@ export const Layout: React.FC<LayoutProps> = ({ children, currentTab, setCurrent
             <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] text-app-text-dim">
               <p>© {new Date().getFullYear()} BetterSanPascualMasbate.org. Built with ♥ by local volunteers.</p>
               <div className="flex gap-4">
-                <a href="#privacy" className="hover:text-app-primary transition-colors theme-transition">Privacy Notes</a>
-                <a href="#terms" className="hover:text-app-primary transition-colors theme-transition">Usage Guidelines</a>
+                <a href="#privacy" className="hover:text-app-primary transition-colors theme-transition">
+                  Privacy Notes
+                </a>
+                <a href="#terms" className="hover:text-app-primary transition-colors theme-transition">
+                  Usage Guidelines
+                </a>
               </div>
             </div>
-
           </div>
-
         </div>
       </footer>
-
     </div>
   );
 };
-
