@@ -1,55 +1,42 @@
-# Pull Request
+## Proposed Changes
 
-## Description
-Provide a clear and concise description of what this pull request does.
+Please provide a clear description of the modifications, features, or content updates introduced in this pull request.
 
----
-
-## Related Issue
-Link to the related issue(s), if applicable:
-- Closes #
-- Fixes #
-- Related #
+- **Objective**: What problem does this solve or what feature does it add?
+- **Scope**: Summarize the list of files modified.
 
 ---
 
 ## Type of Change
-Mark the relevant option(s):
 
-- [ ] Bug fix
-- [ ] New feature
-- [ ] Breaking change
-- [ ] Refactoring
-- [ ] Documentation update
-- [ ] Other (please describe):
+Please tick the options that are relevant to this pull request:
 
----
-
-## How Has This Been Tested?
-Describe the tests you ran to verify your changes:
-
-- Test environment:
-- Test cases:
-- Results:
+- [ ] **Bug Fix** (Non-breaking change which fixes an issue, e.g., outdated phone numbers)
+- [ ] **New Feature** (Non-breaking change which adds new portal screens or components)
+- [ ] **Refactoring** (Code cleanup or design alignment without structural features)
+- [ ] **Documentation Update** (Edits to README, guidelines, or LICENSING info)
+- [ ] **Data / Content Update** (Edits to mockData or local database structures)
 
 ---
 
-## Checklist
+## Quality Assurance & Testing
 
-- [ ] My code follows the project style guidelines
-- [ ] I have performed a self-review of my code
-- [ ] I have commented my code where necessary
-- [ ] I have made corresponding changes to documentation
-- [ ] My changes generate no new warnings
-- [ ] I have added tests that prove my fix or feature works
-- [ ] New and existing tests pass locally
+- [ ] I have executed a successful production build locally by running `npm run build`.
+- [ ] The TypeScript compiler (`tsc`) completed with zero type errors.
+- [ ] The Vite bundler successfully generated production build chunks in `dist/`.
+- [ ] I have verified that standard console logs and warning states are resolved.
 
 ---
 
-## Screenshots (if applicable)
-Add screenshots to show UI changes or visual updates.
+## Monochromatic Design System Compliance
+
+- [ ] I have avoided hardcoding static color classes (e.g., `text-slate-900`, `bg-blue-500`) on theme-affected elements.
+- [ ] Interactive layout elements use semantic tokens like `bg-app-bg`, `text-app-text`, and `border-app-border` to ensure seamless fluid transition animations across pages.
+- [ ] Accent features (highlights, active states, bullet markers) utilize `bg-app-primary` or `text-app-primary` to dynamically reflect the selected flag color.
 
 ---
 
-## Additional Notes
-Add any other context, considerations, or notes for reviewers.
+## Licensing Verification
+
+- [ ] By submitting this pull request, I agree that my contributions are licensed under the **Creative Commons Attribution 4.0 International (CC BY 4.0)** license.
+- [ ] I have provided proper attribution for any external databases, icons, or visual assets integrated as part of this contribution.

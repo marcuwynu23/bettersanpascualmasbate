@@ -1,75 +1,52 @@
-# React + TypeScript + Vite
+<h1 align="center">BetterSanPascualMasbate</h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<p align="center">An independent, volunteer-led community registry and transparency portal dedicated to making local information accessible and exploring the beauty of San Pascual, Burias Island, Masbate.</p>
 
-Currently, two official plugins are available:
+<p align="center">This portal is a civic resource designed to help island residents, visitors, and volunteers easily find public services, read community ordinances, connect with emergency responders, and discover the island's historical landmarks.</p>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## What This Website Is Used For
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+BetterSanPascualMasbate is used as an informational hub to bridge the gap in public data accessibility on Burias Island. It serves three primary functions:
 
-Note: This will impact Vite dev & build performances.
+1.  **Civic Accessibility**: Enabling residents to find municipal support programs, agricultural aid, educational scholarships, and local medical resources in one unified registry.
+2.  **Public Accountability**: Providing an open, easy-to-use search index of local ordinances, resolutions, executive orders, and annual budgets so citizens can stay informed about municipal affairs.
+3.  **Local Preservation**: Showcasing San Pascual's unique cowboy/ranching heritage, island landmarks, and Spanish-era chronicles to promote ecological tourism and cultural awareness.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## What the Portal Contains
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+The website is divided into four main sections, each tailored to a specific community need:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### 1. Interactive Directories & Assistance
+- **Emergency Responder Hotlines**: Quick-dial contact details for local disaster risk officers (MDRRMO), municipal police (PNP), local fire stations (BFP), district hospital admission, and national dispatch systems.
+- **Volunteer Disclaimer Registry**: Clear, prominent visual markers across all views to guide residents that this is a civic community portal rather than an official LGU transaction system.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### 2. Municipal Services Handbook
+- **Rural Health & Wellness**: Guides to basic diagnostics, free senior maintenance medicines, and childhood immunizations.
+- **Agricultural & Tourism Support**: Local guides to dwarf coconut seedling distributions, fisherfolk subsidies, and livestock vaccinations.
+- **Social Welfare & Development**: Information on senior pensions, PWD benefits, and crisis cash programs.
+- **Educational Portals**: Local scholarship programs and alternative learning system centers.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 3. Open Transparency Registry
+- **Resolutions & Executive Orders**: Verifiable public domain records detailing island carrying capacities, coastal clean-ups, and El Niño agricultural response funds.
+- **Municipal Budgets**: Scannable logs showing local fund allocations to healthcare, infrastructure, and copra farming.
+- **Administrative Summaries**: Drop-down cards containing brief, easy-to-understand explanations of complex administrative mandates.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 4. Island Landmark Guides & Chronicles
+- **Eco-Tourism Virtual Tour**: Guides to pristine geological destinations including Sombrero Island, Tinalisayan sandbar, and Animasola monolithic rock formations.
+- **Historical Timeline**: A scannable chronological layout tracking local milestones from the 1586 parish founding to the cattle-ranching Isla Rancho Festival.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+
+## Contributing and Technical Setup
+If you are a developer, designer, or volunteer researcher looking to contribute code, update contact details, or review the file architecture and tech stack, please refer to the **[Contributing Guidelines (CONTRIBUTING.md)](CONTRIBUTING.md)**. All technical details, folder trees, local installation guides, and pull request requirements are hosted there.
+
+---
+
+## License
+This civic resource is licensed under the **[Creative Commons Attribution 4.0 International Public License (CC BY 4.0)](LICENSE)**.
+
+You are free to copy, Share, and adapt the portal's databases and codebase, provided that appropriate credit and attribution are given back to the **BetterSanPascualMasbate Community Volunteers**.

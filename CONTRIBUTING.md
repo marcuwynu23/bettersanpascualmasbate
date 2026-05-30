@@ -1,165 +1,100 @@
-# Contributing
+# Technical & Contribution Guidelines
 
-Thanks for your interest in contributing.
+Welcome to the technical contributor hub for BetterSanPascualMasbate! 🎉
 
-We welcome contributions of all kinds: bug fixes, features, documentation, and suggestions.
-
----
-
-## Getting Started
-
-1. Fork the repository
-2. Clone your fork locally
-3. Create a new branch from `main`
-4. Install dependencies and set up the project
+This document provides a complete guide to our technology stack, file architecture, local development workflow, styling conventions, and pull request guidelines for engineers, designers, and systems builders.
 
 ---
 
-## Branching Strategy
+## Technology Stack
 
-We follow a structured branching approach:
+Our portal is built using a modern, lightweight, and highly performant frontend architecture:
 
-### Main Branches
+*   **Core Framework**: [React 19](https://react.dev/) — utilizes the latest compiler optimizations for fast render cycles.
+*   **Language**: [TypeScript](https://www.typescriptlang.org/) — ensures strict data contract safety.
+*   **Bundler & Dev Server**: [Vite](https://vite.dev/) — provides fast hot-module reloading.
+*   **Styling Engine**: [Tailwind CSS v4](https://tailwindcss.com/) — supports high-performance CSS grid, flexbox, and dynamic variables.
+*   **Icon Library**: [Lucide React](https://lucide.dev/) — robust SVG visual indicators.
 
-- `main` → Production-ready code
-- `develop` → Integration branch for ongoing development
+---
 
-### Supporting Branches
+## File Architecture
 
-Use the following naming conventions:
+Below is the directory blueprint of the codebase, outlining where various views, data stores, components, and styling rules reside:
 
-- `feature/<short-description>` → New features
-- `fix/<short-description>` → Bug fixes
-- `chore/<short-description>` → Maintenance tasks
-- `docs/<short-description>` → Documentation updates
-- `refactor/<short-description>` → Code improvements without behavior change
-- `test/<short-description>` → Adding or updating tests
-
-Examples:
-
-```
-feature/add-authentication
-fix/login-validation-error
-docs/update-installation-guide
+```text
+src/
+├── assets/         # Community logos & vector icons
+├── components/     # Reusable UI shells
+│   └── Layout.tsx        # Unified layout, sticky headers, hotlines, & footer
+├── data/           # Mock registries & local databases
+│   └── mockData.ts       # Emergency contacts, services guide, public records, landmarks
+├── pages/          # Tab-specific monochromatic views
+│   ├── Home.tsx          # Home page (Royal Blue monochromatic scheme)
+│   ├── Services.tsx      # Municipal services list (Scarlet Red monochromatic scheme)
+│   ├── Transparency.tsx  # Document filters & directories (Golden Yellow scheme)
+│   └── Explore.tsx       # Chronicles timeline & island maps (Blue/Tricolor highlights)
+├── types/          # Strict TypeScript contract interfaces
+├── App.tsx         # Tab router and content hydrator
+├── main.tsx        # React hydration entry point
+└── index.css       # Monochromatic theme classes & Tailwind v4 imports
 ```
 
 ---
 
-## Development Workflow
+## Dynamic Monochromatic Styling
 
-1. Create a branch from `develop` (unless it's a hotfix for production)
-2. Make your changes in a focused branch
-3. Follow the project's coding style and conventions
-4. Add or update tests when applicable
-5. Run local checks before submitting:
+The layout utilizes a dynamic, page-aware color system based on the colors of the Philippine flag. **Do not** hardcode static Tailwind utility colors (e.g. `bg-blue-500` or `text-slate-900`) for structural elements. Instead, use our dynamic, theme-aware tokens which automatically shift color depending on the active tab:
 
+| Variable Type | Dynamic Tailwind Utility Class | Light Mode Base Value | Dark Mode Base Value |
+| :--- | :--- | :--- | :--- |
+| **App Background** | `bg-app-bg` | `#ffffff` | `#000511` (Blue) / `#1a0103` (Red) / `#1f1300` (Yellow) |
+| **Card Surface** | `bg-app-card` | `#ffffff` | `#000b21` (Blue) / `#3a0307` (Red) / `#3d2600` (Yellow) |
+| **Card Hover** | `hover:bg-app-card-hover` | `#eff6ff` / `#fff1f2` / `#fffdf0` | `#001642` / `#5d070d` / `#5c3900` |
+| **Muted Background** | `bg-app-muted` | `#f4f8ff` / `#fff8f8` / `#fffef5` | `#000b21` / `#3a0307` / `#3d2600` |
+| **Primary Text** | `text-app-text` | `#001642` / `#47050a` / `#331f00` | `#ffffff` |
+| **Muted Text** | `text-app-text-muted` | `#002d86` / `#8f0b18` / `#8c5f00` | `#bcd5ff` / `#ffc7cb` / `#fff085` |
+| **Accent Text** | `text-app-text-dim` | `#0038a8` / `#ce1126` / `#ad7b00` | `#91baff` / `#ffa0a7` / `#ffe247` |
+| **Borders** | `border-app-border` | `#bfdbfe` / `#ffc7cb` / `#fff085` | `#002164` / `#760a14` / `#8c5f00` |
+| **Active Highlights**| `bg-app-primary` | `#0038a8` / `#ce1126` / `#d8a400` | `#5c92ff` / `#ff6a75` / `#ffd41a` |
+
+---
+
+## Local Development Workflow
+
+### Prerequisites
+Make sure Node.js (v18+) and npm are installed on your system.
+
+### 1. Clone & Set Up the Repository
 ```bash
-make test
-make build
+git clone https://github.com/your-username/bettersanpascualmasbate.git
+npm install
 ```
 
----
-
-## Commit Messages (Conventional Commits)
-
-We follow the **Conventional Commits** specification.
-
-### Format
-
+### 2. Run in Hot-Reload Mode
+Start the local development server:
+```bash
+npm run dev
 ```
-<type>(optional scope): <short description>
+Open [http://localhost:5173](http://localhost:5173) in your browser. Changing any file will instantly hot-reload the UI.
+
+### 3. Build & Type Verification
+Before submitting a PR, always compile a production build to check for lint or TypeScript static type errors:
+```bash
+npm run build
 ```
-
-### Common Types
-
-- `feat` → New feature
-- `fix` → Bug fix
-- `docs` → Documentation changes
-- `style` → Formatting (no code logic changes)
-- `refactor` → Code restructuring
-- `test` → Adding/updating tests
-- `chore` → Maintenance
-
-### Examples
-
-```
-feat(auth): add JWT authentication
-fix(api): handle null response in user service
-docs(readme): update setup instructions
-refactor(core): simplify validation logic
-```
-
-### Rules
-
-- Use lowercase for type and description
-- Keep messages concise and meaningful
-- Use the body for additional context if needed
+This runs the compiler (`tsc`) and builds optimized static assets into the `dist/` directory.
 
 ---
 
-## Pull Request Process
+## Pull Request Guidelines
 
-1. Ensure your branch is up to date with `develop`
-2. Verify all tests and checks pass
-3. Open a pull request targeting `develop` (or `main` for hotfixes)
-4. Clearly describe:
-   - What changed
-   - Why it was needed
-   - Any relevant context
-5. Use the PR template:
-   - [`.github/PULL_REQUEST_TEMPLATE.md`](.github/PULL_REQUEST_TEMPLATE.md)
+To maintain repository quality, all code submissions must adhere to the following steps:
 
-Optional:
-
-- Include screenshots, logs, or examples if applicable
-
----
-
-## Reporting Issues
-
-When reporting bugs, please use the provided template:
-
-- [`.github/ISSUE_TEMPLATE/bug_report.md`](.github/ISSUE_TEMPLATE/bug_report.md)
-
-Include:
-
-- Description of the problem
-- Steps to reproduce
-- Expected vs actual behavior
-- Environment details (if relevant)
-
----
-
-## Suggestions & Feature Requests
-
-For feature requests and suggestions, please use:
-
-- [`.github/ISSUE_TEMPLATE/feature_request.md`](.github/ISSUE_TEMPLATE/feature_request.md)
-
-Be sure to include:
-
-- The problem you're trying to solve
-- Your proposed solution
-- Any alternatives you've considered
-
----
-
-## Code of Conduct
-
-This project follows the guidelines defined in:
-
-- [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md)
-
-Be respectful and constructive in all interactions.
-Harassment or inappropriate behavior will not be tolerated.
-
----
-
-## Notes
-
-- Maintainers may request changes before merging
-- Not all contributions may be accepted, but all will be reviewed
-
----
-
-Thanks again for contributing.
+1. **Strict Type Safety**: The codebase compiles with `strict: true`. Avoid casting using `any` or disabling lint/compiler checks.
+2. **Dynamic Styling Review**: Double check that your new views or blocks support dynamic transitions. Changing tabs should smoothly transition your components through blue, red, and yellow monochromatic states.
+3. **Commit Messages**: Follow standard semantic git naming structures, such as:
+   - `feat(transparency): add text search query highlight to ordinances table`
+   - `fix(data): update PNP station hotline mobile number`
+   - `docs(readme): add responsive mobile preview screens`
+4. **License Agreement**: By submitting code, you agree that your work will be licensed under our **[Creative Commons Attribution 4.0 International Public License (CC BY 4.0)](LICENSE)** terms.
