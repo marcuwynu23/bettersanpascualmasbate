@@ -63,14 +63,14 @@ export const Services: React.FC = () => {
     <div className="space-y-12 py-4 theme-transition">
       
       {/* Page Header */}
-      <section className="space-y-4 max-w-3xl">
-        <span className="text-[10px] font-extrabold uppercase tracking-widest text-app-primary theme-transition">
+      <section className="space-y-4 max-w-3xl mx-auto text-center">
+        <span className="text-[10px] font-extrabold uppercase tracking-widest text-app-primary theme-transition block">
           Services Directory
         </span>
         <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight font-display text-app-text theme-transition">
           Municipal Services Handbook
         </h1>
-        <p className="text-sm sm:text-base text-app-text-muted leading-relaxed theme-transition">
+        <p className="text-sm sm:text-base text-app-text-muted leading-relaxed max-w-2xl mx-auto theme-transition">
           Volunteer directory of public services and contact details for residents of Burias Island.
         </p>
       </section>

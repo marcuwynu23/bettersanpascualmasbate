@@ -31,14 +31,14 @@ export const Explore: React.FC = () => {
     <div className="space-y-20 py-4 theme-transition">
       
       {/* 1. Page Header */}
-      <section className="space-y-4 max-w-3xl">
-        <span className="text-[10px] font-extrabold uppercase tracking-widest text-app-primary theme-transition">
+      <section className="space-y-4 max-w-3xl mx-auto text-center">
+        <span className="text-[10px] font-extrabold uppercase tracking-widest text-app-primary theme-transition block">
           Explore & History
         </span>
         <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight font-display text-app-text theme-transition">
           Discover Burias Island, Masbate
         </h1>
-        <p className="text-sm sm:text-base text-app-text-muted leading-relaxed theme-transition">
+        <p className="text-sm sm:text-base text-app-text-muted leading-relaxed max-w-2xl mx-auto theme-transition">
           Guide to natural landmarks, islands, and historical events of Burias Island.
         </p>
       </section>
