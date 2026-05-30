@@ -3,63 +3,196 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+:root {
+  /* Dynamic Theme Variables - Blue Default */
+  --bg-app: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-hover: #eff6ff;
+  --bg-muted: #f4f8ff;
+  --bg-muted-hover: #e0ecff;
+  --text-main: #001642;
+  --text-muted: #002d86;
+  --text-dim: #0038a8;
+  --border-main: #bfdbfe;
+  --border-muted: #eff6ff;
+  --primary-color: #0038a8;
+  --primary-hover: #002164;
+}
+
+/* Dark Mode Default - Blue */
+.dark {
+  --bg-app: #000511;
+  --bg-card: #000b21;
+  --bg-card-hover: #001642;
+  --bg-muted: #000b21;
+  --bg-muted-hover: #001642;
+  --text-main: #ffffff;
+  --text-muted: #bcd5ff;
+  --text-dim: #91baff;
+  --border-main: #002164;
+  --border-muted: #001642;
+  --primary-color: #5c92ff;
+  --primary-hover: #91baff;
+}
+
+/* Red Theme Classes (Applied on wrapper depending on tab) */
+.theme-red {
+  --bg-app: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-hover: #fff1f2;
+  --bg-muted: #fff8f8;
+  --bg-muted-hover: #ffe1e3;
+  --text-main: #47050a;
+  --text-muted: #8f0b18;
+  --text-dim: #ce1126;
+  --border-main: #ffc7cb;
+  --border-muted: #fff1f2;
+  --primary-color: #ce1126;
+  --primary-hover: #8f0b18;
+}
+
+.dark.theme-red {
+  --bg-app: #1a0103;
+  --bg-card: #3a0307;
+  --bg-card-hover: #5d070d;
+  --bg-muted: #3a0307;
+  --bg-muted-hover: #5d070d;
+  --text-main: #ffffff;
+  --text-muted: #ffc7cb;
+  --text-dim: #ffa0a7;
+  --border-main: #760a14;
+  --border-muted: #5d070d;
+  --primary-color: #ff6a75;
+  --primary-hover: #ffa0a7;
+}
+
+/* Yellow Theme Classes (Applied on wrapper depending on tab) */
+.theme-yellow {
+  --bg-app: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-hover: #fffdf0;
+  --bg-muted: #fffef5;
+  --bg-muted-hover: #fff9c2;
+  --text-main: #331f00;
+  --text-muted: #8c5f00;
+  --text-dim: #ad7b00;
+  --border-main: #fff085;
+  --border-muted: #fffdf0;
+  --primary-color: #d8a400; /* Darker gold for text accessibility contrast in light mode */
+  --primary-hover: #ad7b00;
+}
+
+.dark.theme-yellow {
+  --bg-app: #1f1300;
+  --bg-card: #3d2600;
+  --bg-card-hover: #5c3900;
+  --bg-muted: #3d2600;
+  --bg-muted-hover: #5c3900;
+  --text-main: #ffffff;
+  --text-muted: #fff085;
+  --text-dim: #ffe247;
+  --border-main: #8c5f00;
+  --border-muted: #5c3900;
+  --primary-color: #ffd41a;
+  --primary-hover: #ffe247;
+}
+
 @theme {
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   
-  --color-primary-50: #f0f7ff;
-  --color-primary-100: #e0f2fe;
-  --color-primary-500: #0ea5e9;
-  --color-primary-600: #0284c7;
-  --color-primary-700: #0369a1;
-  --color-primary-800: #075985;
-  --color-primary-900: #0c4a6e;
+  /* Theme-specific custom Tailwind colors mapped to CSS variables */
+  --color-app-bg: var(--bg-app);
+  --color-app-card: var(--bg-card);
+  --color-app-card-hover: var(--bg-card-hover);
+  --color-app-muted: var(--bg-muted);
+  --color-app-muted-hover: var(--bg-muted-hover);
+  --color-app-text: var(--text-main);
+  --color-app-text-muted: var(--text-muted);
+  --color-app-text-dim: var(--text-dim);
+  --color-app-border: var(--border-main);
+  --color-app-border-muted: var(--border-muted);
+  --color-app-primary: var(--primary-color);
+  --color-app-primary-hover: var(--primary-hover);
+
+  /* Precise PH Flag Monochromatic Scales */
+  /* Blue Scale */
+  --color-primary-50: #eef4ff;
+  --color-primary-100: #d9e7ff;
+  --color-primary-200: #bcd5ff;
+  --color-primary-300: #91baff;
+  --color-primary-400: #5c92ff;
+  --color-primary-500: #0038a8;
+  --color-primary-600: #002d86;
+  --color-primary-700: #002164;
+  --color-primary-800: #001642;
+  --color-primary-900: #000b21;
+  --color-primary-950: #000511;
   
-  --color-accent-50: #f5f3ff;
-  --color-accent-100: #ede9fe;
-  --color-accent-500: #8b5cf6;
-  --color-accent-600: #7c3aed;
-  --color-accent-700: #6d28d9;
+  /* Red Scale */
+  --color-accent-50: #fff1f2;
+  --color-accent-100: #ffe1e3;
+  --color-accent-200: #ffc7cb;
+  --color-accent-300: #ffa0a7;
+  --color-accent-400: #ff6a75;
+  --color-accent-500: #ce1126;
+  --color-accent-600: #ab0d1d;
+  --color-accent-700: #8f0b18;
+  --color-accent-800: #760a14;
+  --color-accent-900: #5d070d;
+  --color-accent-950: #3a0307;
+
+  /* Gold/Yellow Scale */
+  --color-gold-50: #fffdf0;
+  --color-gold-100: #fff9c2;
+  --color-gold-200: #fff085;
+  --color-gold-300: #ffe247;
+  --color-gold-400: #ffd41a;
+  --color-gold-500: #fecb00;
+  --color-gold-600: #d8a400;
+  --color-gold-700: #ad7b00;
+  --color-gold-800: #8c5f00;
+  --color-gold-900: #6e4700;
+  --color-gold-950: #422800;
 }
 
 @layer base {
   body {
     font-family: var(--font-sans);
-    background-color: #ffffff;
-    color: #0f172a;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-
-  .dark body {
-    background-color: #090d16;
-    color: #f1f5f9;
+    background-color: var(--bg-app);
+    color: var(--text-main);
+    transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
+                color 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
+                border-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
 
-/* Custom animations and effects */
+/* Custom premium animations and effects */
 .glassmorphism {
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(var(--bg-app), 0.7);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.dark .glassmorphism {
-  background: rgba(15, 23, 42, 0.6);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-main);
 }
 
 .glow-primary {
-  box-shadow: 0 0 20px rgba(14, 165, 233, 0.15);
+  box-shadow: 0 0 20px rgba(0, 56, 168, 0.15);
 }
 
 .dark .glow-primary {
-  box-shadow: 0 0 25px rgba(14, 165, 233, 0.25);
+  box-shadow: 0 0 25px rgba(92, 146, 255, 0.25);
 }
 
-/* Scrollbar styles */
+/* Dynamic custom transitions for theme-aware elements */
+.theme-transition {
+  transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+              color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+              fill 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+              stroke 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Scrollbar styles themed monochromatically */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -70,18 +203,11 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: var(--border-main);
   border-radius: 9999px;
 }
 
-.dark ::-webkit-scrollbar-thumb {
-  background: #334155;
-}
-
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: var(--primary-color);
 }
 
-.dark ::-webkit-scrollbar-thumb:hover {
-  background: #475569;
-}

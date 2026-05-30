@@ -23,12 +23,12 @@ export const Services: React.FC = () => {
 
   const getIcon = (iconName: string) => {
     switch (iconName) {
-      case 'Heart': return <Heart className="h-5 w-5" />;
-      case 'BookOpen': return <BookOpen className="h-5 w-5" />;
-      case 'Briefcase': return <Briefcase className="h-5 w-5" />;
-      case 'Users': return <Users className="h-5 w-5" />;
-      case 'Compass': return <Compass className="h-5 w-5" />;
-      default: return <Info className="h-5 w-5" />;
+      case 'Heart': return <Heart className="h-7 w-7" />;
+      case 'BookOpen': return <BookOpen className="h-7 w-7" />;
+      case 'Briefcase': return <Briefcase className="h-7 w-7" />;
+      case 'Users': return <Users className="h-7 w-7" />;
+      case 'Compass': return <Compass className="h-7 w-7" />;
+      default: return <Info className="h-7 w-7" />;
     }
   };
 
@@ -60,18 +60,18 @@ export const Services: React.FC = () => {
   ];
 
   return (
-    <div className="space-y-12 py-4">
+    <div className="space-y-12 py-4 theme-transition">
       
       {/* Page Header */}
       <section className="space-y-4 max-w-3xl">
-        <span className="inline-flex px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-sky-500/10 border border-sky-500/20 text-sky-600 dark:text-sky-400">
+        <span className="text-[10px] font-extrabold uppercase tracking-widest text-app-primary theme-transition">
           Services Directory
         </span>
-        <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight font-display text-slate-900 dark:text-white">
+        <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight font-display text-app-text theme-transition">
           Municipal Services Handbook
         </h1>
-        <p className="text-sm sm:text-base text-slate-500 dark:text-slate-400 leading-relaxed">
-          Below is a volunteer-curated catalog outlining essential municipal services, resources, and contact instructions for residents of Burias Island, Masbate.
+        <p className="text-sm sm:text-base text-app-text-muted leading-relaxed theme-transition">
+          Volunteer directory of public services and contact details for residents of Burias Island.
         </p>
       </section>
 
@@ -81,10 +81,10 @@ export const Services: React.FC = () => {
           <button
             key={sector}
             onClick={() => setSelectedSector(sector)}
-            className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-200 ${
+            className={`px-4 py-2 rounded-none text-xs font-semibold border transition-all duration-200 cursor-pointer theme-transition ${
               selectedSector === sector
-                ? 'bg-sky-500 text-white shadow-md shadow-sky-500/10'
-                : 'bg-white hover:bg-slate-100 text-slate-600 dark:bg-slate-900 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 text-slate-400'
+                ? 'bg-app-primary text-white border-app-primary shadow-sm font-semibold'
+                : 'bg-app-card hover:bg-app-card-hover text-app-text-muted border-app-border'
             }`}
           >
             {sector}
@@ -97,35 +97,35 @@ export const Services: React.FC = () => {
         {filteredCards.map((card) => (
           <div 
             key={card.id}
-            className="bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 p-6 sm:p-8 rounded-2xl flex flex-col justify-between"
+            className="bg-app-card border border-app-border p-6 sm:p-8 rounded-none flex flex-col justify-between theme-transition"
           >
             <div>
               <div className="flex items-center gap-3">
-                <div className="p-2.5 bg-sky-500/10 rounded-xl text-sky-600 dark:text-sky-400">
+                <span className="text-app-primary shrink-0 theme-transition">
                   {getIcon(card.icon)}
-                </div>
+                </span>
                 <div>
-                  <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest block">
+                  <span className="text-[10px] font-bold text-app-text-muted uppercase tracking-widest block theme-transition">
                     {card.sector} Sector
                   </span>
-                  <h3 className="text-lg font-bold text-slate-900 dark:text-white font-display mt-0.5">
+                  <h3 className="text-lg font-bold text-app-text font-display mt-0.5 theme-transition">
                     {card.title}
                   </h3>
                 </div>
               </div>
 
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-4 leading-relaxed">
+              <p className="text-xs text-app-text-muted mt-4 leading-relaxed theme-transition">
                 {card.description}
               </p>
 
-              <div className="mt-6 pt-6 border-t border-slate-100 dark:border-slate-800/80 space-y-3">
-                <h4 className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider">
+              <div className="mt-6 pt-6 border-t border-app-border space-y-3 theme-transition">
+                <h4 className="text-[10px] font-bold text-app-text-muted uppercase tracking-wider theme-transition">
                   Available Program Services:
                 </h4>
                 <ul className="space-y-2">
                   {card.details.map((detail, index) => (
-                    <li key={index} className="flex items-start gap-2.5 text-xs text-slate-600 dark:text-slate-300">
-                      <ChevronRight className="h-3.5 w-3.5 text-sky-500 shrink-0 mt-0.5" />
+                    <li key={index} className="flex items-start gap-2.5 text-xs text-app-text-muted theme-transition">
+                      <ChevronRight className="h-3.5 w-3.5 text-app-primary shrink-0 mt-0.5 theme-transition" />
                       <span>{detail}</span>
                     </li>
                   ))}
@@ -133,9 +133,9 @@ export const Services: React.FC = () => {
               </div>
             </div>
 
-            <div className="mt-8 pt-4 flex items-center justify-between text-xs font-semibold text-slate-400">
+            <div className="mt-8 pt-4 flex items-center justify-between text-xs font-semibold text-app-text-muted border-t border-app-border theme-transition">
               <span>San Pascual Municipal Office</span>
-              <span className="text-emerald-500 flex items-center gap-1">
+              <span className="text-app-primary flex items-center gap-1 theme-transition">
                 <ShieldCheck className="h-3.5 w-3.5" />
                 Active Guide
               </span>
@@ -145,19 +145,19 @@ export const Services: React.FC = () => {
       </div>
 
       {/* Official Portals Gateway Component */}
-      <section className="bg-slate-100 dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800 rounded-3xl p-6 sm:p-10 space-y-8">
+      <section className="bg-app-muted border border-app-border rounded-none p-6 sm:p-10 space-y-8 theme-transition">
         
         <div className="flex flex-col sm:flex-row sm:items-center gap-4 justify-between">
           <div className="max-w-xl">
-            <h2 className="text-xl sm:text-2xl font-bold font-display tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
-              <ExternalLink className="h-5 w-5 text-indigo-500" />
+            <h2 className="text-xl sm:text-2xl font-bold font-display tracking-tight text-app-text flex items-center gap-2 theme-transition">
+              <ExternalLink className="h-5 w-5 text-app-primary theme-transition" />
               Official Portals Gateway
             </h2>
-            <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
-              These external anchor tags redirect users directly to actual government (LGU/National) transaction portals. Do not conduct financial transactions on independent volunteer sites.
+            <p className="text-xs text-app-text-muted mt-1 leading-relaxed theme-transition">
+              Links to official government portals. Verify URLs before conducting transactions.
             </p>
           </div>
-          <span className="inline-flex px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-red-100 text-red-800 dark:bg-red-950 dark:text-red-300 border border-red-200 dark:border-red-800 shrink-0 w-fit">
+          <span className="text-[10px] font-extrabold uppercase tracking-wider text-app-text-dim shrink-0 theme-transition">
             EXTERNAL CHANNELS
           </span>
         </div>
@@ -169,30 +169,28 @@ export const Services: React.FC = () => {
               href={gate.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group bg-white dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-800 p-5 rounded-2xl transition-all duration-200 hover:border-indigo-500 block"
+              className="group bg-app-card border border-app-border p-5 rounded-none transition-all duration-300 hover:border-app-primary block theme-transition"
             >
               <div className="flex items-start justify-between gap-4">
                 <div className="space-y-1">
-                  <span className="inline-block text-[9px] font-extrabold uppercase bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300 px-2 py-0.5 rounded-md border border-slate-200/50 dark:border-slate-700/50">
+                  <span className="text-[9px] font-extrabold uppercase text-app-text-dim tracking-wider block theme-transition">
                     {gate.badge}
                   </span>
-                  <h3 className="font-bold text-slate-800 dark:text-slate-100 text-sm mt-1.5 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                  <h3 className="font-bold text-app-text text-sm mt-1.5 group-hover:text-app-primary transition-colors theme-transition">
                     {gate.title}
                   </h3>
-                  <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed mt-1">
+                  <p className="text-[11px] text-app-text-muted leading-relaxed mt-1 theme-transition">
                     {gate.description}
                   </p>
                 </div>
-                <div className="bg-slate-50 dark:bg-slate-800 p-2 rounded-xl text-slate-400 dark:text-slate-500 group-hover:text-indigo-500 dark:group-hover:text-indigo-400 group-hover:bg-indigo-500/10 transition-all shrink-0">
-                  <ExternalLink className="h-4 w-4" />
-                </div>
+                <ExternalLink className="h-5 w-5 text-app-text-dim group-hover:text-app-primary transition-all shrink-0 theme-transition" />
               </div>
             </a>
           ))}
         </div>
 
-        <div className="bg-indigo-500/5 dark:bg-indigo-500/10 border border-indigo-500/20 p-4 rounded-xl text-center text-xs text-indigo-800 dark:text-indigo-300 leading-normal max-w-3xl mx-auto">
-          <strong>Important Notification:</strong> When using government sites, make sure the URL contains a valid SSL certificate (look for the lock icon in the browser address bar) to ensure your transactions and details are safe.
+        <div className="bg-app-card border border-app-border p-4 rounded-none text-center text-xs text-app-text-muted leading-normal max-w-3xl mx-auto theme-transition">
+          <strong>Important:</strong> Ensure URLs have valid SSL certificates (lock icon) when submitting information.
         </div>
 
       </section>

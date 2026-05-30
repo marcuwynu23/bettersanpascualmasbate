@@ -17,32 +17,32 @@ interface HomeProps {
 
 export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
   return (
-    <div className="space-y-16 py-4">
+    <div className="space-y-16 py-4 theme-transition">
       
       {/* 1. Clean Editorial Hero Section */}
-      <section className="relative overflow-hidden rounded-3xl bg-slate-50 dark:bg-slate-900/40 border border-slate-200/80 dark:border-slate-800/80 p-6 sm:p-10 md:p-14">
+      <section className="relative overflow-hidden rounded-none bg-app-muted border border-app-border p-6 sm:p-10 md:p-14 theme-transition">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center">
           
           {/* Left Column (Typographic Content) */}
           <div className="lg:col-span-7 space-y-6 text-left">
             
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest bg-slate-200/60 text-slate-700 dark:bg-slate-800 dark:text-slate-300 border border-slate-300/40 dark:border-slate-700/40">
+            <span className="text-[10px] font-extrabold uppercase tracking-widest text-app-text-dim theme-transition">
               Independent Community Portal
-            </div>
+            </span>
             
-            <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight leading-[1.1] text-slate-950 dark:text-white font-sans">
-              The independent directory and transparency portal for <span className="text-sky-600 dark:text-sky-400">San Pascual</span>
+            <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight leading-[1.1] text-app-text font-sans theme-transition">
+              The independent directory and transparency portal for <span className="text-app-text border-b-2 border-app-primary font-bold theme-transition">San Pascual, Masbate</span>
             </h1>
             
-            <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 leading-relaxed font-light">
-              BetterSanPascual.org compiles local public directories, active municipal ordinances, regional fiscal budgets, and island hopping eco-tourism guides. We make open-source public data accessible to everyone on Burias Island.
+            <p className="text-sm sm:text-base text-app-text-muted leading-relaxed font-light theme-transition">
+              Directories, municipal ordinances, budgets, and eco-tourism guides for Burias Island. Open public data for everyone.
             </p>
 
             <div className="flex flex-wrap gap-3 pt-2">
               <button
                 onClick={() => setCurrentTab('transparency')}
-                className="bg-slate-900 text-white hover:bg-slate-800 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100 font-semibold px-5 py-3 rounded-xl flex items-center gap-2 shadow-sm transition-all text-xs sm:text-sm"
+                className="bg-app-primary text-white hover:bg-app-primary-hover font-semibold px-5 py-3 rounded-none flex items-center gap-2 shadow-sm transition-all text-xs sm:text-sm theme-transition cursor-pointer"
               >
                 <FileText className="h-4.5 w-4.5 shrink-0" />
                 Explore Public Records
@@ -50,9 +50,9 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
               </button>
               <button
                 onClick={() => setCurrentTab('explore')}
-                className="bg-white hover:bg-slate-50 text-slate-700 border border-slate-250 dark:bg-slate-800/50 dark:hover:bg-slate-800 dark:border-slate-700 dark:text-slate-200 font-semibold px-5 py-3 rounded-xl flex items-center gap-2 transition-all text-xs sm:text-sm"
+                className="bg-app-card hover:bg-app-card-hover text-app-text border border-app-border font-semibold px-5 py-3 rounded-none flex items-center gap-2 transition-all text-xs sm:text-sm theme-transition cursor-pointer"
               >
-                <Compass className="h-4.5 w-4.5 shrink-0 text-slate-400" />
+                <Compass className="h-4.5 w-4.5 shrink-0 text-app-primary theme-transition" />
                 Landmarks Directory
               </button>
             </div>
@@ -61,8 +61,8 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
 
           {/* Right Column (Editorial Photo Postcard Card) */}
           <div className="lg:col-span-5 hidden lg:block">
-            <div className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 p-3.5 rounded-2xl rotate-2 hover:rotate-0 transition-transform duration-500 max-w-sm mx-auto">
-              <div className="h-64 rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-950 border border-slate-150 dark:border-slate-800">
+            <div className="bg-app-card border border-app-border p-3.5 rounded-none rotate-2 hover:rotate-0 transition-transform duration-500 max-w-sm mx-auto theme-transition">
+              <div className="h-64 rounded-none overflow-hidden bg-app-muted border border-app-border theme-transition">
                 <img 
                   src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80" 
                   alt="Burias Island Beach" 
@@ -71,12 +71,12 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
               </div>
               <div className="pt-3 px-1 flex items-center justify-between">
                 <div>
-                  <h3 className="font-bold text-xs text-slate-900 dark:text-slate-100">Sombrero Island Beach</h3>
-                  <p className="text-[10px] text-slate-400 font-medium">San Pascual, Burias Island, Masbate</p>
+                  <h3 className="font-bold text-xs text-app-text theme-transition">Sombrero Island Beach</h3>
+                  <p className="text-[10px] text-app-text-muted font-medium theme-transition">San Pascual, Burias Island, Masbate</p>
                 </div>
-                <div className="text-[10px] font-bold text-sky-600 dark:text-sky-400 uppercase tracking-widest bg-sky-500/10 px-2 py-0.5 rounded border border-sky-500/20">
+                <span className="text-[10px] font-extrabold text-app-primary uppercase tracking-widest theme-transition">
                   MASBATE
-                </div>
+                </span>
               </div>
             </div>
           </div>
@@ -88,10 +88,10 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
       {/* 2. San Pascual at a Glance (Stats Section) */}
       <section className="space-y-6">
         <div className="text-center md:text-left max-w-xl">
-          <h2 className="text-2xl sm:text-3xl font-bold font-display tracking-tight text-slate-900 dark:text-white">
+          <h2 className="text-2xl sm:text-3xl font-bold font-display tracking-tight text-app-text theme-transition">
             San Pascual at a Glance
           </h2>
-          <p className="text-sm text-slate-500 dark:text-slate-400 mt-2">
+          <p className="text-sm text-app-text-muted mt-2 theme-transition">
             Key geographical, demographic, and cultural indicators for the northern gateway of Burias Island, Masbate.
           </p>
         </div>
@@ -99,60 +99,52 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
           
           {/* Stat 1 */}
-          <div className="bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 p-6 rounded-2xl flex flex-col justify-between group">
-            <div className="p-3 bg-sky-500/10 rounded-xl text-sky-600 dark:text-sky-400 w-fit group-hover:scale-110 transition-transform">
-              <Users className="h-5 w-5" />
-            </div>
+          <div className="bg-app-card border border-app-border border-t-2 border-t-app-primary p-6 rounded-none flex flex-col justify-between group theme-transition">
+            <Users className="h-10 w-10 text-app-primary group-hover:scale-110 transition-transform theme-transition" />
             <div className="mt-6">
-              <span className="block text-3xl font-extrabold font-display tracking-tight text-slate-900 dark:text-white">
+              <span className="block text-3xl font-extrabold font-display tracking-tight text-app-text theme-transition">
                 {CITY_STATS.population}
               </span>
-              <span className="text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider block mt-1">
+              <span className="text-xs font-semibold text-app-text-muted uppercase tracking-wider block mt-1 theme-transition">
                 Estimated Population ({CITY_STATS.populationYear})
               </span>
             </div>
           </div>
 
           {/* Stat 2 */}
-          <div className="bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 p-6 rounded-2xl flex flex-col justify-between group">
-            <div className="p-3 bg-indigo-500/10 rounded-xl text-indigo-600 dark:text-indigo-400 w-fit group-hover:scale-110 transition-transform">
-              <MapPin className="h-5 w-5" />
-            </div>
+          <div className="bg-app-card border border-app-border border-t-2 border-t-app-primary p-6 rounded-none flex flex-col justify-between group theme-transition">
+            <MapPin className="h-10 w-10 text-app-primary group-hover:scale-110 transition-transform theme-transition" />
             <div className="mt-6">
-              <span className="block text-3xl font-extrabold font-display tracking-tight text-slate-900 dark:text-white">
+              <span className="block text-3xl font-extrabold font-display tracking-tight text-app-text theme-transition">
                 {CITY_STATS.barangays}
               </span>
-              <span className="text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider block mt-1">
+              <span className="text-xs font-semibold text-app-text-muted uppercase tracking-wider block mt-1 theme-transition">
                 Total Barangays
               </span>
             </div>
           </div>
 
           {/* Stat 3 */}
-          <div className="bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 p-6 rounded-2xl flex flex-col justify-between group">
-            <div className="p-3 bg-teal-500/10 rounded-xl text-teal-600 dark:text-teal-400 w-fit group-hover:scale-110 transition-transform">
-              <Compass className="h-5 w-5" />
-            </div>
+          <div className="bg-app-card border border-app-border border-t-2 border-t-app-primary p-6 rounded-none flex flex-col justify-between group theme-transition">
+            <Compass className="h-10 w-10 text-app-primary group-hover:scale-110 transition-transform theme-transition" />
             <div className="mt-6">
-              <span className="block text-3xl font-extrabold font-display tracking-tight text-slate-900 dark:text-white">
+              <span className="block text-3xl font-extrabold font-display tracking-tight text-app-text theme-transition">
                 {CITY_STATS.islandsCount}
               </span>
-              <span className="text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider block mt-1">
+              <span className="text-xs font-semibold text-app-text-muted uppercase tracking-wider block mt-1 theme-transition">
                 Ecotourism Jewels
               </span>
             </div>
           </div>
 
           {/* Stat 4 */}
-          <div className="bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 p-6 rounded-2xl flex flex-col justify-between group">
-            <div className="p-3 bg-rose-500/10 rounded-xl text-rose-600 dark:text-rose-400 w-fit group-hover:scale-110 transition-transform">
-              <Calendar className="h-5 w-5" />
-            </div>
+          <div className="bg-app-card border border-app-border border-t-2 border-t-app-primary p-6 rounded-none flex flex-col justify-between group theme-transition">
+            <Calendar className="h-10 w-10 text-app-primary group-hover:scale-110 transition-transform theme-transition" />
             <div className="mt-6">
-              <span className="block text-3xl font-extrabold font-display tracking-tight text-slate-900 dark:text-white">
+              <span className="block text-3xl font-extrabold font-display tracking-tight text-app-text theme-transition">
                 {CITY_STATS.foundedYear}
               </span>
-              <span className="text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider block mt-1">
+              <span className="text-xs font-semibold text-app-text-muted uppercase tracking-wider block mt-1 theme-transition">
                 Parish Founding Year
               </span>
             </div>
@@ -164,10 +156,10 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
       {/* 3. Quick Access Grid */}
       <section className="space-y-6">
         <div className="text-center md:text-left max-w-xl">
-          <h2 className="text-2xl sm:text-3xl font-bold font-display tracking-tight text-slate-900 dark:text-white">
+          <h2 className="text-2xl sm:text-3xl font-bold font-display tracking-tight text-app-text theme-transition">
             Core Portal Modules
           </h2>
-          <p className="text-sm text-slate-500 dark:text-slate-400 mt-2">
+          <p className="text-sm text-app-text-muted mt-2 theme-transition">
             Direct navigation channels to access mock registries, local assistance cards, and cultural history maps.
           </p>
         </div>
@@ -177,20 +169,18 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
           {/* Card 1 */}
           <div 
             onClick={() => setCurrentTab('services')}
-            className="group relative overflow-hidden bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 p-8 rounded-2xl cursor-pointer hover:border-slate-300 dark:hover:border-slate-700 transition-colors duration-200 flex flex-col justify-between"
+            className="group relative overflow-hidden bg-app-card border border-app-border p-8 rounded-none cursor-pointer hover:border-app-primary transition-all duration-300 flex flex-col justify-between theme-transition"
           >
             <div>
-              <div className="p-3 bg-sky-600 rounded-xl text-white w-fit group-hover:scale-105 transition-transform">
-                <Users className="h-6 w-6" />
-              </div>
-              <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100 font-display mt-6 group-hover:text-sky-500 dark:group-hover:text-sky-400 transition-colors">
+              <Users className="h-10 w-10 text-app-primary group-hover:scale-105 transition-transform theme-transition" />
+              <h3 className="text-lg font-bold text-app-text font-display mt-6 group-hover:text-app-primary transition-colors theme-transition">
                 Municipal Services Guide
               </h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed">
+              <p className="text-xs text-app-text-muted mt-2 leading-relaxed theme-transition">
                 Categorized handbook detailing local health clinics, MSWD programs, scholarship applications, and coconut agricultural assistance packages.
               </p>
             </div>
-            <div className="mt-8 flex items-center gap-2 text-xs font-bold text-sky-500 dark:text-sky-400 group-hover:translate-x-1.5 transition-transform">
+            <div className="mt-8 flex items-center gap-2 text-xs font-bold text-app-primary group-hover:underline group-hover:translate-x-1.5 transition-all theme-transition">
               Learn More
               <ArrowRight className="h-3.5 w-3.5" />
             </div>
@@ -199,20 +189,18 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
           {/* Card 2 */}
           <div 
             onClick={() => setCurrentTab('transparency')}
-            className="group relative overflow-hidden bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 p-8 rounded-2xl cursor-pointer hover:border-slate-300 dark:hover:border-slate-700 transition-colors duration-200 flex flex-col justify-between"
+            className="group relative overflow-hidden bg-app-card border border-app-border p-8 rounded-none cursor-pointer hover:border-app-primary transition-all duration-300 flex flex-col justify-between theme-transition"
           >
             <div>
-              <div className="p-3 bg-sky-600 rounded-xl text-white w-fit group-hover:scale-105 transition-transform">
-                <FileText className="h-6 w-6" />
-              </div>
-              <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100 font-display mt-6 group-hover:text-sky-500 dark:group-hover:text-sky-400 transition-colors">
+              <FileText className="h-10 w-10 text-app-primary group-hover:scale-105 transition-transform theme-transition" />
+              <h3 className="text-lg font-bold text-app-text font-display mt-6 group-hover:text-app-primary transition-colors theme-transition">
                 Transparency Registry
               </h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed">
+              <p className="text-xs text-app-text-muted mt-2 leading-relaxed theme-transition">
                 Filter and search through local municipal public records including active island regulations, municipal budgets, and barangay ecological mandates.
               </p>
             </div>
-            <div className="mt-8 flex items-center gap-2 text-xs font-bold text-sky-500 dark:text-sky-400 group-hover:translate-x-1.5 transition-transform">
+            <div className="mt-8 flex items-center gap-2 text-xs font-bold text-app-primary group-hover:underline group-hover:translate-x-1.5 transition-all theme-transition">
               Access Database
               <ArrowRight className="h-3.5 w-3.5" />
             </div>
@@ -221,21 +209,19 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
           {/* Card 3 */}
           <div 
             onClick={() => setCurrentTab('explore')}
-            className="group relative overflow-hidden bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 p-8 rounded-2xl cursor-pointer hover:border-slate-300 dark:hover:border-slate-700 transition-colors duration-200 flex flex-col justify-between"
+            className="group relative overflow-hidden bg-app-card border border-app-border p-8 rounded-none cursor-pointer hover:border-app-primary transition-all duration-300 flex flex-col justify-between theme-transition"
           >
             <div>
-              <div className="p-3 bg-sky-600 rounded-xl text-white w-fit group-hover:scale-105 transition-transform">
-                <Compass className="h-6 w-6" />
-              </div>
-              <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100 font-display mt-6 group-hover:text-sky-500 dark:group-hover:text-sky-400 transition-colors">
+              <Compass className="h-10 w-10 text-app-primary group-hover:scale-105 transition-transform theme-transition" />
+              <h3 className="text-lg font-bold text-app-text font-display mt-6 group-hover:text-app-primary transition-colors theme-transition">
                 Explore San Pascual
               </h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed">
+              <p className="text-xs text-app-text-muted mt-2 leading-relaxed theme-transition">
                 Take an island-hopping virtual tour. Read historical journals detailing Spanish galleon harbor settlements and the cattle-ranching Isla Rancho Festival.
               </p>
             </div>
-            <div className="mt-8 flex items-center gap-2 text-xs font-bold text-sky-500 dark:text-sky-400 group-hover:translate-x-1.5 transition-transform">
-              Virtual Map
+            <div className="mt-8 flex items-center gap-2 text-xs font-bold text-app-primary group-hover:underline group-hover:translate-x-1.5 transition-all theme-transition">
+              Explore Guide
               <ArrowRight className="h-3.5 w-3.5" />
             </div>
           </div>
@@ -244,44 +230,44 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
       </section>
 
       {/* 4. Transparency Highlight / Mission Statement */}
-      <section className="bg-slate-100 dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800 p-8 sm:p-12 rounded-3xl flex flex-col lg:flex-row items-center gap-8">
+      <section className="bg-app-muted border border-app-border p-8 sm:p-12 rounded-none flex flex-col lg:flex-row items-center gap-8 theme-transition">
         <div className="space-y-4 lg:w-2/3">
-          <span className="inline-flex px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-indigo-100 text-indigo-800 dark:bg-indigo-950 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">
+          <span className="text-[10px] font-extrabold uppercase tracking-wider text-app-text-dim theme-transition">
             Volunteer Code of Conduct
           </span>
-          <h3 className="text-2xl sm:text-3xl font-bold font-display text-slate-900 dark:text-white">
-            Why we created BetterSanPascual
+          <h3 className="text-2xl sm:text-3xl font-bold font-display text-app-text theme-transition">
+            Why we created BetterSanPascualMasbate
           </h3>
-          <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-            Citizens on remote islands like Burias deserve simple, responsive access to critical data. This community portal compiles dispersed government telephone lists, public registries, and maps into a clean, searchable index.
+          <p className="text-sm text-app-text-muted leading-relaxed theme-transition">
+            Providing Burias Island citizens with simple, responsive access to public records, directories, and maps.
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-medium text-slate-700 dark:text-slate-300 pt-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-semibold text-app-text-muted pt-2 theme-transition">
             <div className="flex items-center gap-2">
-              <CheckCircle className="h-4 w-4 text-emerald-500 shrink-0" />
+              <CheckCircle className="h-4 w-4 text-app-primary shrink-0 theme-transition" />
               100% Free & Open-source
             </div>
             <div className="flex items-center gap-2">
-              <CheckCircle className="h-4 w-4 text-emerald-500 shrink-0" />
+              <CheckCircle className="h-4 w-4 text-app-primary shrink-0 theme-transition" />
               Zero commercial advertising
             </div>
             <div className="flex items-center gap-2">
-              <CheckCircle className="h-4 w-4 text-emerald-500 shrink-0" />
+              <CheckCircle className="h-4 w-4 text-app-primary shrink-0 theme-transition" />
               Verified local mock data directories
             </div>
             <div className="flex items-center gap-2">
-              <CheckCircle className="h-4 w-4 text-emerald-500 shrink-0" />
+              <CheckCircle className="h-4 w-4 text-app-primary shrink-0 theme-transition" />
               Focus on offline resiliency
             </div>
           </div>
         </div>
-        <div className="lg:w-1/3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700/60 p-6 rounded-2xl flex flex-col items-center text-center relative overflow-hidden shrink-0">
-          <div className="absolute top-0 right-0 p-1.5 bg-red-500 text-white text-[9px] font-extrabold uppercase tracking-wider select-none transform rotate-45 translate-x-4 translate-y-2">
+        <div className="lg:w-1/3 bg-app-card border border-app-border p-6 rounded-none flex flex-col items-center text-center relative overflow-hidden shrink-0 theme-transition">
+          <div className="absolute top-0 right-0 p-1.5 bg-app-primary text-white text-[9px] font-extrabold uppercase tracking-wider select-none transform rotate-45 translate-x-4 translate-y-2 theme-transition">
             ALERT
           </div>
-          <ShieldAlert className="h-10 w-10 text-red-500" />
-          <h4 className="font-bold text-slate-800 dark:text-slate-100 mt-4 text-sm">Need official LGU service?</h4>
-          <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-2 leading-relaxed">
-            This is an independent non-governmental transparency directory. For official transactions like business registrations, land permits, or civil records, please navigate directly to our <strong>Services</strong> page to access LGU portals.
+          <ShieldAlert className="h-10 w-10 text-app-primary theme-transition" />
+          <h4 className="font-bold text-app-text mt-4 text-sm theme-transition">Official LGU Services</h4>
+          <p className="text-[11px] text-app-text-muted mt-2 leading-relaxed theme-transition">
+            For business permits, land registries, or official records, please use our Services directory to connect with official portals.
           </p>
         </div>
       </section>

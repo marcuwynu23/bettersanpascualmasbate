@@ -48,17 +48,18 @@ export const Transparency: React.FC = () => {
   };
 
   const getCategoryBadgeClass = (category: string) => {
+    // Under yellow monochromatic theme, categorize by varying shades of gold
     switch (category) {
       case 'Ordinance':
-        return 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 border-emerald-200 dark:border-emerald-900';
+        return 'text-gold-700 dark:text-gold-300 font-bold';
       case 'Resolution':
-        return 'bg-sky-100 text-sky-800 dark:bg-sky-950 dark:text-sky-300 border-sky-200 dark:border-sky-900';
+        return 'text-gold-600 dark:text-gold-400 font-semibold';
       case 'Executive Order':
-        return 'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300 border-amber-200 dark:border-amber-900';
+        return 'text-gold-800 dark:text-gold-250 font-bold';
       case 'Annual Budget':
-        return 'bg-purple-100 text-purple-800 dark:bg-purple-950 dark:text-purple-300 border-purple-200 dark:border-purple-900';
+        return 'text-gold-900 dark:text-gold-200 font-extrabold';
       default:
-        return 'bg-slate-100 text-slate-800 dark:bg-slate-950 dark:text-slate-300 border-slate-200 dark:border-slate-800';
+        return 'text-app-text-dim';
     }
   };
 
@@ -67,77 +68,77 @@ export const Transparency: React.FC = () => {
       case 'Enacted':
       case 'Approved':
       case 'Active':
-        return 'bg-teal-500/10 text-teal-600 dark:text-teal-400 border-teal-500/20';
+        return 'text-gold-700 dark:text-gold-300 font-bold';
       case 'Under Review':
-        return 'bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20';
+        return 'text-gold-500/80 dark:text-gold-450/80 font-semibold';
       default:
-        return 'bg-slate-500/10 text-slate-600 border-slate-500/20';
+        return 'text-app-text-muted';
     }
   };
 
   return (
-    <div className="space-y-12 py-4">
+    <div className="space-y-12 py-4 theme-transition">
       
       {/* Header Section */}
       <section className="space-y-4 max-w-3xl">
-        <span className="inline-flex px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-sky-500/10 border border-sky-500/20 text-sky-600 dark:text-sky-400">
+        <span className="text-[10px] font-extrabold uppercase tracking-widest text-app-primary theme-transition">
           Transparency registry
         </span>
-        <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight font-display text-slate-900 dark:text-white">
+        <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight font-display text-app-text theme-transition">
           Interactive Public Records Registry
         </h1>
-        <p className="text-sm sm:text-base text-slate-500 dark:text-slate-400 leading-relaxed">
-          Search and examine administrative resolutions, regional ordinances, executive mandates, and annual fiscal budgets compiled for public transparency. Click a record to read the expanded summary.
+        <p className="text-sm sm:text-base text-app-text-muted leading-relaxed theme-transition">
+          Search local resolutions, ordinances, and budgets. Click any record to view details.
         </p>
       </section>
 
       {/* Control Panel (Search & Filter) */}
-      <div className="bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 p-5 rounded-2xl space-y-4">
+      <div className="bg-app-card border border-app-border p-5 rounded-none space-y-4 theme-transition">
         <div className="flex flex-col md:flex-row gap-4 items-stretch md:items-center justify-between">
           
           {/* Search bar */}
           <div className="relative flex-1">
-            <Search className="absolute left-4 top-3.5 h-4 w-4 text-slate-400" />
+            <Search className="absolute left-4 top-3.5 h-4 w-4 text-app-text-muted theme-transition" />
             <input 
               type="text" 
               placeholder="Search by keywords, ordinance numbers, or categories..." 
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-11 pr-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800/80 bg-slate-50 dark:bg-slate-950 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all text-sm text-slate-800 dark:text-slate-200 placeholder-slate-400"
+              className="w-full pl-11 pr-4 py-3 rounded-none border border-app-border bg-app-muted focus:bg-app-card focus:outline-none focus:ring-2 focus:ring-app-primary/10 focus:border-app-primary transition-all text-sm text-app-text placeholder-app-text-muted/60"
             />
           </div>
 
           {/* Category Dropdown */}
           <div className="flex items-center gap-2 shrink-0">
-            <span className="text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider hidden sm:inline">
+            <span className="text-xs font-semibold text-app-text-muted uppercase tracking-wider hidden sm:inline theme-transition">
               Filter Category:
             </span>
             <div className="relative w-full sm:w-48">
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800/80 rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 dark:text-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 cursor-pointer appearance-none"
+                className="w-full bg-app-muted border border-app-border rounded-none px-4 py-3 text-sm font-semibold text-app-text focus:outline-none focus:ring-2 focus:ring-app-primary/10 focus:border-app-primary cursor-pointer appearance-none theme-transition"
               >
                 {categories.map((cat) => (
                   <option key={cat} value={cat}>{cat}</option>
                 ))}
               </select>
-              <Filter className="absolute right-4 top-3.5 h-4 w-4 text-slate-400 pointer-events-none" />
+              <Filter className="absolute right-4 top-3.5 h-4 w-4 text-app-text-muted pointer-events-none theme-transition" />
             </div>
           </div>
 
         </div>
 
         {/* Categories Pills for wide screens */}
-        <div className="hidden sm:flex flex-wrap gap-2 pt-2 border-t border-slate-100 dark:border-slate-800/50">
+        <div className="hidden sm:flex flex-wrap gap-2 pt-2 border-t border-app-border theme-transition">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all ${
+              className={`px-3 py-1.5 rounded-none text-xs font-semibold border transition-all cursor-pointer theme-transition ${
                 selectedCategory === cat
-                  ? 'bg-sky-500/10 text-sky-600 dark:bg-sky-500/20 dark:text-sky-400 border-sky-500/30'
-                  : 'bg-white hover:bg-slate-50 dark:bg-slate-900 dark:hover:bg-slate-800 border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400'
+                  ? 'bg-app-primary text-white border-app-primary shadow-sm font-semibold'
+                  : 'bg-app-card hover:bg-app-card-hover border-app-border text-app-text-muted'
               }`}
             >
               {cat === 'All' ? 'Show All Records' : `${cat}s`}
@@ -148,14 +149,14 @@ export const Transparency: React.FC = () => {
       </div>
 
       {/* Registry Table */}
-      <div className="bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 rounded-3xl overflow-hidden">
+      <div className="bg-app-card border border-app-border rounded-none overflow-hidden theme-transition">
         
         {filteredRecords.length > 0 ? (
           <div className="overflow-x-auto">
             <table className="w-full border-collapse text-left">
               
               <thead>
-                <tr className="bg-slate-50 dark:bg-slate-950 border-b border-slate-200/80 dark:border-slate-800 text-[10px] font-extrabold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+                <tr className="bg-app-muted border-b border-app-border text-[10px] font-extrabold uppercase tracking-wider text-app-text-muted theme-transition">
                   <th className="py-4 px-6">Record Code / Date</th>
                   <th className="py-4 px-6 w-1/2">Title</th>
                   <th className="py-4 px-6">Classification</th>
@@ -164,7 +165,7 @@ export const Transparency: React.FC = () => {
                 </tr>
               </thead>
 
-              <tbody className="divide-y divide-slate-150 dark:divide-slate-850">
+              <tbody className="divide-y divide-app-border">
                 {filteredRecords.map((record) => {
                   const isExpanded = expandedRecordId === record.id;
                   return (
@@ -172,18 +173,18 @@ export const Transparency: React.FC = () => {
                       
                       {/* Standard Row */}
                       <tr 
-                        className={`hover:bg-slate-50/50 dark:hover:bg-slate-800/20 transition-colors cursor-pointer ${
-                          isExpanded ? 'bg-slate-50/40 dark:bg-slate-800/10' : ''
+                        className={`transition-colors cursor-pointer theme-transition ${
+                          isExpanded ? 'bg-app-muted/50' : 'hover:bg-app-card-hover'
                         }`}
                         onClick={() => toggleExpandRecord(record.id)}
                       >
                         {/* Number & Date */}
                         <td className="py-5 px-6 shrink-0">
                           <div className="space-y-1">
-                            <span className="font-mono text-xs font-bold text-slate-900 dark:text-white">
+                            <span className="font-mono text-xs font-bold text-app-text theme-transition">
                               {record.number}
                             </span>
-                            <div className="flex items-center gap-1.5 text-[10px] font-semibold text-slate-400">
+                            <div className="flex items-center gap-1.5 text-[10px] font-semibold text-app-text-muted theme-transition">
                               <Calendar className="h-3 w-3" />
                               <span>{record.date}</span>
                             </div>
@@ -193,8 +194,8 @@ export const Transparency: React.FC = () => {
                         {/* Title */}
                         <td className="py-5 px-6">
                           <div className="flex items-center gap-2">
-                            <FileText className="h-4 w-4 text-slate-400 shrink-0 hidden sm:inline" />
-                            <span className="font-semibold text-xs sm:text-sm text-slate-800 dark:text-slate-200 leading-snug hover:text-sky-500 transition-colors block">
+                            <FileText className="h-4 w-4 text-app-primary shrink-0 hidden sm:inline theme-transition" />
+                            <span className="font-semibold text-xs sm:text-sm text-app-text leading-snug hover:text-app-primary hover:underline transition-colors block theme-transition">
                               {record.title}
                             </span>
                           </div>
@@ -202,15 +203,15 @@ export const Transparency: React.FC = () => {
 
                         {/* Category */}
                         <td className="py-5 px-6">
-                          <span className={`inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold border uppercase tracking-wider ${getCategoryBadgeClass(record.category)}`}>
+                          <span className={`text-[10px] font-bold uppercase theme-transition ${getCategoryBadgeClass(record.category)}`}>
                             {record.category}
                           </span>
                         </td>
 
                         {/* Status */}
                         <td className="py-5 px-6">
-                          <span className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold border ${getStatusBadgeClass(record.status)}`}>
-                            <span className="h-1.5 w-1.5 rounded-full bg-current"></span>
+                          <span className={`inline-flex items-center gap-1.5 text-[10px] font-bold uppercase theme-transition ${getStatusBadgeClass(record.status)}`}>
+                            <span className="h-1.5 w-1.5 bg-current"></span>
                             {record.status}
                           </span>
                         </td>
@@ -220,7 +221,7 @@ export const Transparency: React.FC = () => {
                           <button
                             onClick={() => handleMockDownload(record)}
                             disabled={isDownloadingId === record.id}
-                            className="bg-slate-50 dark:bg-slate-800 hover:bg-sky-500 hover:text-white dark:hover:bg-sky-600 border border-slate-200 dark:border-slate-700/60 p-2.5 rounded-xl transition-all duration-200 inline-flex items-center justify-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 disabled:opacity-50"
+                            className="bg-app-muted hover:bg-app-primary hover:text-white border border-app-border p-2.5 rounded-none transition-all duration-200 inline-flex items-center justify-center gap-1.5 text-xs text-app-text-muted disabled:opacity-50 theme-transition cursor-pointer"
                             title="Download document"
                           >
                             {isDownloadingId === record.id ? (
@@ -240,33 +241,31 @@ export const Transparency: React.FC = () => {
 
                       {/* Expanded Details Row */}
                       {isExpanded && (
-                        <tr className="bg-slate-50/70 dark:bg-slate-850/30">
-                          <td colSpan={5} className="py-6 px-8 border-t border-b border-slate-100 dark:border-slate-800/80">
+                        <tr className="bg-app-muted/30 border-t border-b border-app-border theme-transition">
+                          <td colSpan={5} className="py-6 px-8 border-t border-b border-app-border">
                             <div className="space-y-4 max-w-4xl">
                               
                               <div className="flex items-start gap-3">
-                                <div className="bg-sky-500/10 p-2 rounded-lg text-sky-500 shrink-0 mt-0.5">
-                                  <Info className="h-4 w-4" />
-                                </div>
+                                <Info className="h-6 w-6 text-app-primary shrink-0 mt-0.5 theme-transition" />
                                 <div className="space-y-1">
-                                  <h4 className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest">
+                                  <h4 className="text-[10px] font-bold text-app-text-muted uppercase tracking-widest theme-transition">
                                     Administrative Summary & Objective
                                   </h4>
-                                  <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-normal">
+                                  <p className="text-xs sm:text-sm text-app-text leading-relaxed font-normal theme-transition">
                                     {record.summary}
                                   </p>
                                 </div>
                               </div>
 
-                              <div className="flex flex-wrap gap-4 pt-2 text-[10px] font-bold text-slate-400 border-t border-slate-200/50 dark:border-slate-800/40 mt-4">
+                              <div className="flex flex-wrap gap-4 pt-2 text-[10px] font-bold text-app-text-muted border-t border-app-border/40 mt-4 theme-transition">
                                 <div>
-                                  MUNICIPAL ARCHIVE CODE: <span className="font-mono text-slate-600 dark:text-slate-200">{record.id.toUpperCase()}</span>
+                                  MUNICIPAL ARCHIVE CODE: <span className="font-mono text-app-text">{record.id.toUpperCase()}</span>
                                 </div>
                                 <div>
-                                  CLASSIFICATION: <span className="text-slate-600 dark:text-slate-200">{record.category.toUpperCase()}</span>
+                                  CLASSIFICATION: <span className="text-app-text">{record.category.toUpperCase()}</span>
                                 </div>
                                 <div>
-                                  VERIFIED: <span className="text-emerald-500 dark:text-emerald-400">PUBLIC DOMAIN</span>
+                                  VERIFIED: <span className="text-app-primary">PUBLIC DOMAIN</span>
                                 </div>
                               </div>
 
@@ -285,18 +284,16 @@ export const Transparency: React.FC = () => {
         ) : (
           /* Empty State */
           <div className="text-center py-16 px-6 space-y-4">
-            <div className="bg-slate-50 dark:bg-slate-950 p-4 rounded-full w-fit mx-auto text-slate-400">
-              <FileText className="h-8 w-8" />
-            </div>
+            <FileText className="h-12 w-12 mx-auto text-app-text-muted theme-transition" />
             <div className="space-y-2">
-              <h3 className="text-base font-bold text-slate-800 dark:text-slate-200">No records found</h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400 max-w-sm mx-auto leading-normal">
+              <h3 className="text-base font-bold text-app-text theme-transition">No records found</h3>
+              <p className="text-xs text-app-text-muted max-w-sm mx-auto leading-normal theme-transition">
                 Your filter keyword "{searchTerm}" did not yield any matching ordinances or budgets. Try clearing terms or checking spelling.
               </p>
             </div>
             <button
               onClick={() => { setSearchTerm(''); setSelectedCategory('All'); }}
-              className="bg-sky-500 hover:bg-sky-600 text-white text-xs font-semibold px-4 py-2 rounded-xl shadow-sm transition-all"
+              className="bg-app-primary hover:bg-app-primary-hover text-white border border-app-primary text-xs font-semibold px-4 py-2 rounded-none shadow-sm transition-all cursor-pointer theme-transition"
             >
               Reset Search Filter
             </button>
@@ -306,14 +303,12 @@ export const Transparency: React.FC = () => {
       </div>
 
       {/* Transparency Note */}
-      <section className="bg-indigo-500/5 dark:bg-indigo-500/10 border border-indigo-500/25 p-6 sm:p-8 rounded-3xl flex flex-col sm:flex-row items-center gap-5">
-        <div className="bg-indigo-500/10 p-3.5 rounded-2xl text-indigo-500 shrink-0">
-          <Info className="h-6 w-6" />
-        </div>
+      <section className="bg-app-muted border border-app-border p-6 sm:p-8 rounded-none flex flex-col sm:flex-row items-center gap-5 theme-transition">
+        <Info className="h-8 w-8 text-app-primary shrink-0 theme-transition" />
         <div className="space-y-1">
-          <h4 className="text-sm font-bold text-slate-800 dark:text-slate-100">About Local Transparency Registries</h4>
-          <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-            By compiling localized ordinances and budget files, we hope to demonstrate the utility of open government data repositories on Burias Island. The records represented here reflect mock representations modeled on real-world municipal circulars issued by provincial departments.
+          <h4 className="text-sm font-bold text-app-text theme-transition">About Local Transparency Registries</h4>
+          <p className="text-xs text-app-text-muted leading-relaxed theme-transition">
+            Mock data registry compiled to demonstrate open public database systems for Burias Island.
           </p>
         </div>
       </section>
