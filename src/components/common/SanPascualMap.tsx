@@ -6,11 +6,11 @@ interface GeoJSONFeature {
   type: string;
   geometry: {
     type: string;
-    coordinates: any;
+    coordinates: never;
   };
   properties: {
     adm4_en: string;
-    [key: string]: any;
+    [key: string]: never;
   };
 }
 
@@ -167,7 +167,7 @@ export const SanPascualMap: React.FC = () => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
       {/* Map Container */}
-      <div className="lg:col-span-8 relative bg-app-card border border-app-border p-0 rounded-none shadow-sm overflow-hidden theme-transition group">
+      <div className="lg:col-span-8 relative bg-app-card border border-app-border p-0 rounded-none shadow-sm overflow-hidden theme-transition group h-full min-h-[400px] sm:min-h-[500px] lg:min-h-[600px] flex items-center justify-center">
         <div className="absolute top-4 left-4 z-10 pointer-events-none">
           <h4 className="text-[10px] font-extrabold text-app-primary uppercase tracking-widest bg-app-card/80 backdrop-blur-sm px-2 py-1 border border-app-border theme-transition">
             Interactive Registry Map
@@ -219,6 +219,7 @@ export const SanPascualMap: React.FC = () => {
             <span className="text-[8px] font-bold text-app-text-muted uppercase">Selected</span>
           </div>
         </div>
+        
         {selectedBrgyData ? (
           <div className="bg-app-card border-l-4 border-l-app-primary border border-app-border shadow-md p-6 animate-slide-in theme-transition">
             <div className="flex items-start justify-between">

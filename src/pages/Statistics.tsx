@@ -1,126 +1,12 @@
-import {
-  CategoryScale,
-  Chart as ChartJS,
-  Filler,
-  Legend,
-  LinearScale,
-  LineElement,
-  PointElement,
-  Title,
-  Tooltip,
-  type TooltipItem,
-} from 'chart.js';
 import { Info, TrendingDown, Users } from 'lucide-react';
-import React from 'react';
-import { Line } from 'react-chartjs-2';
+import React, { lazy, Suspense } from 'react';
+import { ChartSkeleton } from '../components/skeletons/ChartSkeleton';
 import { BARANGAY_HISTORY, POPULATION_HISTORY } from '../data/mockData';
 
-// Register ChartJS components
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-  Filler
-);
+// Lazy load heavy chart component
+const PopulationChart = lazy(() => import('../components/statistics/PopulationChart').then(m => ({ default: m.PopulationChart })));
 
 export const Statistics: React.FC = () => {
-  const labels = POPULATION_HISTORY.map(item => item.year);
-  
-  // Data for the chart
-  const actualData = POPULATION_HISTORY.map(item => item.year <= 2024 ? item.count : null);
-  const projectedData = POPULATION_HISTORY.map(item => item.year >= 2024 ? item.count : null);
-
-  const chartData = {
-    labels,
-    datasets: [
-      {
-        label: 'Actual PSA Census',
-        data: actualData,
-        borderColor: '#0045a0',
-        backgroundColor: 'rgba(0, 69, 160, 0.1)',
-        fill: true,
-        tension: 0.4,
-        pointRadius: 6,
-        pointBackgroundColor: '#0045a0',
-        pointBorderColor: '#fff',
-        pointBorderWidth: 2,
-      },
-      {
-        label: 'LGU Projection',
-        data: projectedData,
-        borderColor: '#0045a0',
-        backgroundColor: 'transparent',
-        borderDash: [5, 5],
-        fill: false,
-        tension: 0.4,
-        pointRadius: 6,
-        pointBackgroundColor: '#fff',
-        pointBorderColor: '#0045a0',
-        pointBorderWidth: 2,
-      },
-    ],
-  };
-
-  const options = {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: {
-        display: true,
-        position: 'top' as const,
-        align: 'end' as const,
-        labels: {
-          usePointStyle: true,
-          pointStyle: 'circle',
-          padding: 20,
-          font: {
-            size: 11,
-            weight: 'bold' as const,
-          },
-        },
-      },
-      tooltip: {
-        backgroundColor: '#1e293b',
-        padding: 12,
-        titleFont: { size: 14, weight: 'bold' as const },
-        bodyFont: { size: 13 },
-        cornerRadius: 0,
-        displayColors: true,
-        callbacks: {
-          label: (context: TooltipItem<'line'>) => {
-            const label = context.dataset.label || '';
-            const value = (context.parsed.y as number) || 0;
-            return `${label}: ${value.toLocaleString()}`;
-          }
-        }
-      },
-    },
-    scales: {
-      y: {
-        beginAtZero: false,
-        grid: {
-          color: 'rgba(0, 0, 0, 0.05)',
-        },
-        ticks: {
-          font: { size: 11 },
-          callback: (value: any) => value.toLocaleString(),
-        },
-      },
-      x: {
-        grid: {
-          display: false,
-        },
-        ticks: {
-          font: { size: 11, weight: 'bold' as const },
-        },
-      },
-    },
-  };
-
   const totalPopulationActual = POPULATION_HISTORY.find(p => p.year === 2024)?.count || 0;
   const totalPopulationPrevActual = POPULATION_HISTORY.find(p => p.year === 2020)?.count || 0;
   const percentChangeActual = (((totalPopulationActual - totalPopulationPrevActual) / totalPopulationPrevActual) * 100).toFixed(2);
@@ -178,22 +64,22 @@ export const Statistics: React.FC = () => {
       </div>
 
       {/* Population Chart */}
-      <div className="bg-app-card/65 shadow-xs p-6 sm:p-10 rounded-none theme-transition">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-4">
-          <div>
-            <h2 className="text-xl sm:text-2xl font-bold font-display text-app-text">Population Trend Analysis</h2>
-            <p className="text-xs text-app-text-muted mt-1">Comparing official census data with recent projections (2020-2026)</p>
+      <Suspense fallback={<ChartSkeleton />}>
+        <div className="bg-app-card/65 shadow-xs p-6 sm:p-10 rounded-none theme-transition">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-4">
+            <div>
+              <h2 className="text-xl sm:text-2xl font-bold font-display text-app-text">Population Trend Analysis</h2>
+              <p className="text-xs text-app-text-muted mt-1">Comparing official census data with recent projections (2020-2026)</p>
+            </div>
+            <div className="flex flex-col items-end gap-2">
+              <span className="text-[10px] font-bold text-app-text-dim uppercase tracking-widest bg-app-muted/50 px-3 py-1">
+                Source: PSA & LGU Registry
+              </span>
+            </div>
           </div>
-          <div className="flex flex-col items-end gap-2">
-            <span className="text-[10px] font-bold text-app-text-dim uppercase tracking-widest bg-app-muted/50 px-3 py-1">
-              Source: PSA & LGU Registry
-            </span>
-          </div>
+          <PopulationChart />
         </div>
-        <div className="h-[350px] w-full">
-          <Line data={chartData} options={options} />
-        </div>
-      </div>
+      </Suspense>
 
       {/* Barangay Breakdown */}
       <div className="space-y-6">

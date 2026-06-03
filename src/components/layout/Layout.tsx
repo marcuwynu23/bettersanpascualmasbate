@@ -1,10 +1,12 @@
 import { BarChart3, Compass, FileText, Grid, HardHat, Home as HomeIcon, Info, Phone, X } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import type { NavItem } from "../../types";
-import { EmergencyPanel } from "./EmergencyPanel";
 import { EnvironmentBanner } from "./EnvironmentBanner";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
+
+// Lazy load EmergencyPanel
+const EmergencyPanel = lazy(() => import("./EmergencyPanel").then(m => ({ default: m.EmergencyPanel })));
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -134,7 +136,9 @@ export const Layout: React.FC<LayoutProps> = ({ children, currentTab, setCurrent
         <span className="leading-tight">Non-official transparency portal. Not affiliated with the LGU.</span>
       </div>
 
-      <EmergencyPanel isOpen={isEmergencyPanelOpen} setIsOpen={setIsEmergencyPanelOpen} />
+      <Suspense fallback={null}>
+        <EmergencyPanel isOpen={isEmergencyPanelOpen} setIsOpen={setIsEmergencyPanelOpen} />
+      </Suspense>
 
       {/* Main Page Content */}
       <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6 sm:py-8">

@@ -1,4 +1,4 @@
-import { AlertTriangle, Phone, ShieldAlert, X } from 'lucide-react';
+import { AlertTriangle, Info, Phone, ShieldAlert, X } from 'lucide-react';
 import React from 'react';
 import { EMERGENCY_CONTACTS } from '../../data/mockData';
 
