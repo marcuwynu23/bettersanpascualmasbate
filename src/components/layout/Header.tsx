@@ -20,7 +20,7 @@ export const Header: React.FC<HeaderProps> = ({
   navItems,
 }) => {
   return (
-    <header className="sticky top-0 z-[100] w-full bg-app-primary border-b border-white/10 backdrop-blur-md theme-transition">
+    <header className="sticky top-0 z-100 w-full bg-app-primary border-b border-white/10 backdrop-blur-md theme-transition">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Logo / Branding */}
         <div 
@@ -78,7 +78,7 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="p-2 rounded-none text-white hover:bg-white/10 transition-colors border border-white/10 md:hidden z-[110]"
+            className="p-2 rounded-none text-white hover:bg-white/10 transition-colors border border-white/10 md:hidden z-110"
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
