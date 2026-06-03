@@ -33,7 +33,7 @@ export const Header: React.FC<HeaderProps> = ({
           <img
             src="/logo.svg"
             alt="BetterSanPascualMasbate Logo"
-            className="h-9 w-auto object-contain brightness-0 invert"
+            className="h-9 w-auto object-contain"
             loading="eager"
           />
         </div>

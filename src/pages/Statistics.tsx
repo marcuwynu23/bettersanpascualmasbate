@@ -120,7 +120,6 @@ export const Statistics: React.FC = () => {
     },
   };
 
-  const totalPopulationLatest = POPULATION_HISTORY[POPULATION_HISTORY.length - 1].count;
   const totalPopulationActual = POPULATION_HISTORY.find(p => p.year === 2024)?.count || 0;
   const totalPopulationPrevActual = POPULATION_HISTORY.find(p => p.year === 2020)?.count || 0;
   const percentChangeActual = (((totalPopulationActual - totalPopulationPrevActual) / totalPopulationPrevActual) * 100).toFixed(2);
