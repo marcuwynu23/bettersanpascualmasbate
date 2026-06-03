@@ -1,13 +1,14 @@
 import {
-    CategoryScale,
-    Chart as ChartJS,
-    Filler,
-    Legend,
-    LinearScale,
-    LineElement,
-    PointElement,
-    Title,
-    Tooltip,
+  CategoryScale,
+  Chart as ChartJS,
+  Filler,
+  Legend,
+  LinearScale,
+  LineElement,
+  PointElement,
+  Title,
+  Tooltip,
+  type TooltipItem,
 } from 'chart.js';
 import { Info, TrendingDown, Users } from 'lucide-react';
 import React from 'react';
@@ -90,9 +91,9 @@ export const Statistics: React.FC = () => {
         cornerRadius: 0,
         displayColors: true,
         callbacks: {
-          label: (context: any) => {
+          label: (context: TooltipItem<'line'>) => {
             const label = context.dataset.label || '';
-            const value = context.parsed.y || 0;
+            const value = (context.parsed.y as number) || 0;
             return `${label}: ${value.toLocaleString()}`;
           }
         }

@@ -1,17 +1,20 @@
 import {
-  ArrowRight,
-  Calendar,
-  CheckCircle,
-  Compass,
-  FileText,
-  HardHat,
-  MapPin,
-  ShieldAlert,
-  Users
+    ArrowRight,
+    Calendar,
+    CheckCircle,
+    Compass,
+    FileText,
+    HardHat,
+    MapPin,
+    ShieldAlert,
+    Users
 } from 'lucide-react';
-import React from 'react';
-import { SanPascualMap } from '../components/common/SanPascualMap';
+import React, { lazy, Suspense } from 'react';
+import { Skeleton } from '../components/common/Skeleton';
 import { CITY_STATS } from '../data/mockData';
+
+// Lazy load large components
+const SanPascualMap = lazy(() => import('../components/common/SanPascualMap').then(m => ({ default: m.SanPascualMap })));
 
 interface HomeProps {
   setCurrentTab: (tab: string) => void;
@@ -170,7 +173,9 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
             Explore the 22 barangays of San Pascual. Hover over the map to identify specific coastal and upland administrative boundaries.
           </p>
         </div>
-        <SanPascualMap />
+        <Suspense fallback={<Skeleton className="h-[600px] w-full" />}>
+          <SanPascualMap />
+        </Suspense>
       </section>
 
       {/* 4. Quick Access Grid */}
