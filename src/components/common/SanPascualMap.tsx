@@ -2,15 +2,19 @@ import { Anchor, Info, Landmark, MapPin, Users, X } from 'lucide-react';
 import React, { useEffect, useMemo, useState } from 'react';
 import { BARANGAY_HISTORY } from '../../data/mockData';
 
+type Position = [number, number];
+type PolygonCoordinates = Position[][];
+type MultiPolygonCoordinates = PolygonCoordinates[];
+
 interface GeoJSONFeature {
   type: string;
   geometry: {
-    type: string;
-    coordinates: never;
+    type: 'Polygon' | 'MultiPolygon';
+    coordinates: PolygonCoordinates | MultiPolygonCoordinates;
   };
   properties: {
     adm4_en: string;
-    [key: string]: never;
+    [key: string]: any;
   };
 }
 
@@ -54,10 +58,10 @@ export const SanPascualMap: React.FC = () => {
       if (!feature.geometry || !feature.geometry.coordinates) return;
 
       const coords = feature.geometry.type === 'MultiPolygon' 
-        ? feature.geometry.coordinates.flat(2) 
-        : feature.geometry.coordinates.flat(1);
+        ? (feature.geometry.coordinates as MultiPolygonCoordinates).flat(2) 
+        : (feature.geometry.coordinates as PolygonCoordinates).flat(1);
       
-      coords.forEach((coord: any) => {
+      coords.forEach((coord: unknown) => {
         if (Array.isArray(coord) && coord.length >= 2) {
           const x = coord[0];
           const y = coord[1];
@@ -121,15 +125,15 @@ export const SanPascualMap: React.FC = () => {
           if (!feature.geometry || !feature.geometry.coordinates) return null;
 
           const paths = feature.geometry.type === 'MultiPolygon'
-            ? feature.geometry.coordinates
-                .map((poly: any) => 
+            ? (feature.geometry.coordinates as MultiPolygonCoordinates)
+                .map((poly) => 
                   Array.isArray(poly) && Array.isArray(poly[0]) 
-                    ? poly[0].map((coord: [number, number]) => project(coord)).join(' ') 
+                    ? poly[0].map((coord: Position) => project(coord)).join(' ') 
                     : null
                 )
-                .filter((p: any): p is string => !!p)
+                .filter((p): p is string => !!p)
             : (Array.isArray(feature.geometry.coordinates) && Array.isArray(feature.geometry.coordinates[0])
-                ? [feature.geometry.coordinates[0].map((coord: [number, number]) => project(coord)).join(' ')]
+                ? [(feature.geometry.coordinates as PolygonCoordinates)[0].map((coord: Position) => project(coord)).join(' ')]
                 : []);
 
           return paths.map((points: string, pIdx: number) => (
