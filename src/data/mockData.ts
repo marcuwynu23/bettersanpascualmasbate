@@ -1,8 +1,8 @@
 import type { BarangayHistory, EmergencyContact, Landmark, MayorHistory, PopulationYear, PublicRecord, ServiceCard, TimelineEvent } from '../types';
 
 export const CITY_STATS = {
-  population: '44,449',
-  populationYear: '2020 PSA Census',
+  population: '44,641',
+  populationYear: '2024 PSA POPCEN',
   barangays: '22',
   majorIslands: 'Sombrero, Tinalisayan, Animasola',
   islandsCount: '3 Major Islands',
@@ -12,12 +12,13 @@ export const CITY_STATS = {
 };
 
 export const POPULATION_HISTORY: PopulationYear[] = [
-  { year: 2015, count: 46674 },
-  { year: 2016, count: 46200 },
-  { year: 2017, count: 45800 },
-  { year: 2018, count: 45300 },
-  { year: 2019, count: 44900 },
-  { year: 2020, count: 44449 }
+  { year: 2020, count: 44449 },
+  { year: 2021, count: 44497 },
+  { year: 2022, count: 44545 },
+  { year: 2023, count: 44593 },
+  { year: 2024, count: 44641 },
+  { year: 2025, count: 44689 },
+  { year: 2026, count: 44737 }
 ];
 
 export const EMERGENCY_CONTACTS: EmergencyContact[] = [
