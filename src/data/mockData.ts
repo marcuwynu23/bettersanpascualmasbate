@@ -223,16 +223,16 @@ export const LANDMARKS: Landmark[] = [
   {
     id: 'l4',
     name: 'San Pascual Baylon Parish Church',
-    description: 'A historic church considered one of the oldest in Bicol and Masbate, founded during the Spanish Galleon era in 1586. It stands as a spiritual anchor for the town and has withstood centuries of typhoons and pirate raids.',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/f/fb/An_sentro_San_Pascual_Masbate.jpg',
-    location: 'Poblacion, San Pascual',
+    description: 'Considered one of the oldest in the Bicol-Masbate region, this historic church was founded in 1586. While much of the original structure has been modified over centuries, the site remains a spiritual anchor for the town and a testament to its Spanish-era heritage.',
+    imageUrl: 'https://tse2.mm.bing.net/th/id/OIP.tBIpg6n7s-xq4Iw82E2WFgHaE8?rs=1&pid=ImgDetMain&o=7&rm=3',
+    location: 'Poblacion (Brgy. Bolod), San Pascual',
     category: 'Historical'
   },
   {
     id: 'l5',
     name: 'The Swiftlet House (Balinsasayaw)',
-    description: 'A fascinating structure that is home to approximately 80,000 swiftlets (locally known as balinsasayaw). The birds reside in harmony inside the house, creating a unique urban ecological phenomenon where nests are protected.',
-    imageUrl: 'https://images.unsplash.com/photo-1552084117-56a987666449?auto=format&fit=crop&w=800&q=80', // Keeping this as it looks similar to the sanctuary description until a direct URL is found
+    description: 'Located in the residence of Eddie Espares, this remarkable urban bird sanctuary is home to approximately 80,000 swiftlets. The birds nest in the basement of the house, having been attracted by the cave-like temperature. It is a unique ecological phenomenon where humans and birds coexist in a residential setting.',
+    imageUrl: 'https://tse3.mm.bing.net/th/id/OIP.0nZmdCds1DDzYUtHy5ZwswHaFj?rs=1&pid=ImgDetMain&o=7&rm=3',
     location: 'Poblacion, San Pascual',
     category: 'Cultural'
   }
