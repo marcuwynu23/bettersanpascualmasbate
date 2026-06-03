@@ -1,8 +1,8 @@
 import type { BarangayHistory, EmergencyContact, Landmark, MayorHistory, PublicRecord, ServiceCard, TimelineEvent } from '../types';
 
 export const CITY_STATS = {
-  population: '44,641',
-  populationYear: '2024',
+  population: '44,449',
+  populationYear: '2020 PSA Census',
   barangays: '22',
   majorIslands: 'Sombrero, Tinalisayan, Animasola',
   islandsCount: '3 Major Islands',
@@ -403,11 +403,11 @@ export const BARANGAY_HISTORY: BarangayHistory[] = [
     name: 'Busing',
     captain: 'Hon. Rizalie P. Velasco',
     termStart: '2023',
-    history: 'Named after the native "busing" reed that once choked the local creek. Settled in the early 20th century by farmers attracted to its fertile soil, Busing has remained San Pascual\'s agricultural heartland, supplying rice and coconuts to the rest of the island.',
-    livelihood: ['Lowland Farming', 'Cattle Grazing', 'Copra Processing'],
+    history: 'A distinct island barangay located offshore from the main Burias landmass. Busing is celebrated for its independent coastal ecosystem and pristine beaches. Historically, it served as a primary maritime navigation point for vessels traversing the Sibuyan Sea.',
+    livelihood: ['Artisanal Fishing', 'Seaweed Farming', 'Island Ecotourism'],
     population: '1,886',
     pastCaptains: [],
-    coastal: false
+    coastal: true
   },
   {
     id: 'b4',
@@ -455,7 +455,7 @@ export const BARANGAY_HISTORY: BarangayHistory[] = [
   },
   {
     id: 'b8',
-    name: 'Ki-Buaya (Rizal)',
+    name: 'Ki-Buaya',
     captain: 'Hon. Joeper B. Corporal',
     termStart: '2023',
     history: 'Originally named Ki-Buaya due to the large crocodiles that inhabited its extensive mangrove swamps in the 1800s. It was later renamed Rizal to honor the national hero, but the community proudly retains its historical identity in local folk tales.',
@@ -466,7 +466,7 @@ export const BARANGAY_HISTORY: BarangayHistory[] = [
   },
   {
     id: 'b9',
-    name: 'Ki-Romero (Roxas)',
+    name: 'Ki-Romero',
     captain: 'Hon. Rafaelito O. Dagohoy, Sr.',
     termStart: '2023',
     history: 'Named after Romero, an early cattle rancher who held land here in the early American colonial era. Renamed Roxas after President Manuel Roxas, the barangay continues to showcase a strong cowboy culture with wide-open grazing lands.',
@@ -480,7 +480,7 @@ export const BARANGAY_HISTORY: BarangayHistory[] = [
     name: 'Laurente',
     captain: 'Hon. Mary Anne M. Quibot',
     termStart: '2023',
-    history: 'Named after Capitan Laurente, a late-19th-century tribal leader who moved his clan inland to avoid coastal pirate raids. Laurente has remained a peaceful upland agricultural community ever since.',
+    history: 'Named after Capitan Laurente, a late-19th-century leader who moved his clan inland to avoid coastal pirate raids. Laurente has remained a peaceful upland agricultural community ever since.',
     livelihood: ['Copra Production', 'Root Crops', 'Corn Farming'],
     population: '2,752',
     pastCaptains: [],
@@ -524,18 +524,18 @@ export const BARANGAY_HISTORY: BarangayHistory[] = [
     name: 'Mapanique',
     captain: 'Hon. Manilou G. Hermosa',
     termStart: '2023',
-    history: 'Derived from "paniki" (bats), as the dense limestone forests surrounding this coastal area host thousands of fruit bats. These bats are historically celebrated for maintaining the island\'s lush fruit orchards and ecosystems.',
-    livelihood: ['Coastal Fishing', 'Fruit Orchards', 'Copra Farming'],
+    history: 'Derived from "paniki" (bats), as the dense limestone forests surrounding this interior area host thousands of fruit bats. These bats are historically celebrated for maintaining the island\'s lush fruit orchards and ecosystems.',
+    livelihood: ['Fruit Orchards', 'Copra Farming', 'Upland Agriculture'],
     population: '1,984',
     pastCaptains: [],
-    coastal: true
+    coastal: false
   },
   {
     id: 'b15',
     name: 'Nazareno',
     captain: 'Hon. Maria Patropez Villanueva',
     termStart: '2023',
-    history: 'Founded by Catholic fishermen who built a chapel dedicated to the Black Nazarene. The community is famous for its traditional fish drying (tuyo and tinapa), supplying preserved fish to interior island barangays.',
+    history: 'Founded by Catholic residents who built a chapel dedicated to the Black Nazarene. The community is famous for its traditional fish drying (tuyo and tinapa), supplying preserved fish to interior island barangays.',
     livelihood: ['Fish Drying', 'Coastal Fishing', 'Salt Harvesting'],
     population: '1,298',
     pastCaptains: [],
@@ -570,7 +570,7 @@ export const BARANGAY_HISTORY: BarangayHistory[] = [
     termStart: '2023',
     history: 'Named after Saint Joseph, the patron of workers. Established in the early 20th century as a trading crossroad, it serves as the main connection point between the upland farms and the Poblacion shipping ports.',
     livelihood: ['Vegetable Cultivation', 'Pig Farming', 'Copra Trading'],
-    population: '1,409',
+    population: '2,228',
     pastCaptains: [],
     coastal: false
   },
@@ -579,11 +579,11 @@ export const BARANGAY_HISTORY: BarangayHistory[] = [
     name: 'San Pedro',
     captain: 'Hon. Ricardo Y. Bulanon',
     termStart: '2023',
-    history: 'Named after Saint Peter, patron of fishermen. San Pedro has historically been the busiest commercial fishing community in San Pascual, containing a large fleet of traditional motorized fishing vessels.',
-    livelihood: ['Commercial Fishing', 'Inter-island Shipping', 'Boat Maintenance'],
-    population: '3,232',
+    history: 'Named after Saint Peter. Unlike its coastal namesakes, this San Pedro is an interior upland community characterized by rolling hills and fertile valleys. It serves as a vital agricultural hub connecting the northern highlands to the town center.',
+    livelihood: ['Cattle Ranching', 'Copra Production', 'Upland Agriculture'],
+    population: '3,762',
     pastCaptains: [],
-    coastal: true
+    coastal: false
   },
   {
     id: 'b20',
@@ -592,7 +592,7 @@ export const BARANGAY_HISTORY: BarangayHistory[] = [
     termStart: '2023',
     history: 'A picturesque upland barangay dedicated to Saint Raphael. Its open, wind-swept hills have historically been some of the most productive cattle ranching areas on Burias Island.',
     livelihood: ['Cattle Ranching', 'Upland Corn Farming', 'Copra Production'],
-    population: '3,140',
+    population: '3,165',
     pastCaptains: [],
     coastal: false
   },
@@ -603,18 +603,18 @@ export const BARANGAY_HISTORY: BarangayHistory[] = [
     termStart: '2023',
     history: 'Named after the Holy Cross. Historically vulnerable to typhoon surges, the residents banded together in the 1980s to plant a massive mangrove forest, which now serves as an award-winning ecological protection zone.',
     livelihood: ['Mangrove Crabbing', 'Eco-tourism Services', 'Copra Production'],
-    population: '1,945',
+    population: '2,168',
     pastCaptains: [],
     coastal: true
   },
   {
     id: 'b22',
-    name: 'Terraplin',
+    name: 'Terraplin (Poblacion)',
     captain: 'Hon. Arnold R. Ortega Jr.',
     termStart: '2023',
     history: 'Derived from the Spanish "terraplén" (embankment), named after the ancient stone seawall constructed by Spanish authorities and local volunteers to protect the low-lying agricultural plains from salt-water intrusion.',
     livelihood: ['Salt Bed Harvesting', 'Coastal Fishing', 'Coconut Cultivation'],
-    population: '1,618',
+    population: '2,021',
     pastCaptains: [],
     coastal: true
   }
