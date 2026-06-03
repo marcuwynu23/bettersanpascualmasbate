@@ -1,4 +1,4 @@
-import type { PublicRecord, Landmark, TimelineEvent, EmergencyContact, ServiceCard, MayorHistory, BarangayHistory } from '../types';
+import type { BarangayHistory, EmergencyContact, Landmark, MayorHistory, PublicRecord, ServiceCard, TimelineEvent } from '../types';
 
 export const CITY_STATS = {
   population: '44,641',
@@ -384,7 +384,7 @@ export const BARANGAY_HISTORY: BarangayHistory[] = [
     history: 'The name Bolod comes from "burol" (hill), as the Poblacion sits on a slightly elevated plain overlooking the harbor. Serving as the town center, it is the historic site where Spanish missionaries founded the Parish of Saint Paschal Baylon in 1586, making it one of the oldest settlements in Bicol and Masbate.',
     livelihood: ['Commercial Trade', 'Public Services', 'Small-Scale Fishing'],
     population: '3,626',
-    pastCaptains: ['Hon. Clemente Arguelles III', 'Hon. Jose Lazaro', 'Hon. Felipa Alindogan'],
+    pastCaptains: [],
     coastal: true
   },
   {
@@ -395,7 +395,7 @@ export const BARANGAY_HISTORY: BarangayHistory[] = [
     history: 'Boca Chica translates to "small mouth" in Spanish, describing the narrow water passage between the Burias mainland and the offshore reefs. It was historically a vital lookout station against coastal raiders and is now a thriving community of fishermen and boat builders.',
     livelihood: ['Artisanal Fishing', 'Copra Production', 'Wooden Boatbuilding'],
     population: '2,756',
-    pastCaptains: ['Hon. Juan Rivera', 'Hon. Ramon Santos'],
+    pastCaptains: [],
     coastal: true
   },
   {
@@ -406,7 +406,7 @@ export const BARANGAY_HISTORY: BarangayHistory[] = [
     history: 'Named after the native "busing" reed that once choked the local creek. Settled in the early 20th century by farmers attracted to its fertile soil, Busing has remained San Pascual\'s agricultural heartland, supplying rice and coconuts to the rest of the island.',
     livelihood: ['Lowland Farming', 'Cattle Grazing', 'Copra Processing'],
     population: '1,886',
-    pastCaptains: ['Hon. Manuel Busing', 'Hon. Clara Lopez'],
+    pastCaptains: [],
     coastal: false
   },
   {
@@ -417,7 +417,7 @@ export const BARANGAY_HISTORY: BarangayHistory[] = [
     history: 'Famous for the limestone caverns ("cuevas") scattered throughout its rugged hills. Archeological findings suggest these caves were used by pre-colonial islanders. During World War II, the caves served as a crucial hideout for local anti-occupation guerilla forces.',
     livelihood: ['Copra Production', 'Corn Farming', 'Cave Ecotourism'],
     population: '2,788',
-    pastCaptains: ['Hon. Pedro Cueva', 'Hon. Anita De Guzman'],
+    pastCaptains: [],
     coastal: false
   },
   {
@@ -428,7 +428,7 @@ export const BARANGAY_HISTORY: BarangayHistory[] = [
     history: 'Dangcalan is named after the native Bitaog (Dangcalan) trees that grow along its sandy shores. The tough wood of these trees was historically prized by locals for building sturdy hulls for sea-going bangkas.',
     livelihood: ['Coastal Fishing', 'Copra Production', 'Seaweed Farming'],
     population: '1,430',
-    pastCaptains: ['Hon. Salvador Perez', 'Hon. Gregoria Reyes'],
+    pastCaptains: [],
     coastal: true
   },
   {
@@ -439,7 +439,7 @@ export const BARANGAY_HISTORY: BarangayHistory[] = [
     history: 'In the local Bicol-Masbateño language, Halabangbaybay means "long beach," referencing the wide 2-kilometer stretch of white sand lining the barangay. It has evolved from a quiet coconut grove into a popular gateway for visiting tourists.',
     livelihood: ['Cottage Tourism', 'Coastal Fishing', 'Coconut Cultivation'],
     population: '1,150',
-    pastCaptains: ['Hon. Victorio Alindogan', 'Hon. Josefa Ramos'],
+    pastCaptains: [],
     coastal: true
   },
   {
@@ -450,7 +450,7 @@ export const BARANGAY_HISTORY: BarangayHistory[] = [
     history: 'Derived from "iniwar" (isolated), as this barangay was cut off from the main town center for generations by dense jungle and hills. The construction of the municipal road system in the early 2000s opened it up to rapid agricultural growth.',
     livelihood: ['Upland Rice Farming', 'Cattle Ranching', 'Root Crop Production'],
     population: '2,360',
-    pastCaptains: ['Hon. Alejandro Gomez', 'Hon. Roberto Tan'],
+    pastCaptains: [],
     coastal: false
   },
   {
@@ -461,7 +461,7 @@ export const BARANGAY_HISTORY: BarangayHistory[] = [
     history: 'Originally named Ki-Buaya due to the large crocodiles that inhabited its extensive mangrove swamps in the 1800s. It was later renamed Rizal to honor the national hero, but the community proudly retains its historical identity in local folk tales.',
     livelihood: ['Mangrove Crab Harvesting', 'Small-scale Agriculture', 'Estuary Fishing'],
     population: '846',
-    pastCaptains: ['Hon. Felix Castillo', 'Hon. Leonora Diaz'],
+    pastCaptains: [],
     coastal: true
   },
   {
@@ -472,7 +472,7 @@ export const BARANGAY_HISTORY: BarangayHistory[] = [
     history: 'Named after Romero, an early cattle rancher who held land here in the early American colonial era. Renamed Roxas after President Manuel Roxas, the barangay continues to showcase a strong cowboy culture with wide-open grazing lands.',
     livelihood: ['Cattle Herding', 'Copra Production', 'Livestock Trading'],
     population: '1,487',
-    pastCaptains: ['Hon. Eduardo Fernandez', 'Hon. Maria Romero'],
+    pastCaptains: [],
     coastal: false
   },
   {
@@ -483,7 +483,7 @@ export const BARANGAY_HISTORY: BarangayHistory[] = [
     history: 'Named after Capitan Laurente, a late-19th-century tribal leader who moved his clan inland to avoid coastal pirate raids. Laurente has remained a peaceful upland agricultural community ever since.',
     livelihood: ['Copra Production', 'Root Crops', 'Corn Farming'],
     population: '2,752',
-    pastCaptains: ['Hon. Mateo Ramirez', 'Hon. Fe Valenzuela'],
+    pastCaptains: [],
     coastal: false
   },
   {
@@ -494,7 +494,7 @@ export const BARANGAY_HISTORY: BarangayHistory[] = [
     history: 'Established in the mid-20th century during a wave of agricultural expansion on Burias Island. Named after Apolinario Mabini, the barangay is characterized by rolling hills used primarily for pasture.',
     livelihood: ['Cattle Ranching', 'Upland Corn Farming', 'Copra Processing'],
     population: '1,779',
-    pastCaptains: ['Hon. Alfonso Santos', 'Hon. Patricia Cruz'],
+    pastCaptains: [],
     coastal: false
   },
   {
@@ -505,7 +505,7 @@ export const BARANGAY_HISTORY: BarangayHistory[] = [
     history: 'Established as a settlement area in the 1950s for migrants from the Bicol mainland seeking farm land. The name reflects the settlers\' hope for a prosperous life. Today, it hosts several thriving agricultural cooperatives.',
     livelihood: ['Copra Production', 'Poultry Farming', 'Upland Rice'],
     population: '1,410',
-    pastCaptains: ['Hon. Juan Almonte', 'Hon. Josefina Belen'],
+    pastCaptains: [],
     coastal: false
   },
   {
@@ -516,7 +516,7 @@ export const BARANGAY_HISTORY: BarangayHistory[] = [
     history: 'Named after the Malaking Ilog River, the widest freshwater river on Burias Island. The river has historically provided irrigation for the town\'s most extensive rice paddies, making this barangay the rice granary of San Pascual.',
     livelihood: ['Lowland Rice Farming', 'River Fishing', 'Copra Production'],
     population: '1,911',
-    pastCaptains: ['Hon. Andres Cruz', 'Hon. Roberto Espinas'],
+    pastCaptains: [],
     coastal: true
   },
   {
@@ -527,7 +527,7 @@ export const BARANGAY_HISTORY: BarangayHistory[] = [
     history: 'Derived from "paniki" (bats), as the dense limestone forests surrounding this coastal area host thousands of fruit bats. These bats are historically celebrated for maintaining the island\'s lush fruit orchards and ecosystems.',
     livelihood: ['Coastal Fishing', 'Fruit Orchards', 'Copra Farming'],
     population: '1,984',
-    pastCaptains: ['Hon. Cesar Castro', 'Hon. Angela Santos'],
+    pastCaptains: [],
     coastal: true
   },
   {
@@ -538,7 +538,7 @@ export const BARANGAY_HISTORY: BarangayHistory[] = [
     history: 'Founded by Catholic fishermen who built a chapel dedicated to the Black Nazarene. The community is famous for its traditional fish drying (tuyo and tinapa), supplying preserved fish to interior island barangays.',
     livelihood: ['Fish Drying', 'Coastal Fishing', 'Salt Harvesting'],
     population: '1,298',
-    pastCaptains: ['Hon. Ernesto Hernandez', 'Hon. Clara Lopez'],
+    pastCaptains: [],
     coastal: true
   },
   {
@@ -549,7 +549,7 @@ export const BARANGAY_HISTORY: BarangayHistory[] = [
     history: 'Named after the local word "pasingan" (sharpening stone). Historically, fishermen and coastal guards gathered on its gravel beaches to sharpen their tools and bolos using the specialized dark river stones.',
     livelihood: ['Artisanal Fishing', 'Copra Production', 'Pebble and Gravel Trade'],
     population: '2,005',
-    pastCaptains: ['Hon. Gregorio Aquino', 'Hon. Anita Robles'],
+    pastCaptains: [],
     coastal: true
   },
   {
@@ -560,7 +560,7 @@ export const BARANGAY_HISTORY: BarangayHistory[] = [
     history: 'Named in honor of Dona Quintina, a historical Spanish-era landowner who donated large parcels of land to tenant coconut farmers in the early 1900s, fostering a strong community spirit that persists today.',
     livelihood: ['Coconut Cultivation', 'Agricultural Cooperatives', 'Vegetable Farming'],
     population: '1,637',
-    pastCaptains: ['Hon. Miguel Barlizo', 'Hon. Sonia Velez'],
+    pastCaptains: [],
     coastal: false
   },
   {
@@ -571,7 +571,7 @@ export const BARANGAY_HISTORY: BarangayHistory[] = [
     history: 'Named after Saint Joseph, the patron of workers. Established in the early 20th century as a trading crossroad, it serves as the main connection point between the upland farms and the Poblacion shipping ports.',
     livelihood: ['Vegetable Cultivation', 'Pig Farming', 'Copra Trading'],
     population: '1,409',
-    pastCaptains: ['Hon. Santiago Vargas', 'Hon. Elena Castillo'],
+    pastCaptains: [],
     coastal: false
   },
   {
@@ -582,7 +582,7 @@ export const BARANGAY_HISTORY: BarangayHistory[] = [
     history: 'Named after Saint Peter, patron of fishermen. San Pedro has historically been the busiest commercial fishing community in San Pascual, containing a large fleet of traditional motorized fishing vessels.',
     livelihood: ['Commercial Fishing', 'Inter-island Shipping', 'Boat Maintenance'],
     population: '3,232',
-    pastCaptains: ['Hon. Jose Lazaro Sr.', 'Hon. Ruben De Leon'],
+    pastCaptains: [],
     coastal: true
   },
   {
@@ -593,7 +593,7 @@ export const BARANGAY_HISTORY: BarangayHistory[] = [
     history: 'A picturesque upland barangay dedicated to Saint Raphael. Its open, wind-swept hills have historically been some of the most productive cattle ranching areas on Burias Island.',
     livelihood: ['Cattle Ranching', 'Upland Corn Farming', 'Copra Production'],
     population: '3,140',
-    pastCaptains: ['Hon. Felipe Lopez', 'Hon. Maria Elena Gomez'],
+    pastCaptains: [],
     coastal: false
   },
   {
@@ -604,7 +604,7 @@ export const BARANGAY_HISTORY: BarangayHistory[] = [
     history: 'Named after the Holy Cross. Historically vulnerable to typhoon surges, the residents banded together in the 1980s to plant a massive mangrove forest, which now serves as an award-winning ecological protection zone.',
     livelihood: ['Mangrove Crabbing', 'Eco-tourism Services', 'Copra Production'],
     population: '1,945',
-    pastCaptains: ['Hon. Jose Dela Rosa', 'Hon. Teresa Ramos'],
+    pastCaptains: [],
     coastal: true
   },
   {
@@ -615,7 +615,7 @@ export const BARANGAY_HISTORY: BarangayHistory[] = [
     history: 'Derived from the Spanish "terraplén" (embankment), named after the ancient stone seawall constructed by Spanish authorities and local volunteers to protect the low-lying agricultural plains from salt-water intrusion.',
     livelihood: ['Salt Bed Harvesting', 'Coastal Fishing', 'Coconut Cultivation'],
     population: '1,618',
-    pastCaptains: ['Hon. Ricardo Salazar', 'Hon. Gloria Hernandez'],
+    pastCaptains: [],
     coastal: true
   }
 ];

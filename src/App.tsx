@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { Layout } from './components/Layout';
+import { Layout } from './components/layout/Layout';
+import { Explore } from './pages/Explore';
 import { Home } from './pages/Home';
 import { Services } from './pages/Services';
 import { Transparency } from './pages/Transparency';
-import { Explore } from './pages/Explore';
 
 function App() {
   const [currentTab, setCurrentTab] = useState<string>('home');
