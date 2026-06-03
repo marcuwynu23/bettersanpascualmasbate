@@ -1,5 +1,5 @@
-import { Menu, Phone, X } from 'lucide-react';
-import React from 'react';
+import { Eye, Menu, Phone, X } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
 import type { NavItem } from '../../types';
 
 interface HeaderProps {
@@ -19,6 +19,44 @@ export const Header: React.FC<HeaderProps> = ({
   setIsEmergencyPanelOpen,
   navItems,
 }) => {
+  const [visitorCount, setVisitorCount] = useState<number | null>(null);
+
+  useEffect(() => {
+    // Using CountAPI for persistent, external visitor tracking
+    // Configuration read from environment variables
+    const NAMESPACE = import.meta.env.VITE_COUNTAPI_NAMESPACE || 'bettersanpascualmasbate.com';
+    const KEY = import.meta.env.VITE_COUNTAPI_KEY || 'visits';
+    const PRODUCTION_DOMAIN = import.meta.env.VITE_PRODUCTION_DOMAIN || 'bettersanpascualmasbate.marcuwynu.space';
+
+    const fetchVisitorCount = async () => {
+      const isProduction = window.location.hostname === PRODUCTION_DOMAIN;
+
+      try {
+        if (isProduction) {
+          // Increment and get the new count only in production
+          const response = await fetch(`https://api.countapi.xyz/hit/${NAMESPACE}/${KEY}`);
+          const data = await response.json();
+          if (data && typeof data.value === 'number') {
+            setVisitorCount(data.value);
+          }
+        } else {
+          // In development/localhost, just get the count without incrementing (hit -> get)
+          // Or use a mock count to avoid polluting production stats
+          const response = await fetch(`https://api.countapi.xyz/get/${NAMESPACE}/${KEY}`);
+          const data = await response.json();
+          if (data && typeof data.value === 'number') {
+            setVisitorCount(data.value);
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching visitor count:', error);
+        setVisitorCount(0); // Fallback
+      }
+    };
+
+    fetchVisitorCount();
+  }, []);
+
   return (
     <header className="sticky top-0 z-100 w-full bg-app-primary border-b border-white/10 backdrop-blur-md theme-transition">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
@@ -62,6 +100,17 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* Action Buttons (Right) */}
         <div className="flex items-center gap-2">
+          {/* Visitor Count */}
+          <div className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 bg-white/5 border border-white/10 text-white/70">
+            <Eye className="h-3 w-3" />
+            <div className="flex flex-col leading-none">
+              <span className="text-[8px] font-extrabold uppercase tracking-tighter opacity-60">Portal Visitors</span>
+              <span className="text-[11px] font-mono font-bold text-white">
+                {visitorCount !== null ? visitorCount.toLocaleString() : '---'}
+              </span>
+            </div>
+          </div>
+
           {/* Hotlines Trigger */}
           <button
             onClick={() => setIsEmergencyPanelOpen(true)}
