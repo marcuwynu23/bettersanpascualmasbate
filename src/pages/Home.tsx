@@ -64,9 +64,11 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
             <div className="bg-app-card shadow-xs p-3.5 rounded-none rotate-2 hover:rotate-0 transition-transform duration-500 max-w-sm mx-auto theme-transition">
               <div className="h-64 rounded-none overflow-hidden bg-app-muted/80 theme-transition">
                 <img 
-                  src="https://san-andres.link/wp-content/uploads/2018/07/pulo9-300x225.jpg" 
+                  src="https://i.pinimg.com/originals/50/3c/f1/503cf1b71025663dbee645d8716133dd.jpg" 
                   alt="Animasola Island Rock Formations" 
                   className="w-full h-full object-cover filter brightness-[0.95]"
+                  loading="eager"
+                  fetchPriority="high"
                 />
               </div>
               <div className="pt-3 px-1 flex items-center justify-between">

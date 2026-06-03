@@ -43,6 +43,7 @@ export const Header: React.FC<HeaderProps> = ({
             src="/logo.png"
             alt="BetterSanPascualMasbate Logo"
             className="h-9 w-auto object-contain group-hover:scale-102 transition-transform"
+            loading="eager"
           />
           <div className="flex flex-col">
             <span className="font-sans font-bold text-base sm:text-lg tracking-tight text-app-text leading-none theme-transition">

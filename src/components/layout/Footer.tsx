@@ -1,5 +1,5 @@
-import React from 'react';
 import { Info } from 'lucide-react';
+import React from 'react';
 
 export const Footer: React.FC = () => {
   return (
@@ -8,7 +8,12 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
           <div className="space-y-4">
             <div className="flex items-center gap-2.5">
-              <img src="/logo.png" alt="BetterSanPascualMasbate Logo" className="h-8 w-auto object-contain brightness-0 invert" />
+              <img 
+                src="/logo.png" 
+                alt="BetterSanPascualMasbate Logo" 
+                className="h-8 w-auto object-contain brightness-0 invert" 
+                loading="lazy"
+              />
               <span className="font-sans font-bold text-lg text-app-text theme-transition">BetterSanPascualMasbate</span>
             </div>
             <p className="text-xs leading-relaxed text-app-text-muted theme-transition max-w-sm">

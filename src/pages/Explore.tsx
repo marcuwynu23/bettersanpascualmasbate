@@ -1,23 +1,23 @@
-import React, { useState } from 'react';
-import { 
-  MapPin, 
-  Compass, 
-  History, 
-  ArrowRight,
-  Sunset,
-  Search,
-  Users,
-  Award,
-  Shield,
-  Anchor,
-  Building,
-  ChevronDown,
-  ChevronUp,
-  User,
-  Calendar,
-  AlertCircle
+import {
+    AlertCircle,
+    Anchor,
+    ArrowRight,
+    Award,
+    Building,
+    ChevronDown,
+    ChevronUp,
+    Compass,
+    History,
+    MapPin,
+    Search,
+    Shield,
+    Sunset,
+    User,
+    Users
 } from 'lucide-react';
-import { LANDMARKS, TIMELINE_EVENTS, MAYOR_HISTORY, BARANGAY_HISTORY } from '../data/mockData';
+import React, { useState } from 'react';
+import { OptimizedImage } from '../components/common/OptimizedImage';
+import { BARANGAY_HISTORY, LANDMARKS, MAYOR_HISTORY, TIMELINE_EVENTS } from '../data/mockData';
 
 export const Explore: React.FC = () => {
   const [subTab, setSubTab] = useState<'landmarks' | 'mayors' | 'barangays'>('landmarks');
@@ -172,12 +172,12 @@ export const Explore: React.FC = () => {
                   <div>
                     {/* Landmark Photo */}
                     <div className="relative h-48 sm:h-52 overflow-hidden bg-app-muted theme-transition">
-                      <img 
+                      <OptimizedImage 
                         src={landmark.imageUrl} 
                         alt={landmark.name} 
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 brightness-[0.9] dark:brightness-[0.8]"
+                        className="w-full h-full group-hover:scale-105 transition-transform duration-500 brightness-[0.9] dark:brightness-[0.8]"
                       />
-                      <div className="absolute top-4 left-4 bg-slate-950/80 px-2 py-0.5 border border-white/10">
+                      <div className="absolute top-4 left-4 bg-slate-950/80 px-2 py-0.5 border border-white/10 z-10">
                         <span className={`text-[9px] font-extrabold uppercase tracking-widest ${getCategoryColor(landmark.category)}`}>
                           {landmark.category}
                         </span>
