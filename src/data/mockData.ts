@@ -4,7 +4,7 @@ export const CITY_STATS = {
   population: '44,641',
   populationYear: '2024',
   barangays: '22',
-  craterLakes: '0', // San Pablo has lakes, San Pascual has islands!
+  craterLakes: '0', 
   islandsCount: '3 Major Islands',
   foundedYear: '1586',
   location: 'Burias Island, Masbate',
