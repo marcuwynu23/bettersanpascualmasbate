@@ -1,12 +1,6 @@
-import type { LucideIcon } from 'lucide-react';
-import { Compass, FileText, Grid, HardHat, Home as HomeIcon, Menu, Phone, X } from 'lucide-react';
+import { Menu, Phone, X } from 'lucide-react';
 import React from 'react';
-
-interface NavItem {
-  id: string;
-  label: string;
-  icon: LucideIcon;
-}
+import type { NavItem } from '../../types';
 
 interface HeaderProps {
   currentTab: string;
@@ -14,6 +8,7 @@ interface HeaderProps {
   isMobileMenuOpen: boolean;
   setIsMobileMenuOpen: (isOpen: boolean) => void;
   setIsEmergencyPanelOpen: (isOpen: boolean) => void;
+  navItems: NavItem[];
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -22,15 +17,8 @@ export const Header: React.FC<HeaderProps> = ({
   isMobileMenuOpen,
   setIsMobileMenuOpen,
   setIsEmergencyPanelOpen,
+  navItems,
 }) => {
-  const navItems: NavItem[] = [
-    { id: "home", label: "Home", icon: HomeIcon },
-    { id: "infrastructure", label: "Infrastructure", icon: HardHat },
-    { id: "services", label: "Services", icon: Grid },
-    { id: "transparency", label: "Transparency", icon: FileText },
-    { id: "explore", label: "Explore & History", icon: Compass },
-  ];
-
   return (
     <header className="sticky top-0 z-[100] w-full bg-app-primary border-b border-white/10 backdrop-blur-md theme-transition">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
@@ -95,46 +83,6 @@ export const Header: React.FC<HeaderProps> = ({
           </button>
         </div>
       </div>
-
-      {/* Mobile Navigation Drawer */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 z-[100] w-full bg-app-bg animate-fade-in theme-transition overflow-y-auto pt-16">
-          <div className="flex flex-col p-4 space-y-2">
-            {navItems.map((item) => {
-              const Icon = item.icon;
-              const isActive = currentTab === item.id;
-              return (
-                <button
-                  key={item.id}
-                  onClick={() => {
-                    setCurrentTab(item.id);
-                    setIsMobileMenuOpen(false);
-                  }}
-                  className={`flex items-center gap-4 w-full px-6 py-5 rounded-none text-lg font-bold transition-all ${
-                    isActive ? "bg-app-primary text-white shadow-md" : "text-app-text hover:bg-app-muted-hover"
-                  }`}
-                >
-                  <Icon className={`h-6 w-6 ${isActive ? "text-white" : "text-app-primary"}`} />
-                  {item.label}
-                </button>
-              );
-            })}
-            
-            <div className="pt-8 px-4">
-              <button
-                onClick={() => {
-                  setIsEmergencyPanelOpen(true);
-                  setIsMobileMenuOpen(false);
-                }}
-                className="flex items-center justify-center gap-3 w-full px-6 py-4 rounded-none text-base font-bold bg-red-600 text-white shadow-lg animate-pulse"
-              >
-                <Phone className="h-5 w-5" />
-                Emergency Hotlines
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </header>
   );
 };
