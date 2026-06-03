@@ -1,14 +1,15 @@
 import {
-	CategoryScale,
-	Chart as ChartJS,
-	Filler,
-	Legend,
-	LinearScale,
-	LineElement,
-	PointElement,
-	Title,
-	Tooltip,
-	type TooltipItem,
+  CategoryScale,
+  Chart as ChartJS,
+  Filler,
+  Legend,
+  LinearScale,
+  LineElement,
+  PointElement,
+  Title,
+  Tooltip,
+  type ChartOptions,
+  type TooltipItem,
 } from 'chart.js';
 import React from 'react';
 import { Line } from 'react-chartjs-2';
@@ -64,28 +65,28 @@ export const PopulationChart: React.FC = () => {
     ],
   };
 
-  const options = {
+  const options: ChartOptions<'line'> = {
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
       legend: {
         display: true,
-        position: 'top' as const,
-        align: 'end' as const,
+        position: 'top',
+        align: 'end',
         labels: {
           usePointStyle: true,
           pointStyle: 'circle',
           padding: 20,
           font: {
             size: 11,
-            weight: 'bold' as const,
+            weight: 'bold',
           },
         },
       },
       tooltip: {
         backgroundColor: '#1e293b',
         padding: 12,
-        titleFont: { size: 14, weight: 'bold' as const },
+        titleFont: { size: 14, weight: 'bold' },
         bodyFont: { size: 13 },
         cornerRadius: 0,
         displayColors: true,
@@ -106,7 +107,9 @@ export const PopulationChart: React.FC = () => {
         },
         ticks: {
           font: { size: 11 },
-          callback: (value: number) => value.toLocaleString(),
+          callback: (value) => {
+            return typeof value === 'number' ? value.toLocaleString() : value;
+          },
         },
       },
       x: {
@@ -114,7 +117,7 @@ export const PopulationChart: React.FC = () => {
           display: false,
         },
         ticks: {
-          font: { size: 11, weight: 'bold' as const },
+          font: { size: 11, weight: 'bold' },
         },
       },
     },

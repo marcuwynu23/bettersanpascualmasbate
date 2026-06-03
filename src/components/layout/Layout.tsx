@@ -108,7 +108,8 @@ export const Layout: React.FC<LayoutProps> = ({ children, currentTab, setCurrent
                     isActive ? "bg-app-primary text-white shadow-md" : "text-app-text hover:bg-app-muted-hover"
                   }`}
                 >
-                  <Icon className={`h-6 w-6 ${isActive ? "text-white" : "text-app-primary"}`} />
+                  {React.createElement(Icon, { className: `h-6 w-6 ${isActive ? "text-white" : "text-app-primary"}` })}
+
                   {item.label}
                 </button>
               );
