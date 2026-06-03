@@ -1,5 +1,5 @@
 import type { LucideIcon } from 'lucide-react';
-import { Compass, FileText, Grid, Home as HomeIcon, Menu, Moon, Phone, Sun, X } from 'lucide-react';
+import { Compass, FileText, Grid, Home as HomeIcon, Menu, Phone, X } from 'lucide-react';
 import React from 'react';
 
 interface NavItem {
@@ -11,8 +11,6 @@ interface NavItem {
 interface HeaderProps {
   currentTab: string;
   setCurrentTab: (tab: string) => void;
-  isDarkMode: boolean;
-  setIsDarkMode: (isDark: boolean) => void;
   isMobileMenuOpen: boolean;
   setIsMobileMenuOpen: (isOpen: boolean) => void;
   setIsEmergencyPanelOpen: (isOpen: boolean) => void;
@@ -21,8 +19,6 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({
   currentTab,
   setCurrentTab,
-  isDarkMode,
-  setIsDarkMode,
   isMobileMenuOpen,
   setIsMobileMenuOpen,
   setIsEmergencyPanelOpen,
@@ -90,15 +86,6 @@ export const Header: React.FC<HeaderProps> = ({
             <span className="hidden sm:inline">Emergency Hotlines</span>
           </button>
 
-          {/* Dark Mode Toggle */}
-          <button
-            onClick={() => setIsDarkMode(!isDarkMode)}
-            className="p-2 rounded-none text-white/80 hover:bg-white/10 transition-colors border border-white/10 theme-transition"
-            aria-label="Toggle theme"
-          >
-            {isDarkMode ? <Sun className="h-4 w-4 text-white" /> : <Moon className="h-4 w-4 text-white" />}
-          </button>
-
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -111,26 +98,41 @@ export const Header: React.FC<HeaderProps> = ({
 
       {/* Mobile Navigation Drawer */}
       {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-16 z-30 w-full bg-[#003882] border-b border-white/10 px-4 py-4 space-y-2 animate-fade-in shadow-md theme-transition">
-          {navItems.map((item) => {
-            const Icon = item.icon;
-            const isActive = currentTab === item.id;
-            return (
+        <div className="md:hidden fixed inset-0 top-16 z-50 w-full bg-white animate-fade-in shadow-xl theme-transition overflow-y-auto">
+          <div className="flex flex-col p-4 space-y-2">
+            {navItems.map((item) => {
+              const Icon = item.icon;
+              const isActive = currentTab === item.id;
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => {
+                    setCurrentTab(item.id);
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className={`flex items-center gap-4 w-full px-6 py-5 rounded-none text-lg font-bold transition-all ${
+                    isActive ? "bg-[#0045a0] text-white shadow-md" : "text-[#0045a0] hover:bg-blue-50"
+                  }`}
+                >
+                  <Icon className={`h-6 w-6 ${isActive ? "text-white" : "text-[#0045a0]"}`} />
+                  {item.label}
+                </button>
+              );
+            })}
+            
+            <div className="pt-8 px-4">
               <button
-                key={item.id}
                 onClick={() => {
-                  setCurrentTab(item.id);
+                  setIsEmergencyPanelOpen(true);
                   setIsMobileMenuOpen(false);
                 }}
-                className={`flex items-center gap-3 w-full px-4 py-3 rounded-none text-base font-semibold theme-transition ${
-                  isActive ? "bg-white text-[#0045a0] shadow-md font-semibold" : "text-white/80 hover:text-white hover:bg-white/10"
-                }`}
+                className="flex items-center justify-center gap-3 w-full px-6 py-4 rounded-none text-base font-bold bg-red-600 text-white shadow-lg animate-pulse"
               >
-                <Icon className={`h-5 w-5 theme-transition ${isActive ? "text-[#0045a0]" : "text-white"}`} />
-                {item.label}
+                <Phone className="h-5 w-5" />
+                Emergency Hotlines
               </button>
-            );
-          })}
+            </div>
+          </div>
         </div>
       )}
     </header>

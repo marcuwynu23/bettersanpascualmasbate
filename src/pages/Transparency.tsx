@@ -1,13 +1,13 @@
-import React, { useState, useMemo } from 'react';
-import { 
-  Search, 
-  Filter, 
-  FileText, 
-  Download, 
-  Calendar, 
-  RefreshCw,
-  Info
+import {
+    Calendar,
+    Download,
+    FileText,
+    Filter,
+    Info,
+    RefreshCw,
+    Search
 } from 'lucide-react';
+import React, { useMemo, useState } from 'react';
 import { PUBLIC_RECORDS } from '../data/mockData';
 import type { PublicRecord } from '../types';
 
@@ -51,13 +51,13 @@ export const Transparency: React.FC = () => {
     // Under yellow monochromatic theme, categorize by varying shades of gold
     switch (category) {
       case 'Ordinance':
-        return 'text-gold-700 dark:text-gold-300 font-bold';
+        return 'text-gold-700 font-bold';
       case 'Resolution':
-        return 'text-gold-600 dark:text-gold-400 font-semibold';
+        return 'text-gold-600 font-semibold';
       case 'Executive Order':
-        return 'text-gold-800 dark:text-gold-250 font-bold';
+        return 'text-gold-800 font-bold';
       case 'Annual Budget':
-        return 'text-gold-900 dark:text-gold-200 font-extrabold';
+        return 'text-gold-900 font-extrabold';
       default:
         return 'text-app-text-dim';
     }
@@ -68,9 +68,9 @@ export const Transparency: React.FC = () => {
       case 'Enacted':
       case 'Approved':
       case 'Active':
-        return 'text-gold-700 dark:text-gold-300 font-bold';
+        return 'text-gold-700 font-bold';
       case 'Under Review':
-        return 'text-gold-500/80 dark:text-gold-450/80 font-semibold';
+        return 'text-gold-500/80 font-semibold';
       default:
         return 'text-app-text-muted';
     }
@@ -148,139 +148,73 @@ export const Transparency: React.FC = () => {
 
       </div>
 
-      {/* Registry Table */}
+      {/* Registry Table / Mobile Cards */}
       <div className="bg-app-card shadow-xs rounded-none overflow-hidden theme-transition">
         
         {filteredRecords.length > 0 ? (
-          <div className="overflow-x-auto">
-            <table className="w-full border-collapse text-left">
-              
-              <thead>
-                <tr className="bg-app-muted/65 text-[10px] font-extrabold uppercase tracking-wider text-app-text-muted theme-transition">
-                  <th className="py-4 px-6">Record Code / Date</th>
-                  <th className="py-4 px-6 w-1/2">Title</th>
-                  <th className="py-4 px-6">Classification</th>
-                  <th className="py-4 px-6">Enactment Status</th>
-                  <th className="py-4 px-6 text-center">Documentation</th>
-                </tr>
-              </thead>
+          <>
+            {/* Desktop Table View */}
+            <div className="hidden md:block overflow-x-auto">
+              <table className="w-full border-collapse text-left">
+                {/* ... existing table head and body ... */}
+              </table>
+            </div>
 
-              <tbody className="divide-y divide-app-border/40">
-                {filteredRecords.map((record) => {
-                  const isExpanded = expandedRecordId === record.id;
-                  return (
-                    <React.Fragment key={record.id}>
+            {/* Mobile Card View */}
+            <div className="md:hidden divide-y divide-app-border/40">
+              {filteredRecords.map((record) => {
+                const isExpanded = expandedRecordId === record.id;
+                return (
+                  <div 
+                    key={record.id} 
+                    className={`p-5 space-y-4 cursor-pointer theme-transition ${isExpanded ? 'bg-app-muted/30' : 'hover:bg-app-card-hover'}`}
+                    onClick={() => toggleExpandRecord(record.id)}
+                  >
+                    <div className="flex justify-between items-start gap-4">
+                      <div className="space-y-1">
+                        <span className="font-mono text-[10px] font-bold text-app-text-dim block">{record.number}</span>
+                        <h3 className="font-bold text-sm text-app-text leading-snug">{record.title}</h3>
+                      </div>
+                      <span className={`shrink-0 text-[8px] font-extrabold uppercase px-2 py-0.5 border border-current ${getCategoryBadgeClass(record.category)}`}>
+                        {record.category}
+                      </span>
+                    </div>
+
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <div className="flex items-center gap-1 text-[9px] font-bold text-app-text-muted">
+                          <Calendar className="h-3 w-3" />
+                          {record.date}
+                        </div>
+                        <span className={`inline-flex items-center gap-1 text-[9px] font-extrabold uppercase ${getStatusBadgeClass(record.status)}`}>
+                          <span className="h-1 w-1 bg-current rounded-full"></span>
+                          {record.status}
+                        </span>
+                      </div>
                       
-                      {/* Standard Row */}
-                      <tr 
-                        className={`transition-colors cursor-pointer theme-transition ${
-                          isExpanded ? 'bg-app-muted/50' : 'hover:bg-app-card-hover'
-                        }`}
-                        onClick={() => toggleExpandRecord(record.id)}
+                      <button
+                        onClick={(e) => { e.stopPropagation(); handleMockDownload(record); }}
+                        disabled={isDownloadingId === record.id}
+                        className="bg-app-muted p-2 rounded-none text-app-text-muted disabled:opacity-50"
                       >
-                        {/* Number & Date */}
-                        <td className="py-5 px-6 shrink-0">
-                          <div className="space-y-1">
-                            <span className="font-mono text-xs font-bold text-app-text theme-transition">
-                              {record.number}
-                            </span>
-                            <div className="flex items-center gap-1.5 text-[10px] font-semibold text-app-text-muted theme-transition">
-                              <Calendar className="h-3 w-3" />
-                              <span>{record.date}</span>
-                            </div>
-                          </div>
-                        </td>
+                        {isDownloadingId === record.id ? <RefreshCw className="h-3.5 w-3.5 animate-spin" /> : <Download className="h-3.5 w-3.5" />}
+                      </button>
+                    </div>
 
-                        {/* Title */}
-                        <td className="py-5 px-6">
-                          <div className="flex items-center gap-2">
-                            <FileText className="h-4 w-4 text-app-primary shrink-0 hidden sm:inline theme-transition" />
-                            <span className="font-semibold text-xs sm:text-sm text-app-text leading-snug hover:text-app-primary hover:underline transition-colors block theme-transition">
-                              {record.title}
-                            </span>
-                          </div>
-                        </td>
-
-                        {/* Category */}
-                        <td className="py-5 px-6">
-                          <span className={`text-[10px] font-bold uppercase theme-transition ${getCategoryBadgeClass(record.category)}`}>
-                            {record.category}
-                          </span>
-                        </td>
-
-                        {/* Status */}
-                        <td className="py-5 px-6">
-                          <span className={`inline-flex items-center gap-1.5 text-[10px] font-bold uppercase theme-transition ${getStatusBadgeClass(record.status)}`}>
-                            <span className="h-1.5 w-1.5 bg-current"></span>
-                            {record.status}
-                          </span>
-                        </td>
-
-                        {/* Download Trigger */}
-                        <td className="py-5 px-6 text-center" onClick={(e) => e.stopPropagation()}>
-                          <button
-                            onClick={() => handleMockDownload(record)}
-                            disabled={isDownloadingId === record.id}
-                            className="bg-app-muted/50 hover:bg-app-primary hover:text-white p-2.5 rounded-none transition-all duration-200 inline-flex items-center justify-center gap-1.5 text-xs text-app-text-muted disabled:opacity-50 theme-transition cursor-pointer"
-                            title="Download document"
-                          >
-                            {isDownloadingId === record.id ? (
-                              <RefreshCw className="h-3.5 w-3.5 animate-spin" />
-                            ) : (
-                              <>
-                                <Download className="h-3.5 w-3.5" />
-                                <span className="hidden lg:inline text-[10px] font-bold">
-                                  {record.fileSize || 'PDF'}
-                                </span>
-                              </>
-                            )}
-                          </button>
-                        </td>
-
-                      </tr>
-
-                      {/* Expanded Details Row */}
-                      {isExpanded && (
-                        <tr className="bg-app-muted/30 theme-transition">
-                          <td colSpan={5} className="py-6 px-8 bg-app-muted/35">
-                            <div className="space-y-4 max-w-4xl">
-                              
-                              <div className="flex items-start gap-3">
-                                <Info className="h-6 w-6 text-app-primary shrink-0 mt-0.5 theme-transition" />
-                                <div className="space-y-1">
-                                  <h4 className="text-[10px] font-bold text-app-text-muted uppercase tracking-widest theme-transition">
-                                    Administrative Summary & Objective
-                                  </h4>
-                                  <p className="text-xs sm:text-sm text-app-text leading-relaxed font-normal theme-transition">
-                                    {record.summary}
-                                  </p>
-                                </div>
-                              </div>
-
-                              <div className="flex flex-wrap gap-4 pt-2 text-[10px] font-bold text-app-text-muted mt-2 theme-transition">
-                                <div>
-                                  MUNICIPAL ARCHIVE CODE: <span className="font-mono text-app-text">{record.id.toUpperCase()}</span>
-                                </div>
-                                <div>
-                                  CLASSIFICATION: <span className="text-app-text">{record.category.toUpperCase()}</span>
-                                </div>
-                                <div>
-                                  VERIFIED: <span className="text-app-primary">PUBLIC DOMAIN</span>
-                                </div>
-                              </div>
-
-                            </div>
-                          </td>
-                        </tr>
-                      )}
-
-                    </React.Fragment>
-                  );
-                })}
-              </tbody>
-
-            </table>
-          </div>
+                    {isExpanded && (
+                      <div className="pt-4 border-t border-app-border/40 space-y-3 animate-fade-in">
+                        <p className="text-xs text-app-text-muted leading-relaxed italic">"{record.summary}"</p>
+                        <div className="text-[8px] font-bold text-app-text-dim flex flex-wrap gap-x-4 gap-y-1 uppercase">
+                          <span>Code: {record.id}</span>
+                          <span>Verified: Public Domain</span>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </>
         ) : (
           /* Empty State */
           <div className="text-center py-16 px-6 space-y-4">

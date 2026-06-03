@@ -61,9 +61,9 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
           </div>
  
           {/* Right Column (Editorial Photo Postcard Card) */}
-          <div className="lg:col-span-5 hidden lg:block">
-            <div className="bg-app-card shadow-xs p-3.5 rounded-none rotate-2 hover:rotate-0 transition-transform duration-500 max-w-sm mx-auto theme-transition">
-              <div className="h-64 rounded-none overflow-hidden bg-app-muted/80 theme-transition">
+          <div className="lg:col-span-5 order-first lg:order-last">
+            <div className="bg-app-card shadow-xs p-3.5 rounded-none lg:rotate-2 hover:rotate-0 transition-transform duration-500 max-w-sm mx-auto theme-transition">
+              <div className="h-48 sm:h-64 rounded-none overflow-hidden bg-app-muted/80 theme-transition">
                 <img 
                   src="https://i.pinimg.com/originals/50/3c/f1/503cf1b71025663dbee645d8716133dd.jpg" 
                   alt="Animasola Island Rock Formations" 

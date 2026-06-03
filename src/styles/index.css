@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
-
 :root {
   /* Dynamic Theme Variables - Blue Default */
   --bg-app: #ffffff;
@@ -17,22 +15,6 @@
   --border-muted: #eff6ff;
   --primary-color: #0038a8;
   --primary-hover: #002164;
-}
-
-/* Dark Mode Default - Blue */
-.dark {
-  --bg-app: #000511;
-  --bg-card: #000b21;
-  --bg-card-hover: #001642;
-  --bg-muted: #000b21;
-  --bg-muted-hover: #001642;
-  --text-main: #ffffff;
-  --text-muted: #bcd5ff;
-  --text-dim: #91baff;
-  --border-main: #002164;
-  --border-muted: #001642;
-  --primary-color: #5c92ff;
-  --primary-hover: #91baff;
 }
 
 /* Red Theme Classes (Applied on wrapper depending on tab) */
@@ -51,21 +33,6 @@
   --primary-hover: #8f0b18;
 }
 
-.dark.theme-red {
-  --bg-app: #1a0103;
-  --bg-card: #3a0307;
-  --bg-card-hover: #5d070d;
-  --bg-muted: #3a0307;
-  --bg-muted-hover: #5d070d;
-  --text-main: #ffffff;
-  --text-muted: #ffc7cb;
-  --text-dim: #ffa0a7;
-  --border-main: #760a14;
-  --border-muted: #5d070d;
-  --primary-color: #ff6a75;
-  --primary-hover: #ffa0a7;
-}
-
 /* Yellow Theme Classes (Applied on wrapper depending on tab) */
 .theme-yellow {
   --bg-app: #ffffff;
@@ -81,21 +48,6 @@
   --primary-color: #d8a400;
   /* Darker gold for text accessibility contrast in light mode */
   --primary-hover: #ad7b00;
-}
-
-.dark.theme-yellow {
-  --bg-app: #1f1300;
-  --bg-card: #3d2600;
-  --bg-card-hover: #5c3900;
-  --bg-muted: #3d2600;
-  --bg-muted-hover: #5c3900;
-  --text-main: #ffffff;
-  --text-muted: #fff085;
-  --text-dim: #ffe247;
-  --border-main: #8c5f00;
-  --border-muted: #5c3900;
-  --primary-color: #ffd41a;
-  --primary-hover: #ffe247;
 }
 
 @theme {
@@ -162,15 +114,12 @@
     font-family: var(--font-sans);
     background-color: var(--bg-app);
     color: var(--text-main);
-    transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-      color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-      border-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
 
 /* Custom premium animations and effects */
 .glassmorphism {
-  background: rgba(var(--bg-app), 0.7);
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border-main);
@@ -180,17 +129,9 @@
   box-shadow: 0 0 20px rgba(0, 56, 168, 0.15);
 }
 
-.dark .glow-primary {
-  box-shadow: 0 0 25px rgba(92, 146, 255, 0.25);
-}
-
-/* Dynamic custom transitions for theme-aware elements */
+/* Dynamic custom transitions for UI elements */
 .theme-transition {
-  transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-    color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-    border-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-    fill 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-    stroke 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Scrollbar styles themed monochromatically */

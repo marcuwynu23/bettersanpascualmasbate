@@ -1,5 +1,5 @@
 import { Info } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { EmergencyPanel } from "./EmergencyPanel";
 import { EnvironmentBanner } from "./EnvironmentBanner";
 import { Footer } from "./Footer";
@@ -12,22 +12,12 @@ interface LayoutProps {
 }
 
 export const Layout: React.FC<LayoutProps> = ({ children, currentTab, setCurrentTab }) => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isEmergencyPanelOpen, setIsEmergencyPanelOpen] = useState(false);
 
   // Environment Check
   const envMode = import.meta.env.MODE || "development";
   const showEnvBanner = envMode === "development" || envMode === "staging";
-
-  // Toggle Dark Mode
-  useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [isDarkMode]);
 
   // Map tabs dynamically to our PH Flag monochromatic classes
   const getThemeClass = () => {
@@ -54,8 +44,6 @@ export const Layout: React.FC<LayoutProps> = ({ children, currentTab, setCurrent
       <Header
         currentTab={currentTab}
         setCurrentTab={setCurrentTab}
-        isDarkMode={isDarkMode}
-        setIsDarkMode={setIsDarkMode}
         isMobileMenuOpen={isMobileMenuOpen}
         setIsMobileMenuOpen={setIsMobileMenuOpen}
         setIsEmergencyPanelOpen={setIsEmergencyPanelOpen}

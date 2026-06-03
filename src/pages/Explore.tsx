@@ -35,10 +35,10 @@ export const Explore: React.FC = () => {
 
   const getCategoryColor = (cat: string) => {
     switch (cat) {
-      case 'Nature': return 'text-primary-400 dark:text-primary-300 font-bold';
-      case 'Historical': return 'text-gold-400 dark:text-gold-300 font-bold';
-      case 'Adventure': return 'text-accent-400 dark:text-accent-300 font-bold';
-      case 'Cultural': return 'text-gold-500 dark:text-gold-450 font-bold';
+      case 'Nature': return 'text-primary-400 font-bold';
+      case 'Historical': return 'text-gold-400 font-bold';
+      case 'Adventure': return 'text-accent-400 font-bold';
+      case 'Cultural': return 'text-gold-500 font-bold';
       default: return 'text-app-text-dim';
     }
   };
@@ -175,7 +175,7 @@ export const Explore: React.FC = () => {
                       <OptimizedImage 
                         src={landmark.imageUrl} 
                         alt={landmark.name} 
-                        className="w-full h-full group-hover:scale-105 transition-transform duration-500 brightness-[0.9] dark:brightness-[0.8]"
+                        className="w-full h-full group-hover:scale-105 transition-transform duration-500 brightness-[0.9]"
                       />
                       <div className="absolute top-4 left-4 bg-slate-950/80 px-2 py-0.5 border border-white/10 z-10">
                         <span className={`text-[9px] font-extrabold uppercase tracking-widest ${getCategoryColor(landmark.category)}`}>
@@ -446,8 +446,8 @@ export const Explore: React.FC = () => {
                         </h3>
                         <span className={`inline-flex items-center gap-1 text-[9px] font-bold uppercase tracking-widest px-2.5 py-0.5 rounded-none ${
                           brgy.coastal 
-                            ? 'bg-primary-50 dark:bg-primary-950 text-app-primary' 
-                            : 'bg-gold-50 dark:bg-gold-950 text-gold-600 dark:text-gold-450'
+                            ? 'bg-primary-50 text-app-primary' 
+                            : 'bg-gold-50 text-gold-600'
                         }`}>
                           {brgy.coastal ? <Anchor className="h-2.5 w-2.5" /> : <MapPin className="h-2.5 w-2.5" />}
                           {brgy.coastal ? 'Coastal' : 'Inland'}

@@ -100,7 +100,7 @@ export const SanPascualMap: React.FC = () => {
     };
 
     return (
-      <svg viewBox={`0 0 ${width} ${height}`} className="w-full h-auto drop-shadow-2xl">
+      <svg viewBox={`0 0 ${width} ${height}`} className="w-full h-auto drop-shadow-2xl max-h-[70vh]">
         {/* Water Background */}
         <rect width={width} height={height} className="fill-blue-500/10" />
         
@@ -181,12 +181,12 @@ export const SanPascualMap: React.FC = () => {
           </div>
         </div>
         
-        <div className="w-full h-full flex items-center justify-center bg-blue-50/30 dark:bg-blue-950/10">
+        <div className="w-full h-full flex items-center justify-center bg-blue-50/30">
           {mapContent}
         </div>
 
-        {/* Legend Overlay */}
-        <div className="absolute bottom-4 left-4 flex flex-wrap gap-4 bg-app-card/80 backdrop-blur-sm p-3 border border-app-border theme-transition">
+        {/* Legend Overlay - Hidden on small mobile, shown on larger screens */}
+        <div className="hidden sm:flex absolute bottom-4 left-4 flex-wrap gap-4 bg-app-card/80 backdrop-blur-sm p-3 border border-app-border theme-transition">
           <div className="flex items-center gap-2">
             <div className="h-3 w-3 bg-[#0045a0] border border-blue-900/20"></div>
             <span className="text-[9px] font-bold text-app-text-muted uppercase">Land / Islands</span>
@@ -204,6 +204,21 @@ export const SanPascualMap: React.FC = () => {
 
       {/* Info Panel */}
       <div className="lg:col-span-4 space-y-4">
+        {/* Mobile Legend - shown only on small mobile */}
+        <div className="flex sm:hidden flex-wrap gap-3 bg-app-card p-4 border border-app-border theme-transition">
+          <div className="flex items-center gap-2">
+            <div className="h-3 w-3 bg-[#0045a0] border border-blue-900/20"></div>
+            <span className="text-[8px] font-bold text-app-text-muted uppercase">Land</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="h-3 w-3 bg-blue-500/20 border border-blue-400/30"></div>
+            <span className="text-[8px] font-bold text-app-text-muted uppercase">Sea</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="h-3 w-3 bg-app-primary border-2 border-white"></div>
+            <span className="text-[8px] font-bold text-app-text-muted uppercase">Selected</span>
+          </div>
+        </div>
         {selectedBrgyData ? (
           <div className="bg-app-card border-l-4 border-l-app-primary border border-app-border shadow-md p-6 animate-slide-in theme-transition">
             <div className="flex items-start justify-between">
