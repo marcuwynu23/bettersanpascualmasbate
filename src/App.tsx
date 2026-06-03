@@ -4,6 +4,7 @@ import { Explore } from './pages/Explore';
 import { Home } from './pages/Home';
 import { Infrastructure } from './pages/Infrastructure';
 import { Services } from './pages/Services';
+import { Statistics } from './pages/Statistics';
 import { Transparency } from './pages/Transparency';
 
 function App() {
@@ -19,6 +20,8 @@ function App() {
         return <Services />;
       case 'transparency':
         return <Transparency />;
+      case 'statistics':
+        return <Statistics />;
       case 'explore':
         return <Explore />;
       default:

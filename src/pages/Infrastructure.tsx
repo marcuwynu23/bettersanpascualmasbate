@@ -1,5 +1,5 @@
-import { Calendar, CheckCircle2, Clock, Construction, ExternalLink, HardHat, Info, MapPin, ShieldAlert } from 'lucide-react';
-import React, { useEffect, useState } from 'react';
+import { Calendar, CheckCircle2, Clock, Construction, ExternalLink, Filter, Info, MapPin, Search, ShieldAlert } from 'lucide-react';
+import React, { useEffect, useMemo, useState } from 'react';
 
 interface Project {
   contractId: string;
@@ -31,6 +31,10 @@ export const Infrastructure: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [isLive, setIsLive] = useState<boolean | 'checking'>( 'checking');
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedStatus, setSelectedStatus] = useState<string>('All');
+
+  const statuses = ['All', 'Completed', 'On-Going', 'For Procurement'];
 
   const fetchProjects = async () => {
     setLoading(true);
@@ -98,6 +102,22 @@ export const Infrastructure: React.FC = () => {
     init();
   }, []);
 
+  // Filter projects based on search and status selection
+  const filteredProjects = useMemo(() => {
+    return projects.filter((project) => {
+      const matchesSearch = 
+        project.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        project.contractId.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        (project.contractor && project.contractor.toLowerCase().includes(searchTerm.toLowerCase()));
+      
+      const matchesStatus = 
+        selectedStatus === 'All' || 
+        project.status.toLowerCase() === selectedStatus.toLowerCase();
+
+      return matchesSearch && matchesStatus;
+    });
+  }, [projects, searchTerm, selectedStatus]);
+
   const getStatusColor = (status: string) => {
     switch (status.toLowerCase()) {
       case 'completed':
@@ -119,26 +139,23 @@ export const Infrastructure: React.FC = () => {
   };
 
   return (
-    <div className="space-y-8 pb-12">
+    <div className="space-y-12 py-4 theme-transition">
       {/* Header Section */}
-      <div className="bg-app-primary text-white p-8 sm:p-12 rounded-none shadow-lg theme-transition">
-        <div className="max-w-4xl space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-none bg-white/10 border border-white/20 text-xs font-bold uppercase tracking-widest">
-            <HardHat className="h-4 w-4" />
-            DPWH Transparency Data
-          </div>
-          <h1 className="text-3xl sm:text-5xl font-bold font-display tracking-tight leading-tight">
-            Infrastructure Projects
-          </h1>
-          <p className="text-lg text-white/80 max-w-2xl font-light leading-relaxed">
-            Real-time monitoring of national infrastructure developments in San Pascual, Masbate. Data directly sourced from the DPWH Transparency Portal.
-          </p>
-        </div>
-      </div>
+      <section className="space-y-4 max-w-3xl mx-auto text-center">
+        <span className="text-[10px] font-extrabold uppercase tracking-widest text-app-primary theme-transition block">
+          DPWH Transparency Data
+        </span>
+        <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight font-display text-app-text theme-transition">
+          Infrastructure Projects
+        </h1>
+        <p className="text-sm sm:text-base text-app-text-muted leading-relaxed max-w-2xl mx-auto theme-transition">
+          Real-time monitoring of national infrastructure developments in San Pascual, Masbate. Data directly sourced from the DPWH Transparency Portal.
+        </p>
+      </section>
 
       {/* Stats Overview */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-        <div className="bg-app-card p-6 border border-app-border shadow-sm theme-transition relative overflow-hidden">
+        <div className="bg-app-card/65 p-6 border-b-2 border-app-primary shadow-xs theme-transition relative overflow-hidden">
           <div className="absolute top-0 right-0 p-2">
             {isLive === true ? (
               <span className="flex items-center gap-1 text-[9px] font-bold text-app-primary bg-primary-50 px-1.5 py-0.5 border border-app-border uppercase tracking-tighter">
@@ -157,7 +174,7 @@ export const Infrastructure: React.FC = () => {
             )}
           </div>
           <div className="flex items-center gap-4">
-            <div className="p-3 bg-primary-50 text-app-primary">
+            <div className="p-3 bg-app-muted/50 text-app-primary">
               <Construction className="h-6 w-6" />
             </div>
             <div>
@@ -166,9 +183,9 @@ export const Infrastructure: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="bg-app-card p-6 border border-app-border shadow-sm theme-transition">
+        <div className="bg-app-card/65 p-6 border-b-2 border-app-primary shadow-xs theme-transition">
           <div className="flex items-center gap-4">
-            <div className="p-3 bg-primary-50 text-app-primary">
+            <div className="p-3 bg-app-muted/50 text-app-primary">
               <CheckCircle2 className="h-6 w-6" />
             </div>
             <div>
@@ -179,9 +196,9 @@ export const Infrastructure: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="bg-app-card p-6 border border-app-border shadow-sm theme-transition">
+        <div className="bg-app-card/65 p-6 border-b-2 border-gold-500 shadow-xs theme-transition">
           <div className="flex items-center gap-4">
-            <div className="p-3 bg-gold-50 text-gold-600">
+            <div className="p-3 bg-app-muted/50 text-gold-600">
               <Clock className="h-6 w-6" />
             </div>
             <div>
@@ -194,11 +211,66 @@ export const Infrastructure: React.FC = () => {
         </div>
       </div>
 
+      {/* Control Panel (Search & Filter) - Added to match Transparency design */}
+      <div className="bg-app-card/65 shadow-xs p-5 rounded-none space-y-4 theme-transition">
+        <div className="flex flex-col md:flex-row gap-4 items-stretch md:items-center justify-between">
+          
+          {/* Search bar */}
+          <div className="relative flex-1">
+            <Search className="absolute left-4 top-3.5 h-4 w-4 text-app-text-muted theme-transition" />
+            <input 
+              type="text" 
+              placeholder="Search by description, contract ID, or contractor..." 
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full pl-11 pr-4 py-3 rounded-none bg-app-muted/65 focus:bg-app-muted focus:outline-none focus:ring-2 focus:ring-app-primary/10 transition-all text-sm text-app-text placeholder-app-text-muted/60"
+            />
+          </div>
+
+          {/* Status Dropdown */}
+          <div className="flex items-center gap-2 shrink-0">
+            <span className="text-xs font-semibold text-app-text-muted uppercase tracking-wider hidden sm:inline theme-transition">
+              Filter Status:
+            </span>
+            <div className="relative w-full sm:w-48">
+              <select
+                value={selectedStatus}
+                onChange={(e) => setSelectedStatus(e.target.value)}
+                className="w-full bg-app-muted/65 rounded-none px-4 py-3 text-sm font-semibold text-app-text focus:outline-none focus:ring-2 focus:ring-app-primary/10 cursor-pointer appearance-none theme-transition"
+              >
+                {statuses.map((stat) => (
+                  <option key={stat} value={stat}>{stat}</option>
+                ))}
+              </select>
+              <Filter className="absolute right-4 top-3.5 h-4 w-4 text-app-text-muted pointer-events-none theme-transition" />
+            </div>
+          </div>
+
+        </div>
+
+        {/* Status Pills for wide screens */}
+        <div className="hidden sm:flex flex-wrap gap-2 pt-2 theme-transition">
+          {statuses.map((stat) => (
+            <button
+              key={stat}
+              onClick={() => setSelectedStatus(stat)}
+              className={`px-4.5 py-1.5 rounded-none text-xs font-bold transition-all cursor-pointer theme-transition ${
+                selectedStatus === stat
+                  ? 'bg-app-primary text-white shadow-xs font-semibold'
+                  : 'bg-app-muted/50 text-app-text-muted hover:bg-app-muted/80'
+              }`}
+            >
+              {stat === 'All' ? 'Show All Projects' : stat}
+            </button>
+          ))}
+        </div>
+      </div>
+
       {/* Main Content */}
       <div className="space-y-6">
-        <div className="flex items-center justify-between gap-4 flex-wrap">
-          <h2 className="text-2xl font-bold text-app-text">Project Registry</h2>
-          <div className="flex items-center gap-2 text-xs text-app-text-muted italic">
+        <div className="flex items-center justify-between gap-4 flex-wrap px-1">
+          <h2 className="text-xl font-bold text-app-text">Project Registry</h2>
+          <div className="flex items-center gap-2 text-[10px] text-app-text-muted italic uppercase tracking-wider">
             <Info className="h-3 w-3" />
             Source: DPWH Region V - Masbate 1st DEO
           </div>
@@ -207,7 +279,7 @@ export const Infrastructure: React.FC = () => {
         {loading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[1, 2, 3, 4].map(i => (
-              <div key={i} className="bg-app-card border border-app-border p-6 space-y-4 animate-pulse">
+              <div key={i} className="bg-app-card/50 p-6 space-y-4 animate-pulse">
                 <div className="h-4 bg-app-muted w-1/4"></div>
                 <div className="h-8 bg-app-muted w-full"></div>
                 <div className="h-4 bg-app-muted w-1/2"></div>
@@ -215,24 +287,25 @@ export const Infrastructure: React.FC = () => {
             ))}
           </div>
         ) : error ? (
-          <div className="bg-accent-50 border border-accent-100 p-8 text-center rounded-none">
+          <div className="bg-accent-50 border border-accent-100 p-12 text-center rounded-none shadow-sm">
+            <ShieldAlert className="h-10 w-10 text-app-primary mx-auto mb-4" />
             <p className="text-app-primary font-bold">{error}</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {projects.map((project) => (
-              <div key={project.contractId} className="group bg-app-card border border-app-border hover:border-app-primary hover:shadow-md transition-all duration-300 rounded-none flex flex-col">
+            {filteredProjects.map((project) => (
+              <div key={project.contractId} className="group bg-app-card shadow-xs hover:bg-app-card-hover transition-all duration-300 rounded-none flex flex-col">
                 <div className="p-6 flex-1 space-y-4">
                   <div className="flex items-start justify-between gap-4">
-                    <span className="font-mono text-[10px] font-bold text-app-primary bg-primary-50 px-2 py-0.5 border border-app-border tracking-wider">
+                    <span className="font-mono text-[10px] font-bold text-app-text-dim bg-app-muted/50 px-2 py-0.5 tracking-wider">
                       {project.contractId}
                     </span>
-                    <span className={`text-[10px] font-extrabold uppercase px-2 py-0.5 border ${getStatusColor(project.status)}`}>
+                    <span className={`text-[10px] font-extrabold uppercase px-2 py-0.5 border border-current ${getStatusColor(project.status)}`}>
                       {project.status}
                     </span>
                   </div>
 
-                  <h3 className="font-bold text-app-text leading-snug group-hover:text-app-primary transition-colors">
+                  <h3 className="font-bold text-sm sm:text-base text-app-text leading-snug group-hover:text-app-primary transition-colors">
                     {project.description}
                   </h3>
 
@@ -253,7 +326,7 @@ export const Infrastructure: React.FC = () => {
                         <span className="text-app-text-muted">Physical Progress</span>
                         <span className="text-app-primary">{project.progress}%</span>
                       </div>
-                      <div className="h-2 bg-app-muted rounded-none overflow-hidden">
+                      <div className="h-1 bg-app-muted rounded-none overflow-hidden">
                         <div 
                           className="h-full bg-app-primary transition-all duration-500" 
                           style={{ width: `${project.progress}%` }}
@@ -262,7 +335,7 @@ export const Infrastructure: React.FC = () => {
                     </div>
                   )}
 
-                  <div className="pt-4 border-t border-app-border space-y-3">
+                  <div className="pt-4 border-t border-app-border/40 space-y-3">
                     <div className="flex items-center gap-2 text-xs text-app-text-muted">
                       <MapPin className="h-3.5 w-3.5 text-app-text-dim shrink-0" />
                       <span className="font-medium truncate">{project.location.province}, {project.location.region}</span>
@@ -276,7 +349,7 @@ export const Infrastructure: React.FC = () => {
                   </div>
                 </div>
                 
-                <div className="bg-app-muted/30 px-6 py-3 border-t border-app-border flex items-center justify-between">
+                <div className="bg-app-muted/20 px-6 py-3 border-t border-app-border/40 flex items-center justify-between">
                   <div className="flex items-center gap-4">
                     {project.startDate && (
                       <div className="flex items-center gap-1.5 text-[9px] font-bold text-app-text-dim uppercase tracking-tighter">
@@ -299,38 +372,54 @@ export const Infrastructure: React.FC = () => {
             ))}
           </div>
         )}
+        
+        {/* Empty State for Search */}
+        {!loading && !error && filteredProjects.length === 0 && (
+          <div className="text-center py-16 px-6 space-y-4">
+            <Search className="h-12 w-12 mx-auto text-app-text-muted theme-transition" />
+            <div className="space-y-2">
+              <h3 className="text-base font-bold text-app-text theme-transition">No projects found</h3>
+              <p className="text-xs text-app-text-muted max-w-sm mx-auto leading-normal theme-transition">
+                Your search keyword "{searchTerm}" did not yield any matching projects. Try clearing terms or checking spelling.
+              </p>
+            </div>
+            <button
+              onClick={() => { setSearchTerm(''); setSelectedStatus('All'); }}
+              className="bg-app-primary hover:bg-app-primary-hover text-white text-xs font-semibold px-4 py-2 rounded-none shadow-sm transition-all cursor-pointer theme-transition"
+            >
+              Reset Search Filter
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Connection Notice - Moved below the Registry */}
       {!loading && isLive === false && !error && (
-        <div className="bg-gold-50 border border-gold-100 p-5 rounded-none flex items-start gap-4 shadow-sm">
-          <div className="p-2 bg-gold-100 rounded-none text-gold-600">
+        <div className="bg-app-muted/50 p-6 rounded-none flex items-start gap-4 shadow-xs">
+          <div className="p-2 bg-app-primary/10 text-app-primary">
             <ShieldAlert className="h-5 w-5" />
           </div>
           <div className="space-y-2">
             <p className="text-sm font-bold text-app-text flex items-center gap-2">
               Security Protocol Active
-              <span className="px-1.5 py-0.5 bg-gold-200 text-[9px] uppercase tracking-widest rounded-none">Cloudflare Managed</span>
+              <span className="px-1.5 py-0.5 bg-app-primary/10 text-app-primary text-[9px] uppercase tracking-widest">Cloudflare Managed</span>
             </p>
             <p className="text-xs text-app-text-muted leading-relaxed">
-              The DPWH API has triggered a "Just a moment" security challenge which prevents automated live updates. 
-              To maintain transparency, we are serving data from our <strong>Community Mirror</strong>.
+              The DPWH API has triggered a security challenge. We are serving data from our <strong>Community Mirror</strong> to maintain transparency.
             </p>
-            <div className="flex flex-wrap gap-4 pt-1">
+            <div className="flex flex-wrap gap-4 pt-2">
               <button 
                 onClick={() => fetchProjects()}
-                className="text-[10px] font-bold uppercase tracking-widest text-white bg-app-primary hover:bg-app-primary-hover px-3 py-1.5 transition-colors flex items-center gap-1.5 shadow-sm"
+                className="text-[10px] font-bold uppercase tracking-widest text-white bg-app-primary hover:bg-app-primary-hover px-4 py-2 transition-all shadow-sm"
               >
-                <Clock className="h-3 w-3" />
                 Retry Live Fetch
               </button>
               <a 
                 href="https://api.transparency.dpwh.gov.ph/projects?page=1&limit=50&search=San+Pascual%2C+Masbate&region=Region+V&province=MASBATE"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[10px] font-bold uppercase tracking-widest text-app-primary hover:text-app-primary-hover border border-app-border px-3 py-1.5 transition-colors flex items-center gap-1.5"
+                className="text-[10px] font-bold uppercase tracking-widest text-app-primary hover:text-app-primary-hover border border-app-primary/20 px-4 py-2 transition-all"
               >
-                <ExternalLink className="h-3 w-3" />
                 Open Live Portal
               </a>
             </div>
@@ -339,16 +428,16 @@ export const Infrastructure: React.FC = () => {
       )}
 
       {/* Disclaimer */}
-      <div className="bg-app-muted border border-app-border p-6 space-y-2">
-        <h4 className="text-sm font-bold text-app-primary flex items-center gap-2">
-          <Info className="h-4 w-4" />
-          Data Integrity Note
-        </h4>
-        <p className="text-xs text-app-text-dim leading-relaxed">
-          The information presented here is fetched directly from the Department of Public Works and Highways (DPWH) Infrastructure Monitoring System. 
-          This portal does not store this data; it acts as a secondary transparency mirror for the citizens of San Pascual, Masbate to easily access national government project statuses in their locality.
-        </p>
-      </div>
+      <section className="bg-app-muted/65 p-6 sm:p-8 rounded-none flex flex-col sm:flex-row items-center gap-5 theme-transition">
+        <Info className="h-8 w-8 text-app-primary shrink-0 theme-transition" />
+        <div className="space-y-1">
+          <h4 className="text-sm font-bold text-app-text theme-transition">Data Integrity Note</h4>
+          <p className="text-xs text-app-text-muted leading-relaxed theme-transition">
+            Information fetched directly from the Department of Public Works and Highways (DPWH) Monitoring System. 
+            This portal acts as a secondary transparency mirror for the citizens of San Pascual, Masbate.
+          </p>
+        </div>
+      </section>
     </div>
   );
 };

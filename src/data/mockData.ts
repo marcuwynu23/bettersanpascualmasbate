@@ -1,4 +1,4 @@
-import type { BarangayHistory, EmergencyContact, Landmark, MayorHistory, PublicRecord, ServiceCard, TimelineEvent } from '../types';
+import type { BarangayHistory, EmergencyContact, Landmark, MayorHistory, PopulationYear, PublicRecord, ServiceCard, TimelineEvent } from '../types';
 
 export const CITY_STATS = {
   population: '44,449',
@@ -10,6 +10,15 @@ export const CITY_STATS = {
   location: 'Burias Island, Masbate',
   capitalTitle: 'Cattle Ranching Capital'
 };
+
+export const POPULATION_HISTORY: PopulationYear[] = [
+  { year: 2015, count: 46674 },
+  { year: 2016, count: 46200 },
+  { year: 2017, count: 45800 },
+  { year: 2018, count: 45300 },
+  { year: 2019, count: 44900 },
+  { year: 2020, count: 44449 }
+];
 
 export const EMERGENCY_CONTACTS: EmergencyContact[] = [
   {

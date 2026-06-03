@@ -1,4 +1,4 @@
-import { Compass, FileText, Grid, HardHat, Home as HomeIcon, Info, Phone, X } from "lucide-react";
+import { BarChart3, Compass, FileText, Grid, HardHat, Home as HomeIcon, Info, Phone, X } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import type { NavItem } from "../../types";
 import { EmergencyPanel } from "./EmergencyPanel";
@@ -21,6 +21,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, currentTab, setCurrent
     { id: "infrastructure", label: "Infrastructure", icon: HardHat },
     { id: "services", label: "Services", icon: Grid },
     { id: "transparency", label: "Transparency", icon: FileText },
+    { id: "statistics", label: "Statistics", icon: BarChart3 },
     { id: "explore", label: "Explore & History", icon: Compass },
   ];
 
@@ -53,6 +54,8 @@ export const Layout: React.FC<LayoutProps> = ({ children, currentTab, setCurrent
         return "theme-red";
       case "transparency":
         return "theme-yellow";
+      case "statistics":
+        return "theme-blue";
       case "explore":
         return "theme-blue";
       default:
