@@ -64,8 +64,8 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
             <div className="bg-app-card shadow-xs p-3.5 rounded-none rotate-2 hover:rotate-0 transition-transform duration-500 max-w-sm mx-auto theme-transition">
               <div className="h-64 rounded-none overflow-hidden bg-app-muted/80 theme-transition">
                 <img 
-                  src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80" 
-                  alt="Burias Island Beach" 
+                  src="https://upload.wikimedia.org/wikipedia/commons/d/d1/At_Sombrero_Island%2C_San_Pascual_Burias_Islands_Masbate_Philippines.jpg" 
+                  alt="Sombrero Island Beach" 
                   className="w-full h-full object-cover filter brightness-[0.95]"
                 />
               </div>

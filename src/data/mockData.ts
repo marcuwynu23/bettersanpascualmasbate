@@ -200,7 +200,7 @@ export const LANDMARKS: Landmark[] = [
     id: 'l1',
     name: 'Sombrero Island',
     description: 'San Pascual\'s crown jewel, this uninhabited island is named for its unique hat-like limestone rock formation. It boasts powdery white sand beaches and crystal-clear turquoise waters teeming with diverse marine life.',
-    imageUrl: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80', // Beautiful generic tropical beach
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/4/43/Sombrero_Island%2C_Masbate.jpg',
     location: 'Offshore Northern Burias Island',
     category: 'Nature'
   },
@@ -208,7 +208,7 @@ export const LANDMARKS: Landmark[] = [
     id: 'l2',
     name: 'Tinalisayan Island and Sandbar',
     description: 'Famous for its long, winding sandbar that disappears and reappears with the tides. The island features striking rust-colored sandstone cliffs that provide a dramatic contrast with the surrounding crystal waters.',
-    imageUrl: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80', // Tropical sandbar
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/4/45/Sandbar_at_Tinalisayan_Island_in_San_Pascual%2C_Masbate.jpg',
     location: '15 mins boat ride from Sombrero Island',
     category: 'Adventure'
   },
@@ -216,7 +216,7 @@ export const LANDMARKS: Landmark[] = [
     id: 'l3',
     name: 'Animasola Island',
     description: 'An geological wonder featuring breathtaking monolithic rock formations with horizontal layers of ancient sedimentary stone. Natural tidal pools offer a serene place to swim and marvel at the raw beauty of nature.',
-    imageUrl: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=800&q=80', // Striking rocks
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/9/91/Animasola_Island_Rock_Formation_03.jpg',
     location: 'East Coast of San Pascual',
     category: 'Nature'
   },
@@ -224,7 +224,7 @@ export const LANDMARKS: Landmark[] = [
     id: 'l4',
     name: 'San Pascual Baylon Parish Church',
     description: 'A historic church considered one of the oldest in Bicol and Masbate, founded during the Spanish Galleon era in 1586. It stands as a spiritual anchor for the town and has withstood centuries of typhoons and pirate raids.',
-    imageUrl: 'https://images.unsplash.com/photo-1548625361-155de6c7f5f8?auto=format&fit=crop&w=800&q=80', // Spanish old building/church look
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/f/fb/An_sentro_San_Pascual_Masbate.jpg',
     location: 'Poblacion, San Pascual',
     category: 'Historical'
   },
@@ -232,7 +232,7 @@ export const LANDMARKS: Landmark[] = [
     id: 'l5',
     name: 'The Swiftlet House (Balinsasayaw)',
     description: 'A fascinating structure that is home to approximately 80,000 swiftlets (locally known as balinsasayaw). The birds reside in harmony inside the house, creating a unique urban ecological phenomenon where nests are protected.',
-    imageUrl: 'https://images.unsplash.com/photo-1552084117-56a987666449?auto=format&fit=crop&w=800&q=80', // Nature sanctuary
+    imageUrl: 'https://images.unsplash.com/photo-1552084117-56a987666449?auto=format&fit=crop&w=800&q=80', // Keeping this as it looks similar to the sanctuary description until a direct URL is found
     location: 'Poblacion, San Pascual',
     category: 'Cultural'
   }
