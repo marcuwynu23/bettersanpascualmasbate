@@ -1,5 +1,5 @@
+import { AlertTriangle, Phone, ShieldAlert, X } from 'lucide-react';
 import React from 'react';
-import { ShieldAlert, X, AlertTriangle, Phone } from 'lucide-react';
 import { EMERGENCY_CONTACTS } from '../../data/mockData';
 
 interface EmergencyPanelProps {
@@ -11,7 +11,7 @@ export const EmergencyPanel: React.FC<EmergencyPanelProps> = ({ isOpen, setIsOpe
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 overflow-hidden" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
+    <div className="fixed inset-0 z-[200] overflow-hidden" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
       <div className="absolute inset-0 overflow-hidden">
         {/* Backdrop overlay */}
         <div className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity" onClick={() => setIsOpen(false)} />

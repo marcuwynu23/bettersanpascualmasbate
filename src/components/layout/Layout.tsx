@@ -1,5 +1,5 @@
 import { Info } from "lucide-react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { EmergencyPanel } from "./EmergencyPanel";
 import { EnvironmentBanner } from "./EnvironmentBanner";
 import { Footer } from "./Footer";
@@ -18,6 +18,20 @@ export const Layout: React.FC<LayoutProps> = ({ children, currentTab, setCurrent
   // Environment Check
   const envMode = import.meta.env.MODE || "development";
   const showEnvBanner = envMode === "development" || envMode === "staging";
+
+  // Prevent scroll when mobile menu or emergency panel is open
+  useEffect(() => {
+    if (isMobileMenuOpen || isEmergencyPanelOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [isMobileMenuOpen, isEmergencyPanelOpen]);
+
+  // Close mobile menu when tab changes
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [currentTab]);
 
   // Map tabs dynamically to our PH Flag monochromatic classes
   const getThemeClass = () => {
@@ -52,15 +66,15 @@ export const Layout: React.FC<LayoutProps> = ({ children, currentTab, setCurrent
       />
 
       {/* Global Top Non-Official Disclaimer */}
-      <div className="bg-app-primary text-white text-center py-2 px-4 text-xs font-semibold tracking-wide flex items-center justify-center gap-2 shadow-inner theme-transition">
-        <Info className="h-3.5 w-3.5 shrink-0" />
-        <span>Non-official transparency portal. Not affiliated with the LGU.</span>
+      <div className="bg-app-primary text-white text-center py-2 px-4 text-[10px] sm:text-xs font-semibold tracking-wide flex items-center justify-center gap-2 shadow-inner theme-transition">
+        <Info className="h-3 w-3 sm:h-3.5 sm:w-3.5 shrink-0" />
+        <span className="leading-tight">Non-official transparency portal. Not affiliated with the LGU.</span>
       </div>
 
       <EmergencyPanel isOpen={isEmergencyPanelOpen} setIsOpen={setIsEmergencyPanelOpen} />
 
       {/* Main Page Content */}
-      <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8">
+      <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
         <div className="animate-fade-in">{children}</div>
       </main>
 

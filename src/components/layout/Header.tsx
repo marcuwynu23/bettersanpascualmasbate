@@ -32,7 +32,7 @@ export const Header: React.FC<HeaderProps> = ({
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-[#0045a0] border-b border-white/10 backdrop-blur-md theme-transition">
+    <header className="sticky top-0 z-[100] w-full bg-app-primary border-b border-white/10 backdrop-blur-md theme-transition">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Logo / Branding */}
         <div 
@@ -48,14 +48,6 @@ export const Header: React.FC<HeaderProps> = ({
             className="h-9 w-auto object-contain brightness-0 invert"
             loading="eager"
           />
-          <div className="flex flex-col">
-            <span className="font-sans font-bold text-sm sm:text-base tracking-tight text-white leading-none">
-              BetterSanPascual
-            </span>
-            <span className="text-[8px] font-semibold text-white/70 tracking-widest uppercase mt-0.5">
-              Masbate Transparency
-            </span>
-          </div>
         </div>
 
         {/* Desktop Navigation */}
@@ -68,10 +60,10 @@ export const Header: React.FC<HeaderProps> = ({
                 key={item.id}
                 onClick={() => setCurrentTab(item.id)}
                 className={`flex items-center gap-2 px-3 py-2 rounded-none text-xs font-semibold theme-transition ${
-                  isActive ? "bg-white text-[#0045a0] shadow-sm" : "text-white/80 hover:text-white hover:bg-white/10"
+                  isActive ? "bg-white text-app-primary shadow-sm" : "text-white/80 hover:text-white hover:bg-white/10"
                 }`}
               >
-                <Icon className={`h-3.5 w-3.5 theme-transition ${isActive ? "text-[#0045a0]" : "text-white"}`} />
+                <Icon className={`h-3.5 w-3.5 theme-transition ${isActive ? "text-app-primary" : "text-white"}`} />
                 {item.label}
               </button>
             );
@@ -96,7 +88,7 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="p-2 rounded-none text-white hover:bg-white/10 transition-colors border border-white/10 md:hidden z-[60]"
+            className="p-2 rounded-none text-white hover:bg-white/10 transition-colors border border-white/10 md:hidden z-[110]"
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -106,7 +98,7 @@ export const Header: React.FC<HeaderProps> = ({
 
       {/* Mobile Navigation Drawer */}
       {isMobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 z-50 w-full bg-white animate-fade-in theme-transition overflow-y-auto pt-16">
+        <div className="md:hidden fixed inset-0 z-[100] w-full bg-app-bg animate-fade-in theme-transition overflow-y-auto pt-16">
           <div className="flex flex-col p-4 space-y-2">
             {navItems.map((item) => {
               const Icon = item.icon;
@@ -119,10 +111,10 @@ export const Header: React.FC<HeaderProps> = ({
                     setIsMobileMenuOpen(false);
                   }}
                   className={`flex items-center gap-4 w-full px-6 py-5 rounded-none text-lg font-bold transition-all ${
-                    isActive ? "bg-[#0045a0] text-white shadow-md" : "text-[#0045a0] hover:bg-blue-50"
+                    isActive ? "bg-app-primary text-white shadow-md" : "text-app-text hover:bg-app-muted-hover"
                   }`}
                 >
-                  <Icon className={`h-6 w-6 ${isActive ? "text-white" : "text-[#0045a0]"}`} />
+                  <Icon className={`h-6 w-6 ${isActive ? "text-white" : "text-app-primary"}`} />
                   {item.label}
                 </button>
               );
