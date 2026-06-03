@@ -24,6 +24,8 @@ export const Layout: React.FC<LayoutProps> = ({ children, currentTab, setCurrent
     switch (currentTab) {
       case "home":
         return "theme-blue";
+      case "infrastructure":
+        return "theme-blue";
       case "services":
         return "theme-red";
       case "transparency":

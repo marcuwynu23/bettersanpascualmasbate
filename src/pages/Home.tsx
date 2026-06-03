@@ -4,6 +4,7 @@ import {
   CheckCircle,
   Compass,
   FileText,
+  HardHat,
   MapPin,
   ShieldAlert,
   Users
@@ -21,40 +22,40 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
     <div className="space-y-16 py-4 theme-transition">
       
       {/* 1. Clean Editorial Hero Section */}
-      <section className="relative overflow-hidden rounded-none bg-app-muted/60 shadow-xs p-6 sm:p-10 md:p-14 theme-transition">
+      <section className="relative overflow-hidden rounded-none bg-app-muted/60 shadow-xs p-8 sm:p-16 md:p-24 theme-transition">
         
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-16 items-center">
           
           {/* Left Column (Typographic Content) */}
-          <div className="lg:col-span-7 space-y-6 text-left">
+          <div className="lg:col-span-7 space-y-8 text-left">
             
             <span className="text-[10px] font-extrabold uppercase tracking-widest text-app-text-dim theme-transition">
               Independent Community Portal
             </span>
             
-            <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight leading-[1.1] text-app-text font-sans theme-transition">
-              The independent directory and transparency portal for <span className="text-app-text border-b-2 border-app-primary font-bold theme-transition">San Pascual, Masbate</span>
+            <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight leading-[1.05] text-app-text font-sans theme-transition">
+              The independent directory and transparency portal for <span className="text-app-text border-b-4 border-app-primary font-bold theme-transition">San Pascual, Masbate</span>
             </h1>
             
-            <p className="text-sm sm:text-base text-app-text-muted leading-relaxed font-light theme-transition">
-              Directories, municipal ordinances, budgets, and eco-tourism guides for Burias Island. Open public data for everyone.
+            <p className="text-base sm:text-lg text-app-text-muted leading-relaxed font-light theme-transition max-w-2xl">
+              Real-time infrastructure monitoring, municipal ordinances, budgets, and eco-tourism guides for Burias Island. Open public data for everyone.
             </p>
  
-            <div className="flex flex-wrap gap-3 pt-2">
+            <div className="flex flex-wrap gap-4 pt-4">
               <button
                 onClick={() => setCurrentTab('transparency')}
-                className="bg-app-primary text-white hover:bg-app-primary-hover font-semibold px-5 py-3 rounded-none flex items-center gap-2 shadow-sm transition-all text-xs sm:text-sm theme-transition cursor-pointer"
+                className="bg-app-primary text-white hover:bg-app-primary-hover font-bold px-8 py-4 rounded-none flex items-center gap-2 shadow-md transition-all text-sm sm:text-base theme-transition cursor-pointer"
               >
-                <FileText className="h-4.5 w-4.5 shrink-0" />
+                <FileText className="h-5 w-5 shrink-0" />
                 Explore Public Records
                 <ArrowRight className="h-4 w-4 shrink-0" />
               </button>
               <button
-                onClick={() => setCurrentTab('explore')}
-                className="bg-app-card hover:bg-app-muted/70 text-app-text font-semibold px-5 py-3 rounded-none flex items-center gap-2 transition-all text-xs sm:text-sm theme-transition cursor-pointer"
+                onClick={() => setCurrentTab('infrastructure')}
+                className="bg-white text-app-primary border-2 border-app-primary hover:bg-app-muted/50 font-bold px-8 py-4 rounded-none flex items-center gap-2 transition-all text-sm sm:text-base theme-transition cursor-pointer"
               >
-                <Compass className="h-4.5 w-4.5 shrink-0 text-app-primary theme-transition" />
-                Landmarks Directory
+                <HardHat className="h-5 w-5 shrink-0" />
+                Infrastructure Tracker
               </button>
             </div>
  
