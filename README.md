@@ -59,7 +59,7 @@ BetterSanPascualMasbate serves as an informational hub to bridge the gap in publ
 
 ## Contributing and Technical Setup
 
-If you are a developer or volunteer researcher looking to contribute, please refer to the **[Contributing Guidelines (CONTRIBUTING.md)](CONTRIBUTING.md)** for:
+If you are a developer or volunteer researcher looking to contribute, please refer to the **[Contributing Guidelines](CONTRIBUTING.md)** for:
 - Local installation guides and tech stack details.
 - Folder architecture and coding conventions.
 - Pull request requirements and reporting bugs.
