@@ -30,14 +30,28 @@ export const Header: React.FC<HeaderProps> = ({
 
     const fetchVisitorCount = async () => {
       const isProduction = window.location.hostname === PRODUCTION_DOMAIN;
+      const SESSION_KEY = 'portal_visited_session';
 
       try {
         if (isProduction) {
-          // Increment and get the new count only in production using CounterAPI.dev
-          const response = await fetch(`https://api.counterapi.dev/v1/${NAMESPACE}/${KEY}/up`);
-          const data = await response.json();
-          if (data && typeof data.count === 'number') {
-            setVisitorCount(data.count);
+          // Check if user has already visited in this session
+          const hasVisited = sessionStorage.getItem(SESSION_KEY);
+          
+          if (!hasVisited) {
+            // Unique visit: Increment and get the new count using CounterAPI.dev
+            const response = await fetch(`https://api.counterapi.dev/v1/${NAMESPACE}/${KEY}/up`);
+            const data = await response.json();
+            if (data && typeof data.count === 'number') {
+              setVisitorCount(data.count);
+              sessionStorage.setItem(SESSION_KEY, 'true');
+            }
+          } else {
+            // Not a unique visit in this session: just fetch current count
+            const response = await fetch(`https://api.counterapi.dev/v1/${NAMESPACE}/${KEY}`);
+            const data = await response.json();
+            if (data && typeof data.count === 'number') {
+              setVisitorCount(data.count);
+            }
           }
         } else {
           // In development/localhost, just get the count without incrementing
