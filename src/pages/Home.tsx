@@ -9,6 +9,7 @@ import {
   Users
 } from 'lucide-react';
 import React from 'react';
+import { SanPascualMap } from '../components/common/SanPascualMap';
 import { CITY_STATS } from '../data/mockData';
 
 interface HomeProps {
@@ -136,7 +137,6 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
               <span className="text-xs font-semibold text-app-text-muted uppercase tracking-wider block mt-1 theme-transition">
                 Ecotourism Jewels
               </span>
-              {/* @ts-ignore - Dynamic property added for community requested details */}
               <span className="text-[9px] font-medium text-app-text-dim mt-2 block theme-transition leading-tight">
                 {CITY_STATS.majorIslands}
               </span>
@@ -159,7 +159,20 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
         </div>
       </section>
 
-      {/* 3. Quick Access Grid */}
+      {/* 3. Interactive Municipal Map */}
+      <section className="space-y-6">
+        <div className="text-center md:text-left max-w-xl">
+          <h2 className="text-2xl sm:text-3xl font-bold font-display tracking-tight text-app-text theme-transition">
+            Municipal Geography
+          </h2>
+          <p className="text-sm text-app-text-muted mt-2 theme-transition">
+            Explore the 22 barangays of San Pascual. Hover over the map to identify specific coastal and upland administrative boundaries.
+          </p>
+        </div>
+        <SanPascualMap />
+      </section>
+
+      {/* 4. Quick Access Grid */}
       <section className="space-y-6">
         <div className="text-center md:text-left max-w-xl">
           <h2 className="text-2xl sm:text-3xl font-bold font-display tracking-tight text-app-text theme-transition">
@@ -235,7 +248,7 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
         </div>
       </section>
 
-      {/* 4. Transparency Highlight / Mission Statement */}
+      {/* 5. Transparency Highlight / Mission Statement */}
       <section className="bg-app-muted/65 shadow-xs p-8 sm:p-12 rounded-none flex flex-col lg:flex-row items-center gap-8 theme-transition">
         <div className="space-y-4 lg:w-2/3">
           <span className="text-[10px] font-extrabold uppercase tracking-wider text-app-text-dim theme-transition">
