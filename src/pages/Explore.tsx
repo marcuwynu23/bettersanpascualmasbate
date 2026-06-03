@@ -1,19 +1,19 @@
 import {
-    AlertCircle,
-    Anchor,
-    ArrowRight,
-    Award,
-    Building,
-    ChevronDown,
-    ChevronUp,
-    Compass,
-    History,
-    MapPin,
-    Search,
-    Shield,
-    Sunset,
-    User,
-    Users
+  AlertCircle,
+  Anchor,
+  ArrowRight,
+  Award,
+  Building,
+  ChevronDown,
+  ChevronUp,
+  Compass,
+  History,
+  MapPin,
+  Search,
+  Shield,
+  Sunset,
+  User,
+  Users
 } from 'lucide-react';
 import React, { useState } from 'react';
 import { OptimizedImage } from '../components/common/OptimizedImage';
@@ -535,12 +535,12 @@ export const Explore: React.FC = () => {
                     >
                       {isExpanded ? (
                         <>
-                          <span>HIDE HISTORY & LEADERS</span>
+                          <span>HIDE HISTORY</span>
                           <ChevronUp className="h-3.5 w-3.5 text-app-primary" />
                         </>
                       ) : (
                         <>
-                          <span>SHOW HISTORY & PAST LEADERS</span>
+                          <span>SHOW HISTORY</span>
                           <ChevronDown className="h-3.5 w-3.5 text-app-primary" />
                         </>
                       )}
