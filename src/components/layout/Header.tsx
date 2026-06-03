@@ -51,7 +51,9 @@ export const Header: React.FC<HeaderProps> = ({
                   isActive ? "bg-white text-app-primary shadow-sm" : "text-white/80 hover:text-white hover:bg-white/10"
                 }`}
               >
-                <Icon className={`h-3.5 w-3.5 theme-transition ${isActive ? "text-app-primary" : "text-white"}`} />
+                {React.createElement(Icon, { 
+                  className: `h-3.5 w-3.5 theme-transition ${isActive ? "text-app-primary" : "text-white"}` 
+                })}
                 {item.label}
               </button>
             );

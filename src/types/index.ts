@@ -68,7 +68,7 @@ export interface BarangayHistory {
 export interface NavItem {
   id: string;
   label: string;
-  icon: any; // Using any for LucideIcon to avoid circular dependency or import issues in types
+  icon: never; // Using any for LucideIcon to avoid circular dependency or import issues in types
 }
 
 export interface PopulationYear {

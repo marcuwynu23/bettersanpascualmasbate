@@ -106,7 +106,7 @@ export const PopulationChart: React.FC = () => {
         },
         ticks: {
           font: { size: 11 },
-          callback: (value: any) => value.toLocaleString(),
+          callback: (value: number) => value.toLocaleString(),
         },
       },
       x: {
