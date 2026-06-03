@@ -4,7 +4,7 @@ export const CITY_STATS = {
   population: '44,641',
   populationYear: '2024',
   barangays: '22',
-  craterLakes: '0', 
+  majorIslands: 'Sombrero, Tinalisayan, Animasola',
   islandsCount: '3 Major Islands',
   foundedYear: '1586',
   location: 'Burias Island, Masbate',
@@ -117,7 +117,7 @@ export const SERVICE_CARDS: ServiceCard[] = [
       'Free distribution of high-yield coconut seedlings',
       'Fisherfolk boat registration and fuel subsidies',
       'Livestock vaccination and cattle management support',
-      'Registration and safety briefings for island hopping tours'
+      'Registration and safety briefings for island hopping tours (Sombrero, Tinalisayan, Animasola)'
     ]
   }
 ];
