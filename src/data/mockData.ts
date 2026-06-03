@@ -216,7 +216,7 @@ export const LANDMARKS: Landmark[] = [
     id: 'l3',
     name: 'Animasola Island',
     description: 'An geological wonder featuring breathtaking monolithic rock formations with horizontal layers of ancient sedimentary stone. Natural tidal pools offer a serene place to swim and marvel at the raw beauty of nature.',
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/9/91/Animasola_Island_Rock_Formation_03.jpg',
+    imageUrl: 'https://san-andres.link/wp-content/uploads/2018/07/pulo9-300x225.jpg',
     location: 'East Coast of San Pascual',
     category: 'Nature'
   },
