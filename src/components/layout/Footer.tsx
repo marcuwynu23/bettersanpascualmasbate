@@ -9,12 +9,12 @@ export const Footer: React.FC = () => {
           <div className="space-y-4">
             <div className="flex items-center gap-2.5">
               <img 
-                src="/logo.png" 
+                src="/logo.svg" 
                 alt="BetterSanPascualMasbate Logo" 
-                className="h-8 w-auto object-contain brightness-0 invert" 
+                className="h-8 w-auto object-contain" 
                 loading="lazy"
               />
-              <span className="font-sans font-bold text-lg text-white theme-transition">BetterSanPascualMasbate</span>
+           
             </div>
             <p className="text-xs leading-relaxed text-white/60 theme-transition max-w-sm">
               A volunteer-driven, non-official community directory and transparency registry dedicated to making public information accessible and

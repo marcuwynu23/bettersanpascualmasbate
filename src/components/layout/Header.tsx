@@ -36,19 +36,12 @@ export const Header: React.FC<HeaderProps> = ({
         {/* Logo / Branding */}
         <div className="flex items-center gap-2 cursor-pointer group" onClick={() => setCurrentTab("home")}>
           <img
-            src="/logo.png"
+            src="/logo.svg"
             alt="BetterSanPascualMasbate Logo"
-            className="h-9 w-auto object-contain group-hover:scale-102 transition-transform brightness-0 invert"
+            className="h-9 w-auto object-contain"
             loading="eager"
           />
-          <div className="flex flex-col">
-            <span className="font-sans font-bold text-base sm:text-lg tracking-tight text-white leading-none theme-transition">
-              BetterSanPascualMasbate
-            </span>
-            <span className="text-[9px] font-semibold text-white/70 tracking-widest uppercase mt-0.5 theme-transition">
-              Transparency Portal
-            </span>
-          </div>
+        
         </div>
 
         {/* Desktop Navigation */}
