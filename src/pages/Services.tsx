@@ -81,10 +81,10 @@ export const Services: React.FC = () => {
           <button
             key={sector}
             onClick={() => setSelectedSector(sector)}
-            className={`px-4 py-2 rounded-none text-xs font-semibold border transition-all duration-200 cursor-pointer theme-transition ${
+            className={`px-4 py-2 rounded-none text-xs font-bold transition-all duration-200 cursor-pointer theme-transition ${
               selectedSector === sector
-                ? 'bg-app-primary text-white border-app-primary shadow-sm font-semibold'
-                : 'bg-app-card hover:bg-app-card-hover text-app-text-muted border-app-border'
+                ? 'bg-app-primary text-white shadow-xs font-semibold'
+                : 'bg-app-muted/50 text-app-text-muted hover:bg-app-muted/85'
             }`}
           >
             {sector}
@@ -97,7 +97,7 @@ export const Services: React.FC = () => {
         {filteredCards.map((card) => (
           <div 
             key={card.id}
-            className="bg-app-card border border-app-border p-6 sm:p-8 rounded-none flex flex-col justify-between theme-transition"
+            className="bg-app-card shadow-xs p-6 sm:p-8 rounded-none flex flex-col justify-between theme-transition hover:shadow-sm"
           >
             <div>
               <div className="flex items-center gap-3">
@@ -118,7 +118,7 @@ export const Services: React.FC = () => {
                 {card.description}
               </p>
 
-              <div className="mt-6 pt-6 border-t border-app-border space-y-3 theme-transition">
+              <div className="mt-6 pt-4 space-y-3 theme-transition">
                 <h4 className="text-[10px] font-bold text-app-text-muted uppercase tracking-wider theme-transition">
                   Available Program Services:
                 </h4>
@@ -133,7 +133,7 @@ export const Services: React.FC = () => {
               </div>
             </div>
 
-            <div className="mt-8 pt-4 flex items-center justify-between text-xs font-semibold text-app-text-muted border-t border-app-border theme-transition">
+            <div className="mt-8 pt-2 flex items-center justify-between text-xs font-semibold text-app-text-muted theme-transition">
               <span>San Pascual Municipal Office</span>
               <span className="text-app-primary flex items-center gap-1 theme-transition">
                 <ShieldCheck className="h-3.5 w-3.5" />
@@ -145,7 +145,7 @@ export const Services: React.FC = () => {
       </div>
 
       {/* Official Portals Gateway Component */}
-      <section className="bg-app-muted border border-app-border rounded-none p-6 sm:p-10 space-y-8 theme-transition">
+      <section className="bg-app-muted/65 shadow-xs rounded-none p-6 sm:p-10 space-y-8 theme-transition">
         
         <div className="flex flex-col sm:flex-row sm:items-center gap-4 justify-between">
           <div className="max-w-xl">
@@ -169,7 +169,7 @@ export const Services: React.FC = () => {
               href={gate.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group bg-app-card border border-app-border p-5 rounded-none transition-all duration-300 hover:border-app-primary block theme-transition"
+              className="group bg-app-card shadow-xs p-5 rounded-none transition-all duration-300 hover:bg-app-card-hover block theme-transition"
             >
               <div className="flex items-start justify-between gap-4">
                 <div className="space-y-1">
@@ -189,7 +189,7 @@ export const Services: React.FC = () => {
           ))}
         </div>
 
-        <div className="bg-app-card border border-app-border p-4 rounded-none text-center text-xs text-app-text-muted leading-normal max-w-3xl mx-auto theme-transition">
+        <div className="bg-app-card shadow-xs p-4 rounded-none text-center text-xs text-app-text-muted leading-normal max-w-3xl mx-auto theme-transition">
           <strong>Important:</strong> Ensure URLs have valid SSL certificates (lock icon) when submitting information.
         </div>
 

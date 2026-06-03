@@ -93,7 +93,7 @@ export const Transparency: React.FC = () => {
       </section>
 
       {/* Control Panel (Search & Filter) */}
-      <div className="bg-app-card border border-app-border p-5 rounded-none space-y-4 theme-transition">
+      <div className="bg-app-card/65 shadow-xs p-5 rounded-none space-y-4 theme-transition">
         <div className="flex flex-col md:flex-row gap-4 items-stretch md:items-center justify-between">
           
           {/* Search bar */}
@@ -104,7 +104,7 @@ export const Transparency: React.FC = () => {
               placeholder="Search by keywords, ordinance numbers, or categories..." 
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-11 pr-4 py-3 rounded-none border border-app-border bg-app-muted focus:bg-app-card focus:outline-none focus:ring-2 focus:ring-app-primary/10 focus:border-app-primary transition-all text-sm text-app-text placeholder-app-text-muted/60"
+              className="w-full pl-11 pr-4 py-3 rounded-none bg-app-muted/65 focus:bg-app-muted focus:outline-none focus:ring-2 focus:ring-app-primary/10 transition-all text-sm text-app-text placeholder-app-text-muted/60"
             />
           </div>
 
@@ -117,7 +117,7 @@ export const Transparency: React.FC = () => {
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="w-full bg-app-muted border border-app-border rounded-none px-4 py-3 text-sm font-semibold text-app-text focus:outline-none focus:ring-2 focus:ring-app-primary/10 focus:border-app-primary cursor-pointer appearance-none theme-transition"
+                className="w-full bg-app-muted/65 rounded-none px-4 py-3 text-sm font-semibold text-app-text focus:outline-none focus:ring-2 focus:ring-app-primary/10 cursor-pointer appearance-none theme-transition"
               >
                 {categories.map((cat) => (
                   <option key={cat} value={cat}>{cat}</option>
@@ -130,15 +130,15 @@ export const Transparency: React.FC = () => {
         </div>
 
         {/* Categories Pills for wide screens */}
-        <div className="hidden sm:flex flex-wrap gap-2 pt-2 border-t border-app-border theme-transition">
+        <div className="hidden sm:flex flex-wrap gap-2 pt-2 theme-transition">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-3 py-1.5 rounded-none text-xs font-semibold border transition-all cursor-pointer theme-transition ${
+              className={`px-4.5 py-1.5 rounded-none text-xs font-bold transition-all cursor-pointer theme-transition ${
                 selectedCategory === cat
-                  ? 'bg-app-primary text-white border-app-primary shadow-sm font-semibold'
-                  : 'bg-app-card hover:bg-app-card-hover border-app-border text-app-text-muted'
+                  ? 'bg-app-primary text-white shadow-xs font-semibold'
+                  : 'bg-app-muted/50 text-app-text-muted hover:bg-app-muted/80'
               }`}
             >
               {cat === 'All' ? 'Show All Records' : `${cat}s`}
@@ -149,14 +149,14 @@ export const Transparency: React.FC = () => {
       </div>
 
       {/* Registry Table */}
-      <div className="bg-app-card border border-app-border rounded-none overflow-hidden theme-transition">
+      <div className="bg-app-card shadow-xs rounded-none overflow-hidden theme-transition">
         
         {filteredRecords.length > 0 ? (
           <div className="overflow-x-auto">
             <table className="w-full border-collapse text-left">
               
               <thead>
-                <tr className="bg-app-muted border-b border-app-border text-[10px] font-extrabold uppercase tracking-wider text-app-text-muted theme-transition">
+                <tr className="bg-app-muted/65 text-[10px] font-extrabold uppercase tracking-wider text-app-text-muted theme-transition">
                   <th className="py-4 px-6">Record Code / Date</th>
                   <th className="py-4 px-6 w-1/2">Title</th>
                   <th className="py-4 px-6">Classification</th>
@@ -165,7 +165,7 @@ export const Transparency: React.FC = () => {
                 </tr>
               </thead>
 
-              <tbody className="divide-y divide-app-border">
+              <tbody className="divide-y divide-app-border/40">
                 {filteredRecords.map((record) => {
                   const isExpanded = expandedRecordId === record.id;
                   return (
@@ -221,7 +221,7 @@ export const Transparency: React.FC = () => {
                           <button
                             onClick={() => handleMockDownload(record)}
                             disabled={isDownloadingId === record.id}
-                            className="bg-app-muted hover:bg-app-primary hover:text-white border border-app-border p-2.5 rounded-none transition-all duration-200 inline-flex items-center justify-center gap-1.5 text-xs text-app-text-muted disabled:opacity-50 theme-transition cursor-pointer"
+                            className="bg-app-muted/50 hover:bg-app-primary hover:text-white p-2.5 rounded-none transition-all duration-200 inline-flex items-center justify-center gap-1.5 text-xs text-app-text-muted disabled:opacity-50 theme-transition cursor-pointer"
                             title="Download document"
                           >
                             {isDownloadingId === record.id ? (
@@ -241,8 +241,8 @@ export const Transparency: React.FC = () => {
 
                       {/* Expanded Details Row */}
                       {isExpanded && (
-                        <tr className="bg-app-muted/30 border-t border-b border-app-border theme-transition">
-                          <td colSpan={5} className="py-6 px-8 border-t border-b border-app-border">
+                        <tr className="bg-app-muted/30 theme-transition">
+                          <td colSpan={5} className="py-6 px-8 bg-app-muted/35">
                             <div className="space-y-4 max-w-4xl">
                               
                               <div className="flex items-start gap-3">
@@ -257,7 +257,7 @@ export const Transparency: React.FC = () => {
                                 </div>
                               </div>
 
-                              <div className="flex flex-wrap gap-4 pt-2 text-[10px] font-bold text-app-text-muted border-t border-app-border/40 mt-4 theme-transition">
+                              <div className="flex flex-wrap gap-4 pt-2 text-[10px] font-bold text-app-text-muted mt-2 theme-transition">
                                 <div>
                                   MUNICIPAL ARCHIVE CODE: <span className="font-mono text-app-text">{record.id.toUpperCase()}</span>
                                 </div>
@@ -293,7 +293,7 @@ export const Transparency: React.FC = () => {
             </div>
             <button
               onClick={() => { setSearchTerm(''); setSelectedCategory('All'); }}
-              className="bg-app-primary hover:bg-app-primary-hover text-white border border-app-primary text-xs font-semibold px-4 py-2 rounded-none shadow-sm transition-all cursor-pointer theme-transition"
+              className="bg-app-primary hover:bg-app-primary-hover text-white text-xs font-semibold px-4 py-2 rounded-none shadow-sm transition-all cursor-pointer theme-transition"
             >
               Reset Search Filter
             </button>
@@ -303,7 +303,7 @@ export const Transparency: React.FC = () => {
       </div>
 
       {/* Transparency Note */}
-      <section className="bg-app-muted border border-app-border p-6 sm:p-8 rounded-none flex flex-col sm:flex-row items-center gap-5 theme-transition">
+      <section className="bg-app-muted/65 p-6 sm:p-8 rounded-none flex flex-col sm:flex-row items-center gap-5 theme-transition">
         <Info className="h-8 w-8 text-app-primary shrink-0 theme-transition" />
         <div className="space-y-1">
           <h4 className="text-sm font-bold text-app-text theme-transition">About Local Transparency Registries</h4>

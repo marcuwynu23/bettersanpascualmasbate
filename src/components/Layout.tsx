@@ -266,7 +266,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, currentTab, setCurrent
               </div>
               <p className="text-xs leading-relaxed text-app-text-muted theme-transition max-w-sm">
                 A volunteer-driven, non-official community directory and transparency registry dedicated to making public information accessible and
-                exploring the beauty of San Pascual, Burias Island, Masbate (distinguishing from San Pascual, Batangas).
+                exploring the beauty of San Pascual, Burias Island, Masbate.
               </p>
             </div>
 

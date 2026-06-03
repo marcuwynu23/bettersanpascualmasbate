@@ -42,3 +42,26 @@ export interface ServiceCard {
   icon: string;
   details: string[];
 }
+
+export interface MayorHistory {
+  id: string;
+  name: string;
+  term: string;
+  accomplishments: string[];
+  milestones: string[];
+  biography: string;
+  status: 'Incumbent' | 'Past';
+}
+
+export interface BarangayHistory {
+  id: string;
+  name: string;
+  captain: string;
+  termStart: string;
+  history: string;
+  livelihood: string[];
+  population: string;
+  pastCaptains: string[];
+  coastal: boolean;
+}
+

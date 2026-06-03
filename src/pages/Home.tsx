@@ -20,7 +20,7 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
     <div className="space-y-16 py-4 theme-transition">
       
       {/* 1. Clean Editorial Hero Section */}
-      <section className="relative overflow-hidden rounded-none bg-app-muted border border-app-border p-6 sm:p-10 md:p-14 theme-transition">
+      <section className="relative overflow-hidden rounded-none bg-app-muted/60 shadow-xs p-6 sm:p-10 md:p-14 theme-transition">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center">
           
@@ -38,7 +38,7 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
             <p className="text-sm sm:text-base text-app-text-muted leading-relaxed font-light theme-transition">
               Directories, municipal ordinances, budgets, and eco-tourism guides for Burias Island. Open public data for everyone.
             </p>
-
+ 
             <div className="flex flex-wrap gap-3 pt-2">
               <button
                 onClick={() => setCurrentTab('transparency')}
@@ -50,19 +50,19 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
               </button>
               <button
                 onClick={() => setCurrentTab('explore')}
-                className="bg-app-card hover:bg-app-card-hover text-app-text border border-app-border font-semibold px-5 py-3 rounded-none flex items-center gap-2 transition-all text-xs sm:text-sm theme-transition cursor-pointer"
+                className="bg-app-card hover:bg-app-muted/70 text-app-text font-semibold px-5 py-3 rounded-none flex items-center gap-2 transition-all text-xs sm:text-sm theme-transition cursor-pointer"
               >
                 <Compass className="h-4.5 w-4.5 shrink-0 text-app-primary theme-transition" />
                 Landmarks Directory
               </button>
             </div>
-
+ 
           </div>
-
+ 
           {/* Right Column (Editorial Photo Postcard Card) */}
           <div className="lg:col-span-5 hidden lg:block">
-            <div className="bg-app-card border border-app-border p-3.5 rounded-none rotate-2 hover:rotate-0 transition-transform duration-500 max-w-sm mx-auto theme-transition">
-              <div className="h-64 rounded-none overflow-hidden bg-app-muted border border-app-border theme-transition">
+            <div className="bg-app-card shadow-xs p-3.5 rounded-none rotate-2 hover:rotate-0 transition-transform duration-500 max-w-sm mx-auto theme-transition">
+              <div className="h-64 rounded-none overflow-hidden bg-app-muted/80 theme-transition">
                 <img 
                   src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80" 
                   alt="Burias Island Beach" 
@@ -80,7 +80,7 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
               </div>
             </div>
           </div>
-
+ 
         </div>
         
       </section>
@@ -99,7 +99,7 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
           
           {/* Stat 1 */}
-          <div className="bg-app-card border border-app-border border-t-2 border-t-app-primary p-6 rounded-none flex flex-col justify-between group theme-transition">
+          <div className="bg-app-card shadow-xs border-t-2 border-t-app-primary p-6 rounded-none flex flex-col justify-between group theme-transition">
             <Users className="h-10 w-10 text-app-primary group-hover:scale-110 transition-transform theme-transition" />
             <div className="mt-6">
               <span className="block text-3xl font-extrabold font-display tracking-tight text-app-text theme-transition">
@@ -112,7 +112,7 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
           </div>
 
           {/* Stat 2 */}
-          <div className="bg-app-card border border-app-border border-t-2 border-t-app-primary p-6 rounded-none flex flex-col justify-between group theme-transition">
+          <div className="bg-app-card shadow-xs border-t-2 border-t-app-primary p-6 rounded-none flex flex-col justify-between group theme-transition">
             <MapPin className="h-10 w-10 text-app-primary group-hover:scale-110 transition-transform theme-transition" />
             <div className="mt-6">
               <span className="block text-3xl font-extrabold font-display tracking-tight text-app-text theme-transition">
@@ -125,7 +125,7 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
           </div>
 
           {/* Stat 3 */}
-          <div className="bg-app-card border border-app-border border-t-2 border-t-app-primary p-6 rounded-none flex flex-col justify-between group theme-transition">
+          <div className="bg-app-card shadow-xs border-t-2 border-t-app-primary p-6 rounded-none flex flex-col justify-between group theme-transition">
             <Compass className="h-10 w-10 text-app-primary group-hover:scale-110 transition-transform theme-transition" />
             <div className="mt-6">
               <span className="block text-3xl font-extrabold font-display tracking-tight text-app-text theme-transition">
@@ -138,7 +138,7 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
           </div>
 
           {/* Stat 4 */}
-          <div className="bg-app-card border border-app-border border-t-2 border-t-app-primary p-6 rounded-none flex flex-col justify-between group theme-transition">
+          <div className="bg-app-card shadow-xs border-t-2 border-t-app-primary p-6 rounded-none flex flex-col justify-between group theme-transition">
             <Calendar className="h-10 w-10 text-app-primary group-hover:scale-110 transition-transform theme-transition" />
             <div className="mt-6">
               <span className="block text-3xl font-extrabold font-display tracking-tight text-app-text theme-transition">
@@ -169,7 +169,7 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
           {/* Card 1 */}
           <div 
             onClick={() => setCurrentTab('services')}
-            className="group relative overflow-hidden bg-app-card border border-app-border p-8 rounded-none cursor-pointer hover:border-app-primary transition-all duration-300 flex flex-col justify-between theme-transition"
+            className="group relative overflow-hidden bg-app-card shadow-xs p-8 rounded-none cursor-pointer hover:bg-app-card-hover transition-all duration-300 flex flex-col justify-between theme-transition"
           >
             <div>
               <Users className="h-10 w-10 text-app-primary group-hover:scale-105 transition-transform theme-transition" />
@@ -189,7 +189,7 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
           {/* Card 2 */}
           <div 
             onClick={() => setCurrentTab('transparency')}
-            className="group relative overflow-hidden bg-app-card border border-app-border p-8 rounded-none cursor-pointer hover:border-app-primary transition-all duration-300 flex flex-col justify-between theme-transition"
+            className="group relative overflow-hidden bg-app-card shadow-xs p-8 rounded-none cursor-pointer hover:bg-app-card-hover transition-all duration-300 flex flex-col justify-between theme-transition"
           >
             <div>
               <FileText className="h-10 w-10 text-app-primary group-hover:scale-105 transition-transform theme-transition" />
@@ -209,7 +209,7 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
           {/* Card 3 */}
           <div 
             onClick={() => setCurrentTab('explore')}
-            className="group relative overflow-hidden bg-app-card border border-app-border p-8 rounded-none cursor-pointer hover:border-app-primary transition-all duration-300 flex flex-col justify-between theme-transition"
+            className="group relative overflow-hidden bg-app-card shadow-xs p-8 rounded-none cursor-pointer hover:bg-app-card-hover transition-all duration-300 flex flex-col justify-between theme-transition"
           >
             <div>
               <Compass className="h-10 w-10 text-app-primary group-hover:scale-105 transition-transform theme-transition" />
@@ -230,7 +230,7 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
       </section>
 
       {/* 4. Transparency Highlight / Mission Statement */}
-      <section className="bg-app-muted border border-app-border p-8 sm:p-12 rounded-none flex flex-col lg:flex-row items-center gap-8 theme-transition">
+      <section className="bg-app-muted/65 shadow-xs p-8 sm:p-12 rounded-none flex flex-col lg:flex-row items-center gap-8 theme-transition">
         <div className="space-y-4 lg:w-2/3">
           <span className="text-[10px] font-extrabold uppercase tracking-wider text-app-text-dim theme-transition">
             Volunteer Code of Conduct
@@ -260,7 +260,7 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
             </div>
           </div>
         </div>
-        <div className="lg:w-1/3 bg-app-card border border-app-border p-6 rounded-none flex flex-col items-center text-center relative overflow-hidden shrink-0 theme-transition">
+        <div className="lg:w-1/3 bg-app-card shadow-xs p-6 rounded-none flex flex-col items-center text-center relative overflow-hidden shrink-0 theme-transition">
           <div className="absolute top-0 right-0 p-1.5 bg-app-primary text-white text-[9px] font-extrabold uppercase tracking-wider select-none transform rotate-45 translate-x-4 translate-y-2 theme-transition">
             ALERT
           </div>
