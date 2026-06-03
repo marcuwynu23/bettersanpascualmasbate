@@ -1,14 +1,14 @@
-import React from 'react';
-import { 
-  ArrowRight, 
-  MapPin, 
-  Users, 
-  Compass, 
-  Calendar, 
-  ShieldAlert, 
+import {
+  ArrowRight,
+  Calendar,
   CheckCircle,
-  FileText
+  Compass,
+  FileText,
+  MapPin,
+  ShieldAlert,
+  Users
 } from 'lucide-react';
+import React from 'react';
 import { CITY_STATS } from '../data/mockData';
 
 interface HomeProps {
@@ -64,14 +64,14 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
             <div className="bg-app-card shadow-xs p-3.5 rounded-none rotate-2 hover:rotate-0 transition-transform duration-500 max-w-sm mx-auto theme-transition">
               <div className="h-64 rounded-none overflow-hidden bg-app-muted/80 theme-transition">
                 <img 
-                  src="https://upload.wikimedia.org/wikipedia/commons/d/d1/At_Sombrero_Island%2C_San_Pascual_Burias_Islands_Masbate_Philippines.jpg" 
-                  alt="Sombrero Island Beach" 
+                  src="https://upload.wikimedia.org/wikipedia/commons/9/91/Animasola_Island_Rock_Formation_03.jpg" 
+                  alt="Animasola Island Rock Formations" 
                   className="w-full h-full object-cover filter brightness-[0.95]"
                 />
               </div>
               <div className="pt-3 px-1 flex items-center justify-between">
                 <div>
-                  <h3 className="font-bold text-xs text-app-text theme-transition">Sombrero Island Beach</h3>
+                  <h3 className="font-bold text-xs text-app-text theme-transition">Animasola Island Rocks</h3>
                   <p className="text-[10px] text-app-text-muted font-medium theme-transition">San Pascual, Burias Island, Masbate</p>
                 </div>
                 <span className="text-[10px] font-extrabold text-app-primary uppercase tracking-widest theme-transition">
@@ -133,6 +133,10 @@ export const Home: React.FC<HomeProps> = ({ setCurrentTab }) => {
               </span>
               <span className="text-xs font-semibold text-app-text-muted uppercase tracking-wider block mt-1 theme-transition">
                 Ecotourism Jewels
+              </span>
+              {/* @ts-ignore - Dynamic property added for community requested details */}
+              <span className="text-[9px] font-medium text-app-text-dim mt-2 block theme-transition leading-tight">
+                {CITY_STATS.majorIslands}
               </span>
             </div>
           </div>
