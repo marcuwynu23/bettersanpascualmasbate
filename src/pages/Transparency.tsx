@@ -1,13 +1,13 @@
 import {
-    Calendar,
-    Download,
-    FileText,
-    Filter,
-    Info,
-    RefreshCw,
-    Search
+  Calendar,
+  Download,
+  FileText,
+  Info,
+  RefreshCw,
+  Search
 } from 'lucide-react';
 import React, { useMemo, useState } from 'react';
+import { CustomSelect } from '../components/common/CustomSelect';
 import { PUBLIC_RECORDS } from '../data/mockData';
 import type { PublicRecord } from '../types';
 
@@ -109,23 +109,12 @@ export const Transparency: React.FC = () => {
           </div>
 
           {/* Category Dropdown */}
-          <div className="flex items-center gap-2 shrink-0">
-            <span className="text-xs font-semibold text-app-text-muted uppercase tracking-wider hidden sm:inline theme-transition">
-              Filter Category:
-            </span>
-            <div className="relative w-full sm:w-48">
-              <select
-                value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
-                className="w-full bg-app-muted/65 rounded-none px-4 py-3 text-sm font-semibold text-app-text focus:outline-none focus:ring-2 focus:ring-app-primary/10 cursor-pointer appearance-none theme-transition"
-              >
-                {categories.map((cat) => (
-                  <option key={cat} value={cat}>{cat}</option>
-                ))}
-              </select>
-              <Filter className="absolute right-4 top-3.5 h-4 w-4 text-app-text-muted pointer-events-none theme-transition" />
-            </div>
-          </div>
+          <CustomSelect
+            label="Filter Category:"
+            options={categories}
+            value={selectedCategory}
+            onChange={setSelectedCategory}
+          />
 
         </div>
 

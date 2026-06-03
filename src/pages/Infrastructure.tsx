@@ -1,5 +1,6 @@
-import { Calendar, CheckCircle2, Clock, Construction, ExternalLink, Filter, Info, MapPin, Search, ShieldAlert } from 'lucide-react';
+import { Calendar, CheckCircle2, Clock, Construction, ExternalLink, Info, MapPin, Search, ShieldAlert } from 'lucide-react';
 import React, { useEffect, useMemo, useState } from 'react';
+import { CustomSelect } from '../components/common/CustomSelect';
 
 interface Project {
   contractId: string;
@@ -228,23 +229,12 @@ export const Infrastructure: React.FC = () => {
           </div>
 
           {/* Status Dropdown */}
-          <div className="flex items-center gap-2 shrink-0">
-            <span className="text-xs font-semibold text-app-text-muted uppercase tracking-wider hidden sm:inline theme-transition">
-              Filter Status:
-            </span>
-            <div className="relative w-full sm:w-48">
-              <select
-                value={selectedStatus}
-                onChange={(e) => setSelectedStatus(e.target.value)}
-                className="w-full bg-app-muted/65 rounded-none px-4 py-3 text-sm font-semibold text-app-text focus:outline-none focus:ring-2 focus:ring-app-primary/10 cursor-pointer appearance-none theme-transition"
-              >
-                {statuses.map((stat) => (
-                  <option key={stat} value={stat}>{stat}</option>
-                ))}
-              </select>
-              <Filter className="absolute right-4 top-3.5 h-4 w-4 text-app-text-muted pointer-events-none theme-transition" />
-            </div>
-          </div>
+          <CustomSelect
+            label="Filter Status:"
+            options={statuses}
+            value={selectedStatus}
+            onChange={setSelectedStatus}
+          />
 
         </div>
 
